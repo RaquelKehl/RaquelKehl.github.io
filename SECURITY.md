@@ -5,8 +5,8 @@
 If you find a security issue in this site, its Worker API, or its pipeline,
 please report it privately:
 
-- **LinkedIn (preferred until the contact route is live):**
-  [linkedin.com/in/raquel-kehl-furukawa](https://www.linkedin.com/in/raquel-kehl-furukawa)
+- **Email (preferred):** [hello@raquelkehl.ch](mailto:hello@raquelkehl.ch)
+- **LinkedIn:** [linkedin.com/in/raquel-kehl-furukawa](https://www.linkedin.com/in/raquel-kehl-furukawa)
 - Please include: the affected URL or file, steps to reproduce, and impact.
 
 You can expect an acknowledgement within five working days. Please do not

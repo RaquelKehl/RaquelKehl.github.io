@@ -25,8 +25,8 @@ simple = { limit = 60, period = 60 }
 # ---------- non-sensitive config ----------
 [vars]
 GITHUB_USERNAME = "RaquelKehl"
-# comma-separated; add your custom domain when you have one
-ALLOWED_ORIGINS = "https://raquelkehl.github.io,http://127.0.0.1:4173"
+# comma-separated allow-list for CORS
+ALLOWED_ORIGINS = "https://raquelkehl.ch,https://www.raquelkehl.ch,http://127.0.0.1:4173"
 
 # ---------- secrets (NEVER in this file) ----------
 # npx wrangler secret put FORMSPREE_ENDPOINT   → https://formspree.io/f/xxxxxxxx
