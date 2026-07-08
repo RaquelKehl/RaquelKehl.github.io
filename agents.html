@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com; base-uri 'self'; form-action 'self'; object-src 'none'">
+
+  <title>Agents — Raquel Kehl</title>
+  <meta name="description" content="The CrewAI agent crew behind this site: portfolio analyst, lead qualifier, blog researcher, and code reviewer — governed multi-agent workflows with live status.">
+  <meta name="author" content="Raquel Kehl Furukawa">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AI Agents — Raquel Kehl Furukawa">
+  <meta property="og:description" content="Governed multi-agent workflows, running on a schedule, feeding the dashboard — agentic AI as evidence, not a claim.">
+  <meta property="og:site_name" content="Raquel Kehl Furukawa">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/js/theme-init.js"></script>
+  <script src="main.js" defer></script>
+  <script src="assets/js/agents.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader" data-solid>
+    <div class="bar">
+      <a class="brand" href="index.html" aria-label="Raquel Kehl — home"><b>K</b>ehl</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="usecases.html">Playbook</a>
+        <a href="blog.html">Insights</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="agents.html" aria-current="page">Agents</a>
+        <a href="game.html">Arcade</a>
+        <a href="contact.html">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="eyebrow">Agents</div>
+        <h1>The crew, at <span class="serif-accent">work</span>.</h1>
+        <p class="lede">Four CrewAI agents maintain parts of this site on a schedule — reviewed, logged, and governed like any other system I ship. This page is the argument from the About narrative made concrete: agentic AI with the controls designed in.</p>
+      </div>
+    </div>
+
+    <section aria-label="Development status">
+      <div class="wrap pt0">
+        <div class="dev-block reveal">
+          <span class="dev-badge"><span class="pulse-dot"></span>Live architecture in progress</span>
+          <h3>Agentic systems, with the controls <span class="serif-accent">designed in</span></h3>
+          <p>This capability is currently in development. The finished system will show agentic AI doing governed work — structured analysis, orchestration, and decision-ready outputs in complex environments — with every run logged and every permission earned. What you see below is the architecture it will run on, published before the system itself: the design is part of the demonstration.</p>
+          <ul class="dev-list">
+            <li><b>Four bounded agents</b> — analyst, qualifier, researcher, reviewer — each with a role, a goal, and nothing more</li>
+            <li><b>Scheduled, not always-on</b> — runs triggered by GitHub Actions, results served from the edge</li>
+            <li><b>Status becomes live here</b> — the cards below will switch from sample to telemetry at first deployment</li>
+          </ul>
+          <span class="dev-how">build order: visible site → serverless edge → agent crew → live status</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ pipeline ═══ -->
+    <section aria-labelledby="pipe-title" class="pt0">
+      <div class="wrap pt0">
+        <div class="eyebrow reveal">The pipeline</div>
+        <h2 id="pipe-title" class="reveal">From schedule to dashboard — no server, no secrets in the browser</h2>
+        <div class="flow reveal">
+          <div class="flow-lane">
+            <span class="k">01 · Trigger</span>
+            <h3>GitHub Actions — scheduled run</h3>
+            <p>A cron workflow starts <span class="mono">run_agents.py</span> on a schedule (or on demand). API keys live in GitHub Secrets — never in the repository.</p>
+          </div>
+          <div class="flow-arrow">▼ runs</div>
+          <div class="flow-lane">
+            <span class="k">02 · Crew</span>
+            <h3>CrewAI — four agents, sequential process</h3>
+            <p>Open-source CrewAI (local Python, not the hosted platform). Each agent has a role, goal, tools, and a bounded task; results are written as JSON with a timestamp and status per agent.</p>
+          </div>
+          <div class="flow-arrow">▼ posts results (HMAC-signed webhook)</div>
+          <div class="flow-lane">
+            <span class="k">03 · Edge</span>
+            <h3>Cloudflare Worker — KV storage</h3>
+            <p>The Worker validates the webhook, stores the JSON in KV, and serves it read-only at <span class="mono">/api/agents</span> with rate limiting and CORS locked to this site.</p>
+          </div>
+          <div class="flow-arrow">▼ fetch()</div>
+          <div class="flow-lane">
+            <span class="k">04 · Here</span>
+            <h3>Dashboard &amp; this page</h3>
+            <p>The frontend renders status and latest outputs. Until the pipeline’s first deployment it reads the bundled sample file — labelled as such, never pretending to be live.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ the agents ═══ -->
+    <section aria-labelledby="crew-title" class="cta-band">
+      <div class="wrap">
+        <div class="eyebrow reveal">The crew</div>
+        <h2 id="crew-title" class="reveal">Four roles, bounded tasks</h2>
+        <div class="agent-grid">
+
+          <article class="agent-card reveal" data-agent="portfolio-analyst">
+            <div class="agent-head">
+              <h3>Portfolio Analyst</h3>
+              <span class="status"><span class="dot idle"></span><span class="status-text">idle</span></span>
+            </div>
+            <p>Reviews the live site against the CV and recent work; flags stale sections, missing proof points, and content gaps.</p>
+            <div>
+              <span class="k">Goal</span>
+              <p>Keep every page current enough that nothing on it needs an apology.</p>
+            </div>
+            <div>
+              <span class="k">Tools · cadence</span>
+              <p>Site reader · content checklist — weekly</p>
+            </div>
+            <div>
+              <span class="k">Latest output</span>
+              <pre class="sample"><code class="sample-output">{ "status": "awaiting first scheduled run" }</code></pre>
+            </div>
+          </article>
+
+          <article class="agent-card reveal" data-agent="lead-qualifier">
+            <div class="agent-head">
+              <h3>Lead Qualifier</h3>
+              <span class="status"><span class="dot idle"></span><span class="status-text">idle</span></span>
+            </div>
+            <p>Classifies contact-form submissions by topic, seniority, and urgency, and drafts a one-paragraph brief per lead.</p>
+            <div>
+              <span class="k">Goal</span>
+              <p>No interesting conversation waits longer than it should.</p>
+            </div>
+            <div>
+              <span class="k">Tools · cadence</span>
+              <p>Classification rubric · processes only text explicitly submitted via the form — on submission</p>
+            </div>
+            <div>
+              <span class="k">Latest output</span>
+              <pre class="sample"><code class="sample-output">{ "status": "awaiting first scheduled run" }</code></pre>
+            </div>
+          </article>
+
+          <article class="agent-card reveal" data-agent="blog-researcher">
+            <div class="agent-head">
+              <h3>Blog Researcher</h3>
+              <span class="status"><span class="dot idle"></span><span class="status-text">idle</span></span>
+            </div>
+            <p>Scans AI-governance and transformation sources; proposes three outline candidates with linked references.</p>
+            <div>
+              <span class="k">Goal</span>
+              <p>A standing shortlist of posts worth writing — with receipts.</p>
+            </div>
+            <div>
+              <span class="k">Tools · cadence</span>
+              <p>Web search · source ranking — weekly</p>
+            </div>
+            <div>
+              <span class="k">Latest output</span>
+              <pre class="sample"><code class="sample-output">{ "status": "awaiting first scheduled run" }</code></pre>
+            </div>
+          </article>
+
+          <article class="agent-card reveal" data-agent="code-reviewer">
+            <div class="agent-head">
+              <h3>Code Reviewer</h3>
+              <span class="status"><span class="dot idle"></span><span class="status-text">idle</span></span>
+            </div>
+            <p>Audits this repository for quality and accessibility regressions; files prioritised findings, never silent fixes.</p>
+            <div>
+              <span class="k">Goal</span>
+              <p>The site that demonstrates governed AI should itself survive a review.</p>
+            </div>
+            <div>
+              <span class="k">Tools · cadence</span>
+              <p>Repo reader · WCAG checklist — on push</p>
+            </div>
+            <div>
+              <span class="k">Latest output</span>
+              <pre class="sample"><code class="sample-output">{ "status": "awaiting first scheduled run" }</code></pre>
+            </div>
+          </article>
+
+        </div>
+        <p class="conf-note" id="crewSource">status source: bundled sample — live after the pipeline’s first deployment</p>
+      </div>
+    </section>
+
+    <!-- ═══ governance note ═══ -->
+    <section aria-labelledby="gov-title">
+      <div class="wrap">
+        <div class="eyebrow reveal">The rules they run under</div>
+        <h2 id="gov-title" class="reveal">Governed by design, not by disclaimer</h2>
+        <div class="cred-grid">
+          <div class="cred reveal">
+            <span class="k">Bounded authority</span>
+            <ul>
+              <li><b>Read-mostly:</b> agents propose; they do not publish or merge</li>
+              <li><b>No tool an agent didn’t earn:</b> each tool is granted per task, not globally</li>
+              <li><b>Human in the loop</b> for anything visitor-facing</li>
+            </ul>
+          </div>
+          <div class="cred reveal">
+            <span class="k">Traceability</span>
+            <ul>
+              <li><b>Every run logged:</b> timestamp, inputs, outputs, model</li>
+              <li><b>Outputs versioned</b> as JSON artefacts in the pipeline</li>
+              <li><b>Failures surface</b> on the dashboard — errors are data too</li>
+            </ul>
+          </div>
+          <div class="cred reveal">
+            <span class="k">Privacy</span>
+            <ul>
+              <li><b>No visitor tracking</b> feeds any agent</li>
+              <li><b>Lead texts</b> are processed only when explicitly submitted</li>
+              <li><b>Secrets server-side:</b> GitHub Secrets + Worker secrets, never the browser</li>
+            </ul>
+          </div>
+        </div>
+        <div class="actions reveal">
+          <a class="btn btn-primary" data-magnetic href="dashboard.html">See live status</a>
+          <a class="btn btn-ghost" href="blog.html?post=governed-agents">Read: govern the loop</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <div class="who">Raquel Kehl Furukawa
+          <span>Zürich, Switzerland · transformation · technology · direction</span>
+        </div>
+        <nav aria-label="Footer">
+          <a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="me noopener" target="_blank">LinkedIn</a>
+          <a href="https://github.com/" id="githubLink" rel="me noopener" target="_blank" hidden>GitHub</a>
+          <a href="contact.html">Contact</a>
+          <a href="assets/cv/2026_CV_Website.pdf" download>CV (PDF)</a>
+        </nav>
+      </div>
+      <div class="fine">© <span id="year">2026</span> Raquel Kehl Furukawa · built with vanilla JS · hosted on GitHub Pages · dark by design</div>
+    </div>
+  </footer>
+</body>
+</html>

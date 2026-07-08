@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://formspree.io; base-uri 'self'; form-action 'self' https://formspree.io; object-src 'none'">
+
+  <title>Contact — Raquel Kehl</title>
+  <meta name="description" content="Contact Raquel Kehl Furukawa — transformation programmes, AI governance, speaking, and collaboration. Based in Zürich, Switzerland.">
+  <meta name="author" content="Raquel Kehl Furukawa">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact — Raquel Kehl Furukawa">
+  <meta property="og:description" content="Start a conversation about transformation, technology, and direction.">
+  <meta property="og:site_name" content="Raquel Kehl Furukawa">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/js/theme-init.js"></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader" data-solid>
+    <div class="bar">
+      <a class="brand" href="index.html" aria-label="Raquel Kehl — home"><b>K</b>ehl</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="usecases.html">Playbook</a>
+        <a href="blog.html">Insights</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="agents.html">Agents</a>
+        <a href="game.html">Arcade</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="eyebrow">Contact</div>
+        <h1>Let’s talk <span class="serif-accent">direction</span>.</h1>
+        <p class="lede">Transformation programmes, AI governance, speaking, or something that doesn’t fit a category yet — I read everything that comes through here.</p>
+      </div>
+    </div>
+
+    <section aria-label="Contact form and details">
+      <div class="wrap pt0">
+        <div class="contact-grid">
+
+          <form id="contactForm" novalidate>
+            <div class="field">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="cf-org">Organisation <span class="opt">(optional)</span></label>
+              <input id="cf-org" name="organisation" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="cf-topic">Topic</label>
+              <select id="cf-topic" name="topic">
+                <option value="transformation">Transformation programme</option>
+                <option value="ai-governance">AI &amp; governance</option>
+                <option value="speaking">Speaking &amp; community</option>
+                <option value="other" selected>Something else</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" required></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" data-magnetic type="submit">Send message</button>
+              <span class="mono quiet">usually answered within two working days</span>
+            </div>
+            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+          </form>
+
+          <aside class="contact-aside" aria-label="Other ways to reach me">
+            <div class="cred">
+              <span class="k">Direct</span>
+              <ul>
+                <li><b>LinkedIn</b> — <a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="me noopener" target="_blank">raquel-kehl-furukawa</a></li>
+                <li><b>Location</b> — Zürich, Switzerland</li>
+                <li><b>CV</b> — <a href="assets/cv/2026_CV_Website.pdf" download>download as PDF</a></li>
+              </ul>
+            </div>
+            <div class="cred">
+              <span class="k">Working languages</span>
+              <ul>
+                <li><b>English</b> · <b>German</b> · <b>Spanish</b> — fluent to native</li>
+                <li><b>French</b> — C1 · <b>Italian</b> — B1</li>
+              </ul>
+            </div>
+            <div class="cred">
+              <span class="k">Good conversations start with</span>
+              <ul>
+                <li>A transformation that has to survive an audit</li>
+                <li>AI you want to adopt <b>and</b> defend to a regulator</li>
+                <li>A system everyone works around instead of with</li>
+              </ul>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <div class="who">Raquel Kehl Furukawa
+          <span>Zürich, Switzerland · transformation · technology · direction</span>
+        </div>
+        <nav aria-label="Footer">
+          <a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="me noopener" target="_blank">LinkedIn</a>
+          <a href="https://github.com/" id="githubLink" rel="me noopener" target="_blank" hidden>GitHub</a>
+          <a href="contact.html">Contact</a>
+          <a href="assets/cv/2026_CV_Website.pdf" download>CV (PDF)</a>
+        </nav>
+      </div>
+      <div class="fine">© <span id="year">2026</span> Raquel Kehl Furukawa · built with vanilla JS · hosted on GitHub Pages · dark by design</div>
+    </div>
+  </footer>
+</body>
+</html>

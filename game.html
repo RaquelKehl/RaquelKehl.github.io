@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com; base-uri 'self'; form-action 'self'; object-src 'none'">
+
+  <title>Arcade — Raquel Kehl</title>
+  <meta name="description" content="Pipeline — a data-flow optimisation puzzle by Raquel Kehl Furukawa. Rotate the network until every endpoint is connected to the core. Fewest moves wins.">
+  <meta name="author" content="Raquel Kehl Furukawa">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Arcade — Pipeline, by Raquel Kehl Furukawa">
+  <meta property="og:description" content="Route the data. Remove the bottlenecks. A browser puzzle about the day job.">
+  <meta property="og:site_name" content="Raquel Kehl Furukawa">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/js/theme-init.js"></script>
+  <script src="main.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader" data-solid>
+    <div class="bar">
+      <a class="brand" href="index.html" aria-label="Raquel Kehl — home"><b>K</b>ehl</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="usecases.html">Playbook</a>
+        <a href="blog.html">Insights</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="agents.html">Agents</a>
+        <a href="game.html" aria-current="page">Arcade</a>
+        <a href="contact.html">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="eyebrow">Arcade</div>
+        <h1>Pipeline — route the <span class="serif-accent">data</span>.</h1>
+        <p class="lede">A scrambled network, one core, many endpoints. Rotate the tiles until every endpoint is connected — in as few moves as possible. It’s the day job, with better feedback loops.</p>
+      </div>
+    </div>
+
+    <section aria-label="Pipeline game">
+      <div class="wrap pt0">
+        <div class="game-shell">
+
+          <div class="game-stage">
+            <div class="hud">
+              <span class="hstat">level <b id="hudLevel">1</b>/5</span>
+              <span class="hstat">moves <b id="hudMoves">0</b></span>
+              <span class="hstat">par <b id="hudPar">0</b></span>
+              <span class="hstat">best <b id="hudBest">—</b></span>
+              <span class="hbtns">
+                <button class="btn-small" id="btnRestart" type="button">Restart</button>
+                <button class="btn-small" id="btnNew" type="button">New layout</button>
+              </span>
+            </div>
+            <canvas id="gameCanvas" tabindex="0"
+              aria-label="Pipeline puzzle board. Use arrow keys to choose a tile and Enter or Space to rotate it clockwise. Connect every endpoint to the copper core."></canvas>
+            <p class="game-msg">click / tap a tile to rotate · arrow keys + enter for keyboard play · copper = connected to the core</p>
+
+            <div class="game-overlay" id="gameOverlay" role="dialog" aria-modal="true" aria-labelledby="ovTitle">
+              <div class="overlay-card">
+                <span class="k">network online</span>
+                <h3 id="ovTitle">All endpoints connected</h3>
+                <p id="ovStats">—</p>
+                <div class="actions">
+                  <button class="btn btn-primary" id="btnNext" type="button">Next level</button>
+                  <button class="btn btn-ghost" id="btnReplay" type="button">Replay</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="game-aside" aria-label="How to play">
+            <div class="cred">
+              <span class="k">How to play</span>
+              <ul>
+                <li><b>Goal:</b> connect every tile to the copper core</li>
+                <li><b>Rotate:</b> click / tap a tile, or arrows + enter</li>
+                <li><b>Score:</b> fewest moves — par is the scramble’s minimum</li>
+                <li><b>Best scores</b> are saved on this device only</li>
+              </ul>
+            </div>
+            <div class="cred">
+              <span class="k">Why this game</span>
+              <ul>
+                <li>Every transformation is this puzzle: the pieces exist, the connections don’t</li>
+                <li>Fewer moves = fewer manual steps — the 60% on the homepage</li>
+                <li>Built in vanilla Canvas 2D, ~0 dependencies, like the rest of the site</li>
+              </ul>
+            </div>
+            <div class="cred">
+              <span class="k">Roblox — next in the series</span>
+              <ul>
+                <li><b>Pipeline Tycoon</b> — a data-centre management game in Luau</li>
+                <li>Server + client scripts with DataStore persistence, in development</li>
+                <li>Publishing guide &amp; DevEx compliance notes ship with it</li>
+              </ul>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" aria-labelledby="game-cta">
+      <div class="wrap">
+        <div class="next reveal">prefer the real thing?</div>
+        <h2 id="game-cta" class="reveal">I also untangle <span class="serif-accent">production</span> networks.</h2>
+        <div class="actions reveal">
+          <a class="btn btn-primary" data-magnetic href="portfolio.html">See the work</a>
+          <a class="btn btn-ghost" href="contact.html">Start a conversation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <div class="who">Raquel Kehl Furukawa
+          <span>Zürich, Switzerland · transformation · technology · direction</span>
+        </div>
+        <nav aria-label="Footer">
+          <a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="me noopener" target="_blank">LinkedIn</a>
+          <a href="https://github.com/" id="githubLink" rel="me noopener" target="_blank" hidden>GitHub</a>
+          <a href="contact.html">Contact</a>
+          <a href="assets/cv/2026_CV_Website.pdf" download>CV (PDF)</a>
+        </nav>
+      </div>
+      <div class="fine">© <span id="year">2026</span> Raquel Kehl Furukawa · built with vanilla JS · hosted on GitHub Pages · dark by design</div>
+    </div>
+  </footer>
+</body>
+</html>

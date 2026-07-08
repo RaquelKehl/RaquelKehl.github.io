@@ -1,0 +1,35 @@
+# ═══════════════════════════════════════════════════════════════
+# PORTFOLIO API — Worker configuration
+# Deploy from this directory:  npx wrangler deploy
+# ═══════════════════════════════════════════════════════════════
+
+name = "portfolio-api"
+main = "index.js"
+compatibility_date = "2026-06-01"
+
+# ---------- KV ----------
+# Create once:  npx wrangler kv namespace create PORTFOLIO_KV
+# then paste the returned id below.
+[[kv_namespaces]]
+binding = "PORTFOLIO_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# ---------- built-in rate limiting (no Redis required) ----------
+# 60 requests per 60s per key (key = client IP + route class).
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 60, period = 60 }
+
+# ---------- non-sensitive config ----------
+[vars]
+GITHUB_USERNAME = "REPLACE_WITH_GITHUB_USERNAME"
+# comma-separated; add your custom domain when you have one
+ALLOWED_ORIGINS = "https://REPLACE_WITH_GITHUB_USERNAME.github.io,http://127.0.0.1:4173"
+
+# ---------- secrets (NEVER in this file) ----------
+# npx wrangler secret put FORMSPREE_ENDPOINT   → https://formspree.io/f/xxxxxxxx
+# npx wrangler secret put WEBHOOK_SECRET       → long random string (openssl rand -hex 32)
+# npx wrangler secret put GITHUB_TOKEN         → optional, classic token with public_repo read
+# For local dev, copy .dev.vars.example to .dev.vars (gitignored).

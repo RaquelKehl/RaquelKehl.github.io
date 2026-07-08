@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com; base-uri 'self'; form-action 'self'; object-src 'none'">
+
+  <title>Dashboard — Raquel Kehl</title>
+  <meta name="description" content="Live dashboard: skills radar, experience timeline, GitHub activity, and CrewAI agent status for Raquel Kehl Furukawa.">
+  <meta name="author" content="Raquel Kehl Furukawa">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dashboard — Raquel Kehl Furukawa">
+  <meta property="og:description" content="Skills, experience, repository activity, and agent status — live where it can be, honest where it can't yet.">
+  <meta property="og:site_name" content="Raquel Kehl Furukawa">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/js/theme-init.js"></script>
+  <script src="assets/vendor/chart.umd.js" defer></script>
+  <script src="main.js" defer></script>
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader" data-solid>
+    <div class="bar">
+      <a class="brand" href="index.html" aria-label="Raquel Kehl — home"><b>K</b>ehl</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="usecases.html">Playbook</a>
+        <a href="blog.html">Insights</a>
+        <a href="dashboard.html" aria-current="page">Dashboard</a>
+        <a href="agents.html">Agents</a>
+        <a href="game.html">Arcade</a>
+        <a href="contact.html">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="eyebrow">Dashboard</div>
+        <h1>Signals, <span class="serif-accent">live</span>.</h1>
+        <p class="lede">Skills and experience from the CV; repository activity from the GitHub API; agent status from the CrewAI pipeline. Live where it can be — clearly labelled where a data source isn’t connected yet.</p>
+      </div>
+    </div>
+
+    <section aria-label="Dashboard panels">
+      <div class="wrap" style="padding-top:0">
+        <div class="dash-grid">
+
+          <div class="panel">
+            <div class="panel-head">
+              <h2>Skill profile</h2>
+              <span class="src">source: cv · self-assessed</span>
+            </div>
+            <div class="chart-box"><canvas id="radarChart" role="img" aria-label="Radar chart of eight core skill domains, self-assessed from 75 to 90 out of 100"></canvas></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h2>All fourteen skills</h2>
+              <span class="src">source: cv · self-assessed</span>
+            </div>
+            <div class="chart-box tall"><canvas id="barsChart" role="img" aria-label="Horizontal bar chart of fourteen skills, self-assessed from 65 to 90 out of 100"></canvas></div>
+          </div>
+
+          <div class="panel span-2">
+            <div class="panel-head">
+              <h2>Experience timeline</h2>
+              <span class="src">2007 → 2027</span>
+            </div>
+            <div class="tl" role="img" aria-label="Timeline of roles from 2007 to 2026 and studies from 2020 to 2027, overlapping since 2020">
+              <div class="tl-row"><span class="tl-label"><b>Leica Geosystems</b>Logistics</span><span class="tl-track"><span class="tl-bar" data-start="2007" data-end="2010"><span class="yrs">07–10</span></span></span></div>
+              <div class="tl-row"><span class="tl-label"><b>SwissOptic</b>PPC · Sales &amp; Export</span><span class="tl-track"><span class="tl-bar" data-start="2010" data-end="2014"><span class="yrs">10–14</span></span></span></div>
+              <div class="tl-row"><span class="tl-label"><b>Ivoclar Vivadent</b>Customer Service</span><span class="tl-track"><span class="tl-bar" data-start="2014" data-end="2019"><span class="yrs">14–19</span></span></span></div>
+              <div class="tl-row"><span class="tl-label"><b>Safran Vectronix</b>International Trade</span><span class="tl-track"><span class="tl-bar" data-start="2019" data-end="2021"><span class="yrs">19–21</span></span></span></div>
+              <div class="tl-row"><span class="tl-label"><b>bbz st.gallen</b>Project &amp; Events</span><span class="tl-track"><span class="tl-bar" data-start="2021" data-end="2022"><span class="yrs">21–22</span></span></span></div>
+              <div class="tl-row"><span class="tl-label"><b>Sora Bank</b>Rebranding</span><span class="tl-track"><span class="tl-bar" data-start="2022" data-end="2023"><span class="yrs">22–23</span></span></span></div>
+              <div class="tl-row"><span class="tl-label"><b>Sigma Bank</b>Innovation PM</span><span class="tl-track"><span class="tl-bar" data-start="2024" data-end="2026"><span class="yrs">24–26</span></span></span></div>
+              <div class="tl-row"><span class="tl-label"><b>BSc BIT · OST</b>Software Dev.</span><span class="tl-track"><span class="tl-bar edu" data-start="2020" data-end="2024"><span class="yrs">20–24</span></span></span></div>
+              <div class="tl-row"><span class="tl-label"><b>MSc BIT · OST</b>Digital Finance</span><span class="tl-track"><span class="tl-bar edu" data-start="2024" data-end="2027"><span class="yrs">24–27</span></span></span></div>
+            </div>
+            <div class="tl-legend"><span><i></i>Roles</span><span><i class="edu"></i>Studies (alongside full-time work)</span></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h2>Repository activity</h2>
+              <span class="src" id="ghSource">source: connecting…</span>
+            </div>
+            <div class="mini-list" id="ghList" aria-live="polite"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h2>Agent crew</h2>
+              <span class="src" id="agentSource">source: connecting…</span>
+            </div>
+            <div class="mini-list" id="agentList" aria-live="polite"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" aria-labelledby="dash-cta">
+      <div class="wrap">
+        <div class="next reveal">behind these panels</div>
+        <h2 id="dash-cta" class="reveal">Meet the <span class="serif-accent">agent crew</span>.</h2>
+        <div class="actions reveal">
+          <a class="btn btn-primary" data-magnetic href="agents.html">Agents showcase</a>
+          <a class="btn btn-ghost" href="portfolio.html">Back to the work</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <div class="who">Raquel Kehl Furukawa
+          <span>Zürich, Switzerland · transformation · technology · direction</span>
+        </div>
+        <nav aria-label="Footer">
+          <a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="me noopener" target="_blank">LinkedIn</a>
+          <a href="https://github.com/" id="githubLink" rel="me noopener" target="_blank" hidden>GitHub</a>
+          <a href="contact.html">Contact</a>
+          <a href="assets/cv/2026_CV_Website.pdf" download>CV (PDF)</a>
+        </nav>
+      </div>
+      <div class="fine">© <span id="year">2026</span> Raquel Kehl Furukawa · built with vanilla JS · hosted on GitHub Pages · dark by design</div>
+    </div>
+  </footer>
+</body>
+</html>

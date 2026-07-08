@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com; base-uri 'self'; form-action 'self'; object-src 'none'">
+
+  <title>Portfolio — Raquel Kehl</title>
+  <meta name="description" content="Selected work by Raquel Kehl Furukawa: zero-downtime core-banking migration, enterprise AI governance, DORA readiness, workflow automation, ML and agentic systems.">
+  <meta name="author" content="Raquel Kehl Furukawa">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Portfolio — Raquel Kehl Furukawa">
+  <meta property="og:description" content="Transformation programmes, AI governance, and intelligent systems — objectives, tools, and measured impact.">
+  <meta property="og:site_name" content="Raquel Kehl Furukawa">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/js/theme-init.js"></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader" data-solid>
+    <div class="bar">
+      <a class="brand" href="index.html" aria-label="Raquel Kehl — home"><b>K</b>ehl</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html" aria-current="page">Portfolio</a>
+        <a href="usecases.html">Playbook</a>
+        <a href="blog.html">Insights</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="agents.html">Agents</a>
+        <a href="game.html">Arcade</a>
+        <a href="contact.html">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="eyebrow">Portfolio</div>
+        <h1>Systems, <span class="serif-accent">shipped</span>.</h1>
+        <p class="lede">Objective, tools, measured impact — for every project. Transformation programmes and governance work come from regulated banking environments; AI and agentic projects span professional and Master's work.</p>
+
+        <div class="filter-bar" role="group" aria-label="Filter projects by category">
+          <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn" type="button" data-filter="transformation" aria-pressed="false">Transformation &amp; delivery</button>
+          <button class="filter-btn" type="button" data-filter="ai" aria-pressed="false">AI &amp; data</button>
+          <button class="filter-btn" type="button" data-filter="governance" aria-pressed="false">Governance &amp; risk</button>
+          <button class="filter-btn" type="button" data-filter="workplace" aria-pressed="false">Digital workplace</button>
+        </div>
+      </div>
+    </div>
+
+    <section aria-label="Projects">
+      <div class="wrap pt0">
+        <div class="proj-grid">
+
+          <article class="proj-card reveal" data-cats="transformation">
+            <span class="tags"><span class="tag">Transformation</span><span class="tag">Banking</span></span>
+            <h3>Zero-downtime core-banking migration</h3>
+            <p class="obj">Steer a time-critical, multi-vendor SaaS core-banking migration in private banking without interrupting operations — parallel-run and transition scenarios designed to make failure survivable before go-live.</p>
+            <span class="row-k">Tools &amp; methods</span>
+            <p class="obj">Requirements engineering · technical business analysis · PoC design · implementation blueprints · parallel-run architecture</p>
+            <span class="impact">0 downtime at go-live · 20%+ external cost reduction</span>
+          </article>
+
+          <article class="proj-card reveal" data-cats="ai governance">
+            <span class="tags"><span class="tag">AI</span><span class="tag">Governance</span></span>
+            <h3>Enterprise AI governance framework</h3>
+            <p class="obj">Give a private bank a defensible way to say yes to AI: co-developed the enterprise framework on the EU AI Act, NIST AI RMF and ISO/IEC 42001, then stress-tested it against real use cases — including RAG-based compliance assistants — for risk, transparency and documentation.</p>
+            <span class="row-k">Tools &amp; methods</span>
+            <p class="obj">EU AI Act · NIST AI RMF · ISO/IEC 42001 · use-case risk assessment · control design</p>
+            <span class="impact">Board-level recommendations, adopted · audit-ready controls</span>
+          </article>
+
+          <article class="proj-card reveal" data-cats="transformation governance workplace">
+            <span class="tags"><span class="tag">Transformation</span><span class="tag">ITSM</span></span>
+            <h3>CAB digitisation &amp; change governance</h3>
+            <p class="obj">Turn the Change Advisory Board from a meeting into a system: digitised and operationalised CAB workflows, established decision structures for change, incident and service governance, and delivered data-driven SLA oversight for C-level reporting.</p>
+            <span class="row-k">Tools &amp; methods</span>
+            <p class="obj">ITIL · change / incident / service governance · SLA analytics · GRC audit cycles</p>
+            <span class="impact">Audit resilience by design · standing C-level reporting</span>
+          </article>
+
+          <article class="proj-card reveal" data-cats="governance">
+            <span class="tags"><span class="tag">Governance</span><span class="tag">DORA</span></span>
+            <h3>DORA incident governance readiness</h3>
+            <p class="obj">Prepare a bank to classify, escalate and formally report major ICT incidents in line with DORA and its technical standards — governance and organisational readiness, not just a policy document.</p>
+            <span class="row-k">Tools &amp; methods</span>
+            <p class="obj">DORA · incident classification &amp; escalation design · reporting readiness · regulatory analysis</p>
+            <span class="impact">Formal reporting readiness · embedded in operations</span>
+          </article>
+
+          <article class="proj-card reveal" data-cats="governance transformation">
+            <span class="tags"><span class="tag">Governance</span><span class="tag">Risk</span></span>
+            <h3>Cloud exit strategy &amp; third-party risk</h3>
+            <p class="obj">Make outsourcing reversible: developed cloud exit strategies, contributed to operating and control model design, and led third-party risk assessments across transformation and outsourcing initiatives.</p>
+            <span class="row-k">Tools &amp; methods</span>
+            <p class="obj">Exit-strategy design · third-party risk assessment · operating &amp; control models · outsourcing governance</p>
+            <span class="impact">Exit paths documented before dependency, not after</span>
+          </article>
+
+          <article class="proj-card reveal" data-cats="workplace transformation">
+            <span class="tags"><span class="tag">Digital workplace</span><span class="tag">M365 · Jira</span></span>
+            <h3>Workflow automation at scale</h3>
+            <p class="obj">Cut the manual overhead out of regulated workflows: orchestrated cross-platform low-code automation across M365 and Jira, with HCI-informed enablement so adoption survived contact with real users.</p>
+            <span class="row-k">Tools &amp; methods</span>
+            <p class="obj">Power Automate · Jira automation · low-code workflow design · HCI enablement · change adoption</p>
+            <span class="impact">60% fewer manual steps · sustained user uptake</span>
+          </article>
+
+          <article class="proj-card reveal" data-cats="ai">
+            <span class="tags"><span class="tag">AI &amp; data</span><span class="tag">MSc</span></span>
+            <h3>Ensemble methods &amp; model evaluation</h3>
+            <p class="obj">Master's data-science track: building and evaluating ML models with ensemble methods, with the emphasis on honest evaluation — validation design, metrics selection, and knowing when a model should not ship.</p>
+            <span class="row-k">Tools &amp; methods</span>
+            <p class="obj">Python · scikit-learn · ensemble methods · model evaluation · XAI / explainability</p>
+            <span class="impact">Evaluation-first practice, carried into AI governance work</span>
+          </article>
+
+          <article class="proj-card reveal" data-cats="ai transformation">
+            <span class="tags"><span class="tag">AI &amp; data</span><span class="tag">The pivot</span></span>
+            <h3>No-code Master's project</h3>
+            <p class="obj">The transitional moment: a governed process application composed entirely without custom code, built during the Master's programme. It reframed the question from “how do we code this?” to “what happens when the components can reason?” — the origin of the agentic systems work on this site.</p>
+            <span class="row-k">Tools &amp; methods</span>
+            <p class="obj">No-code / low-code platform design · process modelling · governed workflow composition</p>
+            <span class="impact">The pivot into agentic AI — see the Agents page</span>
+          </article>
+
+          <article class="proj-card reveal" data-cats="ai">
+            <span class="tags"><span class="tag">AI &amp; data</span><span class="tag">This site</span></span>
+            <h3>This website &amp; its agent crew</h3>
+            <p class="obj">A live demonstration rather than a claim: static frontend on GitHub Pages, serverless edge on Cloudflare Workers, and a CrewAI multi-agent pipeline feeding the dashboard — all dependency-light, WCAG AA, and governed by the same discipline as the day job.</p>
+            <span class="row-k">Tools &amp; methods</span>
+            <p class="obj">Vanilla JS · Canvas 2D · CrewAI (Python) · Cloudflare Workers · GitHub Actions</p>
+            <span class="impact">You are looking at it — dashboard &amp; agents pages show it live</span>
+          </article>
+
+        </div>
+        <p class="conf-note">Banking programme work is described at the level confidentiality allows — detailed case walkthroughs available in conversation.</p>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="cta-band" aria-labelledby="pf-cta">
+      <div class="wrap">
+        <div class="next reveal">next station: your organisation</div>
+        <h2 id="pf-cta" class="reveal">Have a system that needs <span class="serif-accent">direction</span>?</h2>
+        <div class="actions reveal">
+          <a class="btn btn-primary" data-magnetic href="contact.html">Start a conversation</a>
+          <a class="btn btn-ghost" href="assets/cv/2026_CV_Website.pdf" download>Download CV</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <div class="who">Raquel Kehl Furukawa
+          <span>Zürich, Switzerland · transformation · technology · direction</span>
+        </div>
+        <nav aria-label="Footer">
+          <a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="me noopener" target="_blank">LinkedIn</a>
+          <a href="https://github.com/" id="githubLink" rel="me noopener" target="_blank" hidden>GitHub</a>
+          <a href="contact.html">Contact</a>
+          <a href="assets/cv/2026_CV_Website.pdf" download>CV (PDF)</a>
+        </nav>
+      </div>
+      <div class="fine">© <span id="year">2026</span> Raquel Kehl Furukawa · built with vanilla JS · hosted on GitHub Pages · dark by design</div>
+    </div>
+  </footer>
+</body>
+</html>

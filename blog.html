@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com; base-uri 'self'; form-action 'self'; object-src 'none'">
+
+  <title>Insights — Raquel Kehl</title>
+  <meta name="description" content="Insights by Raquel Kehl Furukawa: essays on AI governance, agentic systems and transformation — plus a curated signals layer and a recurring editorial brief, in development.">
+  <meta name="author" content="Raquel Kehl Furukawa">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Insights — Raquel Kehl Furukawa">
+  <meta property="og:description" content="Essays, curated signals, and an editorial brief — AI governance and transformation, translated into direction.">
+  <meta property="og:site_name" content="Raquel Kehl Furukawa">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/js/theme-init.js"></script>
+  <script src="main.js" defer></script>
+  <script src="assets/js/blog.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader" data-solid>
+    <div class="bar">
+      <a class="brand" href="index.html" aria-label="Raquel Kehl — home"><b>K</b>ehl</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="usecases.html">Playbook</a>
+        <a href="blog.html" aria-current="page">Insights</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="agents.html">Agents</a>
+        <a href="game.html">Arcade</a>
+        <a href="contact.html">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div id="listSection">
+      <div class="page-hero">
+        <div class="wrap">
+          <div class="eyebrow">Insights</div>
+          <h1>Notes from the <span class="serif-accent">intersection</span>.</h1>
+          <p class="lede">Three layers, one editorial voice: essays written from inside regulated organisations, a curated signals feed, and a recurring brief — the last two currently taking shape.</p>
+        </div>
+      </div>
+      <section aria-labelledby="essays-title">
+        <div class="wrap pt0">
+          <div class="eyebrow reveal">Essays · live</div>
+          <h2 id="essays-title" class="reveal">Long-form, first-person</h2>
+          <div class="post-list" id="postList"></div>
+        </div>
+      </section>
+
+      <section class="cta-band" aria-labelledby="signals-title">
+        <div class="wrap">
+          <div class="eyebrow reveal">Next layers</div>
+          <h2 id="signals-title" class="reveal">Signals &amp; The Brief</h2>
+          <div class="teaser-grid">
+            <div class="dev-block reveal">
+              <span class="dev-badge"><span class="pulse-dot"></span>Curated layer · in development</span>
+              <h3>Signals — the intelligence <span class="serif-accent">layer</span></h3>
+              <p>A curated intelligence layer is taking shape here — built to surface the regulatory shifts, agentic-AI milestones, and technology developments most relevant to changing organisations. Fewer links, sharper selection.</p>
+              <ul class="dev-list">
+                <li><b>Connected to curated sources</b> — my own subscriptions and monitoring, not an aggregator feed</li>
+                <li><b>Tagged by domain</b> — AI · regulation · transformation — so you can follow one thread</li>
+                <li><b>Annotated, never raw</b> — every signal carries a one-line “why this matters”</li>
+              </ul>
+              <span class="dev-how">pipeline: curated sources → selection → annotation → published signal</span>
+            </div>
+            <div class="dev-block reveal">
+              <span class="dev-badge"><span class="pulse-dot"></span>Editorial system · in build phase</span>
+              <h3>The Brief — direction, on a <span class="serif-accent">cadence</span></h3>
+              <p>An editorial brief is in preparation — a recurring format for translating developments in agentic AI, the EU AI Act, and digital change into clear direction. Less news, more navigation.</p>
+              <ul class="dev-list">
+                <li><b>Recurring issues</b> — a considered cadence in the spirit of formats like The Batch</li>
+                <li><b>Commentary with consequences</b> — each item ends in “what to do about it”</li>
+                <li><b>Subscription follows substance</b> — sign-up opens once the format has earned it</li>
+              </ul>
+              <span class="dev-how">format: 3 developments · 1 deeper read · 1 practical move</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <article class="article wrap" id="article" hidden>
+      <a class="back" href="blog.html">← all posts</a>
+      <h1></h1>
+      <div class="meta"></div>
+      <div class="prose"></div>
+    </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <div class="who">Raquel Kehl Furukawa
+          <span>Zürich, Switzerland · transformation · technology · direction</span>
+        </div>
+        <nav aria-label="Footer">
+          <a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="me noopener" target="_blank">LinkedIn</a>
+          <a href="https://github.com/" id="githubLink" rel="me noopener" target="_blank" hidden>GitHub</a>
+          <a href="contact.html">Contact</a>
+          <a href="assets/cv/2026_CV_Website.pdf" download>CV (PDF)</a>
+        </nav>
+      </div>
+      <div class="fine">© <span id="year">2026</span> Raquel Kehl Furukawa · built with vanilla JS · hosted on GitHub Pages · dark by design</div>
+    </div>
+  </footer>
+</body>
+</html>

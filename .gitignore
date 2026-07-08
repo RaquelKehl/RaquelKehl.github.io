@@ -1,0 +1,31 @@
+# ---------- secrets & local config (never commit) ----------
+.env
+.env.*
+!.env.example
+workers/.dev.vars
+*.pem
+*.key
+
+# ---------- private working documents ----------
+meta_prompt_v2_liquid_copper.md
+
+# ---------- local tooling ----------
+.claude/
+.vscode/
+.idea/
+
+# ---------- dependencies & caches ----------
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.wrangler/
+
+# ---------- OS noise ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- logs ----------
+*.log

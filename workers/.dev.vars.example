@@ -1,0 +1,6 @@
+# Local development secrets for `npx wrangler dev`.
+# Copy to .dev.vars (gitignored) and fill in real values.
+
+FORMSPREE_ENDPOINT="https://formspree.io/f/REPLACE_ME"
+WEBHOOK_SECRET="use-a-long-random-string-here"
+GITHUB_TOKEN=""

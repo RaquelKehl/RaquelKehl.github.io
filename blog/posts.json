@@ -1,0 +1,18 @@
+{
+  "posts": [
+    {
+      "slug": "governed-agents",
+      "title": "Agentic AI in regulated organisations: govern the loop, not just the model",
+      "date": "2026-06-15",
+      "read": 6,
+      "summary": "Model-level controls are table stakes. The risk — and the value — of agentic systems lives in the loop: tools, memory, delegation, and the humans around them."
+    },
+    {
+      "slug": "zero-downtime-governance",
+      "title": "Zero downtime is a governance outcome",
+      "date": "2026-05-20",
+      "read": 5,
+      "summary": "Our core-banking migration went live with zero downtime. The heroics happened months earlier, in decision structures — not in the go-live weekend."
+    }
+  ]
+}

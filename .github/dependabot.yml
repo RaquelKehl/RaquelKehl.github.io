@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # keep the deploy workflow's actions current
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies"]
+
+  # activates automatically once the CrewAI Python system (requirements.txt) lands
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies"]

@@ -1,0 +1,38 @@
+{
+  "generated": "2026-07-08T09:00:00Z",
+  "pipeline": "sample — replaced by run_agents.py output once the CrewAI system is deployed",
+  "agents": [
+    {
+      "id": "portfolio-analyst",
+      "name": "Portfolio Analyst",
+      "role": "Reviews the live site and flags content gaps and stale sections",
+      "status": "idle",
+      "last_run": null,
+      "last_output": "Awaiting first scheduled run."
+    },
+    {
+      "id": "lead-qualifier",
+      "name": "Lead Qualifier",
+      "role": "Classifies contact-form submissions by topic and urgency",
+      "status": "idle",
+      "last_run": null,
+      "last_output": "Awaiting first scheduled run."
+    },
+    {
+      "id": "blog-researcher",
+      "name": "Blog Researcher",
+      "role": "Collects trending AI-governance topics and drafts outline candidates",
+      "status": "idle",
+      "last_run": null,
+      "last_output": "Awaiting first scheduled run."
+    },
+    {
+      "id": "code-reviewer",
+      "name": "Code Reviewer",
+      "role": "Audits the site repository for quality and accessibility regressions",
+      "status": "idle",
+      "last_run": null,
+      "last_output": "Awaiting first scheduled run."
+    }
+  ]
+}

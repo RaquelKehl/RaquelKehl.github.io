@@ -1,0 +1,29 @@
+{
+  "note": "Sample data shown until a GitHub username is configured in main.js SITE_CONFIG.",
+  "repos": [
+    {
+      "name": "portfolio-website",
+      "description": "This site — vanilla JS, Canvas 2D hero, self-hosted fonts, Lighthouse-friendly.",
+      "language": "JavaScript",
+      "stargazers_count": 0,
+      "updated_at": "2026-07-08T09:00:00Z",
+      "html_url": "https://github.com/"
+    },
+    {
+      "name": "crewai-portfolio-agents",
+      "description": "CrewAI multi-agent pipeline feeding the dashboard: analyst, qualifier, researcher, reviewer.",
+      "language": "Python",
+      "stargazers_count": 0,
+      "updated_at": "2026-07-08T09:00:00Z",
+      "html_url": "https://github.com/"
+    },
+    {
+      "name": "pipeline-game",
+      "description": "Data-flow optimisation puzzle in HTML5 Canvas — route packets, remove bottlenecks.",
+      "language": "JavaScript",
+      "stargazers_count": 0,
+      "updated_at": "2026-07-08T09:00:00Z",
+      "html_url": "https://github.com/"
+    }
+  ]
+}
