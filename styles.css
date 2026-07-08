@@ -643,6 +643,29 @@ section{padding:var(--section-pad) 0}
 .teaser h3{font-size:1.05rem}
 .teaser p{color:var(--muted);font-size:.88rem;margin-top:.4rem}
 
+/* ═══════════════════════════════════════════════════════════════
+   DEVELOPMENT NOTICE — gentle corner toast, shown until acknowledged
+   ═══════════════════════════════════════════════════════════════ */
+.dev-notice{position:fixed;right:clamp(1rem,3vw,1.6rem);bottom:clamp(1rem,3vw,1.6rem);z-index:60;
+  max-width:21.5rem;background:linear-gradient(160deg,var(--accent-soft),transparent 60%),var(--surface);
+  border:1px solid var(--line);border-radius:var(--radius-card);padding:1.15rem 1.25rem;
+  box-shadow:0 12px 32px rgba(4,6,10,.35);
+  opacity:0;transform:translateY(14px);pointer-events:none;
+  transition:opacity .7s ease-out,transform .7s ease-out}
+.dev-notice::before{content:"";position:absolute;top:0;left:1.25rem;right:45%;height:1px;
+  background:linear-gradient(90deg,var(--accent-strong),transparent)}
+.dev-notice.show{opacity:1;transform:none;pointer-events:auto}
+.dev-notice p{font-size:.86rem;line-height:1.55;color:var(--muted);margin:.6rem 0 0;max-width:none}
+.dev-notice .dn-actions{margin-top:.9rem}
+.dn-dismiss{font:600 .8rem var(--font-body);background:var(--accent-500);color:var(--ink-950);
+  border:1px solid var(--accent-500);border-radius:var(--radius-ctl);
+  padding:.45rem 1.05rem;cursor:pointer;transition:background .2s,border-color .2s}
+.dn-dismiss:hover{background:var(--accent-400);border-color:var(--accent-400)}
+.dn-close{position:absolute;top:.45rem;right:.55rem;background:none;border:0;color:var(--faint);
+  font-size:1rem;line-height:1;cursor:pointer;padding:.3rem}
+.dn-close:hover{color:var(--accent)}
+@media (max-width:34rem){.dev-notice{left:1rem;right:1rem;max-width:none}}
+
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -652,5 +675,6 @@ section{padding:var(--section-pad) 0}
   .reveal{opacity:1;transform:none;transition:none}
   .work-card,.work-card:hover{transform:none}
   .pulse-dot{animation:none}
+  .dev-notice{transition:none}
   body{transition:none}
 }

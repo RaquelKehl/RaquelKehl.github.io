@@ -335,10 +335,10 @@
         : SITE_CONFIG.formspreeEndpoint;
       if (!endpoint) {
         showStatus('ok',
-          '<strong>The secure contact route is being provisioned</strong> — a serverless relay that keeps ' +
-          'every address off the public page. Until it goes live, the fastest way to reach me is ' +
+          '<strong>The secure form route is being provisioned.</strong> Until it goes live, write to ' +
+          '<a href="mailto:hello@raquelkehl.ch">hello@raquelkehl.ch</a> or reach me on ' +
           '<a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="noopener" target="_blank">LinkedIn</a> — ' +
-          'your message is safe to paste there.');
+          'same inbox, same person.');
         return;
       }
       submitBtn.disabled = true;
@@ -362,4 +362,37 @@
       });
     });
   }
+
+  /* ═══════════ development notice — gentle, dismissable, remembered ═══════════ */
+  (function () {
+    var KEY = 'rk-dev-notice-dismissed';
+    try { if (localStorage.getItem(KEY) === '1') return; } catch (e) { /* show anyway */ }
+
+    var el = document.createElement('aside');
+    el.className = 'dev-notice';
+    el.setAttribute('role', 'status');
+    el.setAttribute('aria-label', 'Site development notice');
+    el.innerHTML =
+      '<span class="dev-badge"><span class="pulse-dot"></span>Site in development</span>' +
+      '<button class="dn-close" type="button" aria-label="Dismiss notice">✕</button>' +
+      '<p>Welcome — this site is live while still being finished. A few sections are ' +
+      'on their way, and anything not yet active is clearly marked as in development. ' +
+      'Thanks for visiting early.</p>' +
+      '<div class="dn-actions"><button class="dn-dismiss" type="button">Understood</button></div>';
+    document.body.appendChild(el);
+
+    function dismiss() {
+      try { localStorage.setItem(KEY, '1'); } catch (e) { /* private mode */ }
+      el.classList.remove('show');
+      setTimeout(function () { el.remove(); }, 750);
+    }
+    el.querySelector('.dn-dismiss').addEventListener('click', dismiss);
+    el.querySelector('.dn-close').addEventListener('click', dismiss);
+    document.addEventListener('keydown', function onEsc(e) {
+      if (e.key === 'Escape') { dismiss(); document.removeEventListener('keydown', onEsc); }
+    });
+
+    /* drift in quietly once the page has settled */
+    setTimeout(function () { el.classList.add('show'); }, reduced ? 300 : 1500);
+  })();
 })();
