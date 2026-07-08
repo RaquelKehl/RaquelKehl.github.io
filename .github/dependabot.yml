@@ -7,9 +7,5 @@ updates:
       interval: "weekly"
     labels: ["dependencies"]
 
-  # activates automatically once the CrewAI Python system (requirements.txt) lands
-  - package-ecosystem: "pip"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    labels: ["dependencies"]
+  # NOTE: re-add a "pip" entry here when the CrewAI Python system
+  # (requirements.txt) lands — with no manifest present the check only fails.

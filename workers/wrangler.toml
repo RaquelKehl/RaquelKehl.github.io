@@ -24,9 +24,9 @@ simple = { limit = 60, period = 60 }
 
 # ---------- non-sensitive config ----------
 [vars]
-GITHUB_USERNAME = "REPLACE_WITH_GITHUB_USERNAME"
+GITHUB_USERNAME = "RaquelKehl"
 # comma-separated; add your custom domain when you have one
-ALLOWED_ORIGINS = "https://REPLACE_WITH_GITHUB_USERNAME.github.io,http://127.0.0.1:4173"
+ALLOWED_ORIGINS = "https://raquelkehl.github.io,http://127.0.0.1:4173"
 
 # ---------- secrets (NEVER in this file) ----------
 # npx wrangler secret put FORMSPREE_ENDPOINT   → https://formspree.io/f/xxxxxxxx

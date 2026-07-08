@@ -8,7 +8,7 @@
 
   /* ---------- site config (set before deploying) ---------- */
   var SITE_CONFIG = window.SITE_CONFIG = {
-    githubUsername: '',            // e.g. 'raquelkehl' — fills the footer GitHub link
+    githubUsername: 'RaquelKehl',  // fills the footer GitHub link + live dashboard stats
     workerBaseUrl: '',             // Cloudflare Worker base URL, used from Batch 5 on
     formspreeEndpoint: ''          // e.g. 'https://formspree.io/f/xxxxxxx' — until the Worker route exists
   };
