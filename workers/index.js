@@ -155,7 +155,10 @@ async function handleContact(request, env, cors) {
   const relay = await fetch(env.FORMSPREE_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ name, email, message, topic, organisation })
+    body: JSON.stringify({
+      name, email, message, topic, organisation,
+      _subject: 'raquelkehl.ch contact — ' + topic + ' — ' + name
+    })
   });
   if (!relay.ok) return json({ error: 'relay_failed' }, 502, cors);
   return json({ ok: true }, 200, cors);
