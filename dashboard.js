@@ -170,9 +170,8 @@
           note.className = 'dev-inline';
           note.innerHTML =
             '<span class="dev-badge"><span class="pulse-dot"></span>Live architecture in progress</span>' +
-            '<p>Repository telemetry connects here the moment the dedicated GitHub account goes live — ' +
-            'stars, languages, and activity, streamed through the edge with no keys in the browser. ' +
-            'Until then, the entries above are a labelled sample.</p>';
+            '<p>Live repository telemetry is briefly unavailable — the entries above are a ' +
+            'labelled sample. <span class="mono">HTTP 418 · I’m a teapot 🫖</span></p>';
           list.appendChild(note);
         })
         .catch(function () {

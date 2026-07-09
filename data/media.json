@@ -1,0 +1,6 @@
+{
+  "_note": "Media library content. Add entries below and commit — media.html renders them automatically. Videos are link-outs (no tracking embeds); audio files live in assets/media/audio/, photos in assets/media/img/.",
+  "videos": [],
+  "audio": [],
+  "gallery": []
+}

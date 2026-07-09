@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://portfolio-api.raquelkehl.workers.dev; base-uri 'self'; form-action 'self'; object-src 'none'">
+
+  <title>Media — Raquel Kehl</title>
+  <meta name="description" content="Media by Raquel Kehl Furukawa — talks and videos, AI-generated study podcasts, and impressions from tech and community events.">
+  <meta name="author" content="Raquel Kehl Furukawa">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Media — Raquel Kehl Furukawa">
+  <meta property="og:description" content="Watch, listen, browse — talks, study podcasts, and event impressions.">
+  <meta property="og:site_name" content="Raquel Kehl Furukawa">
+  <meta property="og:url" content="https://raquelkehl.ch/media.html">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="canonical" href="https://raquelkehl.ch/media.html">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/js/theme-init.js"></script>
+  <script src="main.js" defer></script>
+  <script src="assets/js/media.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader" data-solid>
+    <div class="bar">
+      <a class="brand" href="index.html" aria-label="Raquel Kehl — home"><b>K</b>ehl</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="usecases.html">Playbook</a>
+        <a href="blog.html">Insights</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="agents.html">Agents</a>
+        <a href="game.html">Arcade</a>
+        <a href="media.html" aria-current="page">Media</a>
+        <a href="contact.html">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="eyebrow">Media</div>
+        <h1>Watch, listen, <span class="serif-accent">browse</span>.</h1>
+        <p class="lede">The parts of the work that don’t fit in text: talks and videos, study podcasts, and impressions from the tech and community events I’m part of.</p>
+      </div>
+    </div>
+
+    <section aria-label="Development status">
+      <div class="wrap pt0">
+        <div class="dev-block reveal">
+          <span class="dev-badge"><span class="pulse-dot"></span>Media library · being assembled</span>
+          <h3>A library, filling shelf by <span class="serif-accent">shelf</span></h3>
+          <p>This section is being stocked. The shelving is built — video, audio, and a gallery render themselves the moment content lands — and the first material is in preparation.</p>
+          <ul class="dev-list">
+            <li><b>Talks &amp; videos</b> — linked out to YouTube, never embedded: no tracking scripts enter this site</li>
+            <li><b>Study podcasts</b> — AI-generated audio briefings (NotebookLM) on AI, governance, and transformation topics, self-hosted and playable right here</li>
+            <li><b>Event impressions</b> — photos from hackathons, community work, and conferences</li>
+          </ul>
+          <span class="dev-how">contract: drop a file in assets/media/ + one entry in data/media.json → it’s on the shelf</span>
+          <span class="dev-how">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can, just don’t ask me for coffee yet.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="videoSection" hidden aria-labelledby="video-title">
+      <div class="wrap pt0">
+        <div class="eyebrow">Video</div>
+        <h2 id="video-title">Talks &amp; appearances</h2>
+        <div class="media-grid" id="videoList"></div>
+      </div>
+    </section>
+
+    <section id="audioSection" hidden aria-labelledby="audio-title">
+      <div class="wrap pt0">
+        <div class="eyebrow">Audio</div>
+        <h2 id="audio-title">Study podcasts</h2>
+        <p class="lede">AI-generated briefings I use to keep learning on the move — two synthetic hosts, real substance, clearly labelled as AI-made.</p>
+        <div class="media-grid" id="audioList"></div>
+      </div>
+    </section>
+
+    <section id="gallerySection" hidden aria-labelledby="gallery-title">
+      <div class="wrap pt0">
+        <div class="eyebrow">Gallery</div>
+        <h2 id="gallery-title">Out in the field</h2>
+        <div class="media-photos" id="photoGrid"></div>
+      </div>
+    </section>
+
+    <section class="cta-band" aria-labelledby="media-cta">
+      <div class="wrap">
+        <div class="next reveal">meanwhile</div>
+        <h2 id="media-cta" class="reveal">The written word is already <span class="serif-accent">live</span>.</h2>
+        <div class="actions reveal">
+          <a class="btn btn-primary" data-magnetic href="blog.html">Read the essays</a>
+          <a class="btn btn-ghost" href="portfolio.html">See the work</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <div class="who">Raquel Kehl Furukawa
+          <span>Zürich, Switzerland · transformation · technology · direction</span>
+        </div>
+        <nav aria-label="Footer">
+          <a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="me noopener" target="_blank">LinkedIn</a>
+          <a href="https://github.com/" id="githubLink" rel="me noopener" target="_blank" hidden>GitHub</a>
+          <a href="contact.html">Contact</a>
+          <a href="assets/cv/2026_CV_Website.pdf" download>CV (PDF)</a>
+        </nav>
+      </div>
+      <div class="fine">© <span id="year">2026</span> Raquel Kehl Furukawa · built with vanilla JS · hosted on GitHub Pages · dark by design</div>
+    </div>
+  </footer>
+</body>
+</html>

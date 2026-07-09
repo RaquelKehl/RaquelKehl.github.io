@@ -622,7 +622,7 @@ section{padding:var(--section-pad) 0}
 .dev-list li::before{content:"◆";position:absolute;left:.1rem;top:.45rem;
   color:var(--accent-strong);font-size:.55rem}
 .dev-list li b{color:var(--text);font-weight:600}
-.dev-how{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;
+.dev-how{display:block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;
   color:var(--faint);margin-top:.5rem}
 
 /* compact variant for dashboard panels & form notices */
@@ -642,6 +642,28 @@ section{padding:var(--section-pad) 0}
   text-transform:uppercase;color:var(--faint);display:block;margin-bottom:.5rem}
 .teaser h3{font-size:1.05rem}
 .teaser p{color:var(--muted);font-size:.88rem;margin-top:.4rem}
+
+/* ═══════════════════════════════════════════════════════════════
+   MEDIA LIBRARY
+   ═══════════════════════════════════════════════════════════════ */
+.media-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));
+  margin-top:1.6rem}
+.media-card{background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-card);padding:1.4rem;display:flex;flex-direction:column;gap:.55rem}
+.media-card h3{font-size:1.08rem}
+.media-card .date{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--faint)}
+.media-card p{color:var(--muted);font-size:.9rem;margin:0}
+.media-card audio{width:100%;margin-top:.4rem}
+.media-card .ext{font-family:var(--font-mono);font-size:.76rem;color:var(--accent);
+  text-decoration:none;margin-top:auto;padding-top:.55rem}
+.media-card .ext:hover{text-decoration:underline}
+.media-photos{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fill,minmax(12rem,1fr));
+  margin-top:1.6rem}
+.media-photos figure{margin:0;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-card);overflow:hidden}
+.media-photos img{width:100%;height:10.5rem;object-fit:cover;display:block}
+.media-photos figcaption{font-size:.78rem;color:var(--muted);padding:.5rem .8rem}
 
 /* ═══════════════════════════════════════════════════════════════
    DEVELOPMENT NOTICE — gentle corner toast, shown until acknowledged

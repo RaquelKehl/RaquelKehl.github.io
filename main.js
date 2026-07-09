@@ -378,6 +378,7 @@
       '<p>Welcome — this site is live while still being finished. A few sections are ' +
       'on their way, and anything not yet active is clearly marked as in development. ' +
       'Thanks for visiting early.</p>' +
+      '<span class="dev-how">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can.</span>' +
       '<div class="dn-actions"><button class="dn-dismiss" type="button">Understood</button></div>';
     document.body.appendChild(el);
 
