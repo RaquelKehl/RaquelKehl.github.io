@@ -36,8 +36,9 @@ Repository stats for the configured account, cached in KV for 600 s.
 
 ## POST /api/contact
 
-Validates and relays a contact-form submission to Formspree. Accepts
-`application/json` or form data.
+Validates and relays a contact-form submission to the configured mail relay —
+Web3Forms when `WEB3FORMS_KEY` is set (preferred), otherwise Formspree.
+Accepts `application/json` or form data.
 
 | Field | Rules |
 |---|---|
@@ -50,8 +51,8 @@ Validates and relays a contact-form submission to Formspree. Accepts
 
 **200** `{ "ok": true }`
 **400** `{ "error": "invalid_name" | "invalid_email" | "invalid_message" }`
-**502** `{ "error": "relay_failed" }` — Formspree unreachable/rejected.
-**503** `{ "error": "not_configured" }` — `FORMSPREE_ENDPOINT` secret missing.
+**502** `{ "error": "relay_failed" }` — relay unreachable or rejected the submission.
+**503** `{ "error": "not_configured" }` — neither `WEB3FORMS_KEY` nor `FORMSPREE_ENDPOINT` is set.
 
 ---
 

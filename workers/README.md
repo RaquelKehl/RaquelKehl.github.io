@@ -34,9 +34,11 @@ Free tier: 100,000 requests/day, ~0 ms cold starts, no bandwidth charges.
 
 4. **Secrets** (encrypted on Cloudflare, never written to any file):
    ```bash
-   npx wrangler secret put FORMSPREE_ENDPOINT   # from https://formspree.io — free tier
+   npx wrangler secret put WEB3FORMS_KEY        # from https://web3forms.com — preferred contact relay
    npx wrangler secret put WEBHOOK_SECRET       # e.g. openssl rand -hex 32 — reuse in GitHub Secrets
    npx wrangler secret put GITHUB_TOKEN         # optional: raises GitHub API limits
+   # legacy alternative: FORMSPREE_ENDPOINT (used only when WEB3FORMS_KEY is absent;
+   # Formspree's spam filter quarantines server-side relays, so Web3Forms is preferred)
    ```
 
 5. **Deploy**

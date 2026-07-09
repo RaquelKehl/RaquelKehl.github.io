@@ -126,7 +126,9 @@ async function handleGithub(env, cors, ctx) {
 
 /* ---------- POST /api/contact ---------- */
 async function handleContact(request, env, cors) {
-  if (!env.FORMSPREE_ENDPOINT) return json({ error: 'not_configured' }, 503, cors);
+  if (!env.WEB3FORMS_KEY && !env.FORMSPREE_ENDPOINT) {
+    return json({ error: 'not_configured' }, 503, cors);
+  }
 
   let fields;
   const type = request.headers.get('Content-Type') || '';
@@ -152,15 +154,32 @@ async function handleContact(request, env, cors) {
   }
   if (!message || message.length > 5000) return json({ error: 'invalid_message' }, 400, cors);
 
-  const relay = await fetch(env.FORMSPREE_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      name, email, message, topic, organisation,
-      _subject: 'raquelkehl.ch contact — ' + topic + ' — ' + name
-    })
-  });
-  if (!relay.ok) return json({ error: 'relay_failed' }, 502, cors);
+  const subject = 'raquelkehl.ch contact — ' + topic + ' — ' + name;
+
+  // Preferred relay: Web3Forms (built for server-side submissions).
+  // Fallback: Formspree, if only that is configured.
+  let relayOk = false;
+  if (env.WEB3FORMS_KEY) {
+    const relay = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: env.WEB3FORMS_KEY,
+        subject, name, email, message, topic, organisation
+      })
+    });
+    const result = await relay.json().catch(() => null);
+    relayOk = relay.ok && result && result.success === true;
+  } else {
+    const relay = await fetch(env.FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, message, topic, organisation, _subject: subject })
+    });
+    relayOk = relay.ok;
+  }
+
+  if (!relayOk) return json({ error: 'relay_failed' }, 502, cors);
   return json({ ok: true }, 200, cors);
 }
 
