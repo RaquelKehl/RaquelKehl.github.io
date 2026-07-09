@@ -644,6 +644,36 @@ section{padding:var(--section-pad) 0}
 .teaser p{color:var(--muted);font-size:.88rem;margin-top:.4rem}
 
 /* ═══════════════════════════════════════════════════════════════
+   BACKSTAGE PASS — the human in the system
+   ═══════════════════════════════════════════════════════════════ */
+.readout{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-card);
+  padding:1.1rem 1.4rem;margin-top:1.8rem;font-family:var(--font-mono);
+  font-size:.78rem;letter-spacing:.02em;max-width:52rem}
+.readout-row{display:flex;gap:.7rem;align-items:baseline;padding:.44rem 0}
+.readout-row .rk{color:var(--accent);white-space:nowrap}
+.readout-row .dots{flex:1;min-width:1.5rem;border-bottom:1px dotted var(--faint);
+  transform:translateY(-.28em);opacity:.55}
+.readout-row .rv{color:var(--muted);text-align:right;max-width:32rem}
+@media (max-width:40rem){
+  .readout-row{flex-wrap:wrap;gap:.15rem .7rem}
+  .readout-row .dots{display:none}
+  .readout-row .rv{text-align:left;flex-basis:100%;padding-left:1rem}
+}
+.motto{font-family:var(--font-serif);font-style:italic;font-weight:300;
+  font-size:clamp(1.25rem,2.6vw,1.7rem);color:var(--accent-300);
+  margin-top:1.9rem;max-width:none}
+:root[data-theme="light"] .motto{color:var(--accent-600)}
+
+/* reserved slot for the Kumamon × condor artwork (swap for an <img> when ready) */
+.backstage-head{display:flex;align-items:center;gap:1.2rem}
+.mascot-slot{width:clamp(4.2rem,7vw,5.5rem);height:clamp(4.2rem,7vw,5.5rem);flex-shrink:0;
+  border:1px dashed var(--accent-600);border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:clamp(1.3rem,2.2vw,1.7rem);letter-spacing:-.1em;opacity:.75;
+  background:var(--accent-soft)}
+.backstage-head img.mascot-slot{border-style:solid;opacity:1;object-fit:cover;letter-spacing:0}
+
+/* ═══════════════════════════════════════════════════════════════
    MEDIA LIBRARY
    ═══════════════════════════════════════════════════════════════ */
 .media-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));
