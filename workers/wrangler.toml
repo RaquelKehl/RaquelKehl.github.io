@@ -12,7 +12,7 @@ compatibility_date = "2026-06-01"
 # then paste the returned id below.
 [[kv_namespaces]]
 binding = "PORTFOLIO_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "d0a72d615e82437b8b8af03c79bdcfa0"
 
 # ---------- built-in rate limiting (no Redis required) ----------
 # 60 requests per 60s per key (key = client IP + route class).

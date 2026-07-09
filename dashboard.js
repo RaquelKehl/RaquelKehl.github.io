@@ -221,31 +221,48 @@
     var src = document.getElementById('agentSource');
     if (!list) return;
     var cfg = window.SITE_CONFIG || {};
-    var url = cfg.workerBaseUrl
-      ? cfg.workerBaseUrl.replace(/\/+$/, '') + '/api/agents'
-      : 'data/agents-status.json';
-    fetch(url)
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        var when = data.generated ? new Date(data.generated).toISOString().slice(0, 10) : '';
-        src.textContent = 'source: crewai pipeline · ' + when;
-        data.agents.forEach(function (a) {
-          var li = document.createElement('div');
-          li.className = 'mini';
-          li.innerHTML =
-            '<span class="nm"><span class="dot ' + (STATUS_DOT[a.status] || 'idle') + '"></span></span>' +
-            '<span class="meta">' + (STATUS_LABEL[a.status] || a.status) +
-              (a.last_run ? ' · last run ' + new Date(a.last_run).toISOString().slice(0, 10) : '') + '</span>' +
-            '<span class="desc"></span>';
-          li.querySelector('.nm').appendChild(document.createTextNode(a.name));
-          li.querySelector('.desc').textContent = a.last_output || a.role;
-          list.appendChild(li);
-        });
-      })
-      .catch(function () {
-        src.textContent = 'source: unavailable';
-        list.innerHTML = '<div class="empty">Agent status could not be loaded.</div>';
+
+    function render(data, label) {
+      src.textContent = label;
+      data.agents.forEach(function (a) {
+        var li = document.createElement('div');
+        li.className = 'mini';
+        /* status is folded to a known label — payload text never enters innerHTML */
+        li.innerHTML =
+          '<span class="nm"><span class="dot ' + (STATUS_DOT[a.status] || 'idle') + '"></span></span>' +
+          '<span class="meta">' + (STATUS_LABEL[a.status] || 'unknown') +
+            (a.last_run ? ' · last run ' + new Date(a.last_run).toISOString().slice(0, 10) : '') + '</span>' +
+          '<span class="desc"></span>';
+        li.querySelector('.nm').appendChild(document.createTextNode(a.name));
+        li.querySelector('.desc').textContent = a.last_output || a.role;
+        list.appendChild(li);
       });
+    }
+
+    function showBundledSample() {
+      fetch('data/agents-status.json')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          render(data, 'source: bundled sample — pipeline awaiting first run');
+        })
+        .catch(function () {
+          src.textContent = 'source: unavailable';
+          list.innerHTML = '<div class="empty">Agent status could not be loaded.</div>';
+        });
+    }
+
+    if (cfg.workerBaseUrl) {
+      fetch(cfg.workerBaseUrl.replace(/\/+$/, '') + '/api/agents')
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (data) {
+          if (!data.agents || !data.agents.length) { showBundledSample(); return; }
+          var when = data.generated ? ' · ' + new Date(data.generated).toISOString().slice(0, 10) : '';
+          render(data, 'source: crewai pipeline · live' + when);
+        })
+        .catch(showBundledSample);
+    } else {
+      showBundledSample();
+    }
   }
 
   /* ---------- experience timeline geometry ----------

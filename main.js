@@ -9,8 +9,8 @@
   /* ---------- site config (set before deploying) ---------- */
   var SITE_CONFIG = window.SITE_CONFIG = {
     githubUsername: 'RaquelKehl',  // fills the footer GitHub link + live dashboard stats
-    workerBaseUrl: '',             // Cloudflare Worker base URL, used from Batch 5 on
-    formspreeEndpoint: ''          // e.g. 'https://formspree.io/f/xxxxxxx' — until the Worker route exists
+    workerBaseUrl: 'https://portfolio-api.raquelkehl.workers.dev',
+    formspreeEndpoint: ''          // unused while workerBaseUrl is set — the Worker relays to Formspree
   };
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
