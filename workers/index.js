@@ -147,6 +147,7 @@ async function handleContact(request, env, cors) {
   const message = String(fields.message || '').trim();
   const topic = String(fields.topic || 'other').slice(0, 40);
   const organisation = String(fields.organisation || '').slice(0, 200);
+  const consent = fields.consent ? 'given' : 'not recorded';
 
   if (!name || name.length > 200) return json({ error: 'invalid_name' }, 400, cors);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
@@ -165,7 +166,7 @@ async function handleContact(request, env, cors) {
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
         access_key: env.WEB3FORMS_KEY,
-        subject, name, email, message, topic, organisation
+        subject, name, email, message, topic, organisation, consent
       })
     });
     const result = await relay.json().catch(() => null);
@@ -174,7 +175,7 @@ async function handleContact(request, env, cors) {
     const relay = await fetch(env.FORMSPREE_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, email, message, topic, organisation, _subject: subject })
+      body: JSON.stringify({ name, email, message, topic, organisation, consent, _subject: subject })
     });
     relayOk = relay.ok;
   }

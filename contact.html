@@ -34,13 +34,13 @@
       <nav class="site-nav" id="siteNav" aria-label="Main">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
+        <a href="dashboard.html">Dashboard</a>
         <a href="portfolio.html">Portfolio</a>
+        <a href="agents.html">Agents</a>
         <a href="usecases.html">Playbook</a>
         <a href="blog.html">Insights</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="agents.html">Agents</a>
-        <a href="game.html">Arcade</a>
         <a href="media.html">Media</a>
+        <a href="game.html">Arcade</a>
         <a href="contact.html" aria-current="page">Contact</a>
         <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">◐</button>
       </nav>
@@ -62,30 +62,49 @@
         <div class="contact-grid">
 
           <form id="contactForm" novalidate>
+            <p class="form-intro">For opportunities, collaborations, project ideas, or thoughtful internet correspondence.</p>
             <div class="field">
-              <label for="cf-name">Name</label>
-              <input id="cf-name" name="name" type="text" autocomplete="name" required>
+              <label for="cf-name">Full name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required aria-describedby="err-name">
+              <p class="field-error" id="err-name" hidden></p>
             </div>
             <div class="field">
               <label for="cf-email">Email</label>
-              <input id="cf-email" name="email" type="email" autocomplete="email" required>
+              <input id="cf-email" name="email" type="email" autocomplete="email" required aria-describedby="err-email">
+              <p class="field-error" id="err-email" hidden></p>
             </div>
             <div class="field">
-              <label for="cf-org">Organisation <span class="opt">(optional)</span></label>
+              <label for="cf-topic">What are you reaching out about?</label>
+              <select id="cf-topic" name="topic" required aria-describedby="err-topic">
+                <option value="">Please choose a topic…</option>
+                <option value="career-opportunity">Career opportunity</option>
+                <option value="consulting-freelance">Consulting / freelance enquiry</option>
+                <option value="collaboration">Collaboration</option>
+                <option value="project-idea">Project or product idea</option>
+                <option value="speaking-media">Speaking, interview or media</option>
+                <option value="newsletter-content">Newsletter / content</option>
+                <option value="academic-exchange">Academic exchange</option>
+                <option value="general-enquiry">General enquiry</option>
+                <option value="other">Other</option>
+              </select>
+              <p class="field-error" id="err-topic" hidden></p>
+            </div>
+            <div class="field">
+              <label for="cf-org">Company / organisation <span class="opt">(optional)</span></label>
               <input id="cf-org" name="organisation" type="text" autocomplete="organization">
             </div>
             <div class="field">
-              <label for="cf-topic">Topic</label>
-              <select id="cf-topic" name="topic">
-                <option value="transformation">Transformation programme</option>
-                <option value="ai-governance">AI &amp; governance</option>
-                <option value="speaking">Speaking &amp; community</option>
-                <option value="other" selected>Something else</option>
-              </select>
+              <label for="cf-message">Your message</label>
+              <textarea id="cf-message" name="message" required aria-describedby="err-message help-message"></textarea>
+              <p class="field-help" id="help-message">A few lines of context help a lot — links, scope or relevant background are always welcome.</p>
+              <p class="field-error" id="err-message" hidden></p>
             </div>
-            <div class="field">
-              <label for="cf-message">Message</label>
-              <textarea id="cf-message" name="message" required></textarea>
+            <div class="field field-consent">
+              <label for="cf-consent">
+                <input id="cf-consent" name="consent" type="checkbox" required aria-describedby="err-consent">
+                <span>I agree that my details may be used to respond to my enquiry.</span>
+              </label>
+              <p class="field-error" id="err-consent" hidden></p>
             </div>
             <div class="form-actions">
               <button class="btn btn-primary" data-magnetic type="submit">Send message</button>

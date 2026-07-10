@@ -319,17 +319,91 @@
     });
   }
 
-  /* ═══════════ contact form ═══════════ */
+  /* ═══════════ contact form — inline validation + robot loading state ═══════════ */
+  var ROBOT_SVG =
+    '<span class="robot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' +
+    '<g class="bob"><rect x="6.5" y="5.5" width="11" height="11" rx="3"></rect>' +
+    '<path d="M9 9.5h.01M15 9.5h.01"></path><path d="M9 13h6"></path>' +
+    '<path d="M12 2.5v3"></path><circle cx="12" cy="2.2" r=".8"></circle></g>' +
+    '<path class="line" d="M17 15c2.2.4 3.3 1.3 4 3.2"></path>' +
+    '<circle class="spark" cx="20.5" cy="18.5" r=".9"></circle></svg></span>';
+
   var form = document.getElementById('contactForm');
   if (form) {
     var status = document.getElementById('formStatus');
     var submitBtn = form.querySelector('button[type="submit"]');
+    var submitLabel = submitBtn.innerHTML;
+
     function showStatus(cls, html) {
       status.className = 'form-status show ' + cls;
       status.innerHTML = html;
     }
+    function hideStatus() {
+      status.className = 'form-status';
+      status.innerHTML = '';
+    }
+
+    var F = {
+      name: document.getElementById('cf-name'),
+      email: document.getElementById('cf-email'),
+      topic: document.getElementById('cf-topic'),
+      message: document.getElementById('cf-message'),
+      consent: document.getElementById('cf-consent')
+    };
+    function setError(field, msg) {
+      var err = document.getElementById('err-' + field);
+      F[field].setAttribute('aria-invalid', 'true');
+      err.textContent = '⚠ ' + msg;
+      err.hidden = false;
+    }
+    function clearError(field) {
+      var err = document.getElementById('err-' + field);
+      F[field].removeAttribute('aria-invalid');
+      err.hidden = true;
+    }
+    Object.keys(F).forEach(function (k) {
+      F[k].addEventListener(F[k].type === 'checkbox' || F[k].tagName === 'SELECT' ? 'change' : 'input',
+        function () { clearError(k); });
+    });
+
+    function validate() {
+      var firstBad = null;
+      function bad(field, msg) { setError(field, msg); if (!firstBad) firstBad = F[field]; }
+      Object.keys(F).forEach(clearError);
+
+      if (!F.name.value.trim()) bad('name', 'Please enter your name.');
+      var email = F.email.value.trim();
+      if (!email) bad('email', 'Please enter your email address.');
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) bad('email', 'Please enter a valid email address.');
+      if (!F.topic.value) bad('topic', 'Please choose a topic.');
+      var msg = F.message.value.trim();
+      if (!msg) bad('message', 'Please enter a message.');
+      else if (msg.length < 20) bad('message', 'Please add a little more context so I can respond properly.');
+      if (!F.consent.checked) bad('consent', 'Please confirm that I may use your details to reply.');
+
+      if (firstBad) { firstBad.focus(); return false; }
+      return true;
+    }
+
+    function setSending(on) {
+      if (on) {
+        submitBtn.disabled = true;
+        submitBtn.setAttribute('aria-busy', 'true');
+        submitBtn.innerHTML = ROBOT_SVG + '<span>Sending…</span>';
+        showStatus('ok', ROBOT_SVG + 'Your message is on its way.');
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.removeAttribute('aria-busy');
+        submitBtn.innerHTML = submitLabel;
+      }
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      hideStatus();
+      if (!validate()) return;
+
       var endpoint = SITE_CONFIG.workerBaseUrl
         ? SITE_CONFIG.workerBaseUrl.replace(/\/+$/, '') + '/api/contact'
         : SITE_CONFIG.formspreeEndpoint;
@@ -341,7 +415,8 @@
           'same inbox, same person.');
         return;
       }
-      submitBtn.disabled = true;
+
+      setSending(true);
       var data = new FormData(form);
       fetch(endpoint, {
         method: 'POST',
@@ -350,18 +425,78 @@
       }).then(function (res) {
         if (res.ok) {
           form.reset();
-          showStatus('ok', 'Message sent — thank you. I usually reply within two working days.');
+          showStatus('ok', 'Thanks for reaching out — your message is safely in my system. I’ll reply as soon as I can.');
         } else {
-          showStatus('err', 'Sending failed. Please try again, or reach me on ' +
-            '<a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="noopener" target="_blank">LinkedIn</a>.');
+          showStatus('err', 'The form ran into a problem. Please try again, or contact me directly at ' +
+            '<a href="mailto:hello@raquelkehl.ch">hello@raquelkehl.ch</a>.');
         }
       }).catch(function () {
-        showStatus('err', 'Network error — please try again later.');
+        showStatus('err', 'Something went wrong while sending your message. Please try again in a moment.');
       }).finally(function () {
-        submitBtn.disabled = false;
+        setSending(false);
       });
     });
   }
+
+  /* ═══════════ info panel — “What’s this site about?” ═══════════ */
+  (function () {
+    var nav = document.getElementById('siteNav');
+    var themeBtn = document.getElementById('themeToggle');
+    if (!nav || !themeBtn) return;
+
+    var SEEN = 'rk-info-seen';
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'infoBtn';
+    btn.className = 'theme-toggle info-btn';
+    btn.setAttribute('aria-label', 'What’s this site about?');
+    btn.setAttribute('aria-haspopup', 'dialog');
+    btn.textContent = 'i';
+    try { if (localStorage.getItem(SEEN) !== '1') btn.classList.add('attn'); } catch (e) {}
+    nav.insertBefore(btn, themeBtn);
+
+    var overlay = document.createElement('div');
+    overlay.className = 'info-overlay';
+    overlay.innerHTML =
+      '<div class="info-panel" role="dialog" aria-modal="true" aria-labelledby="infoTitle">' +
+      '<button class="dn-close" type="button" aria-label="Close">✕</button>' +
+      '<h2 id="infoTitle">What’s this site <span class="serif-accent">about</span>?</h2>' +
+      '<p>A portfolio that is also a working lab. The visible site is finished; some capabilities are ' +
+      'being built in the open, and anything not yet active is clearly marked. Here’s the map:</p>' +
+      '<ul class="info-list">' +
+      '<li><span class="nm">About</span><span>The three-act story — and the human behind the systems</span></li>' +
+      '<li><span class="nm">Dashboard</span><span>Skills, experience timeline and live repository telemetry</span></li>' +
+      '<li><span class="nm">Portfolio</span><span>Real programmes with measured, audited outcomes</span></li>' +
+      '<li><span class="nm">Agents</span><span>The AI crew and its governance — architecture live, agents in development</span></li>' +
+      '<li><span class="nm">Playbook</span><span>A practical strategy library, currently being shaped</span></li>' +
+      '<li><span class="nm">Insights</span><span>Essays now; curated Signals and The Brief are on their way</span></li>' +
+      '<li><span class="nm">Media</span><span>Talks, study podcasts and photos — filling shelf by shelf</span></li>' +
+      '<li><span class="nm">Arcade</span><span>Pipeline, a data-flow puzzle — because systems can be fun</span></li>' +
+      '<li><span class="nm">Contact</span><span>One form, a real reply — usually within two working days</span></li>' +
+      '</ul>' +
+      '<span class="dev-how">In-development areas are clearly marked — HTTP 418 applies 🫖</span>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    var panel = overlay.querySelector('.info-panel');
+    var closeBtn = overlay.querySelector('.dn-close');
+    function openPanel() {
+      overlay.classList.add('open');
+      btn.classList.remove('attn');
+      try { localStorage.setItem(SEEN, '1'); } catch (e) {}
+      closeBtn.focus();
+    }
+    function closePanel() {
+      overlay.classList.remove('open');
+      btn.focus();
+    }
+    btn.addEventListener('click', openPanel);
+    closeBtn.addEventListener('click', closePanel);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closePanel(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closePanel();
+    });
+  })();
 
   /* ═══════════ development notice — gentle, dismissable, remembered ═══════════ */
   (function () {
