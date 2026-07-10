@@ -69,6 +69,27 @@ Live and actively developed. In progress, in the open: the Playbook's first
 entries, the Insights Signals + Brief layers, the Media library's first content,
 and the CrewAI agent pipeline. The site labels each of these honestly.
 
+## Licensing
+
+This repository is maintained as a personal portfolio, public proof of work,
+and a controlled showcase of my judgment and design choices. Unless otherwise
+stated, all code and content are copyright-protected and provided
+**all rights reserved**; no reuse, redistribution, or derivative use is
+permitted without prior permission.
+
+There is deliberately no LICENSE file: this is a curated portfolio, not an
+open-source library. The README exists to demonstrate reasoning, not to grant
+reuse rights.
+
+## Related projects
+
+Production-grade, commercially sensitive, or in-progress strategic work
+(games, client projects, unpublished systems) lives in **separate private
+repositories**. This site documents such work as case studies — overview,
+role, stack, architecture highlights, and status — without exposing source
+code or internal documentation. Demos or technical walkthroughs can be shared
+selectively where appropriate.
+
 ## Contact
 
 Questions, ideas, opportunities: [raquelkehl.ch/contact.html](https://raquelkehl.ch/contact.html)

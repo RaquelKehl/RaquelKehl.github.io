@@ -566,6 +566,50 @@ section{padding:var(--section-pad) 0}
   white-space:pre;display:block;line-height:1.6}
 
 /* ═══════════════════════════════════════════════════════════════
+   ARCADE — parallax intro, lineup, game docs
+   ═══════════════════════════════════════════════════════════════ */
+.plx{position:relative;overflow:hidden;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);background:var(--surface-2)}
+:root[data-theme="light"] .plx{background:var(--surface)}
+.plx .wrap{position:relative;z-index:2;padding-top:clamp(3.2rem,7vw,5rem);
+  padding-bottom:clamp(3.2rem,7vw,5rem)}
+.plx-layer{position:absolute;inset:-15% 0;pointer-events:none;z-index:0;will-change:transform}
+.plx-shape{position:absolute;border:1px solid var(--accent-600);opacity:.22;
+  border-radius:10px;width:5rem;height:5rem}
+.plx-shape.c{border-radius:50%}
+.plx-shape.s2{width:2.2rem;height:2.2rem;opacity:.3}
+.plx-shape.s3{width:8rem;height:8rem;opacity:.12}
+.plx-shape.teal{border-color:var(--data-teal)}
+.quick-nav{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.8rem}
+a.btn-small{text-decoration:none;display:inline-flex;align-items:center;gap:.45rem}
+.tags{display:flex;gap:.45rem;flex-wrap:wrap}
+.tag{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);background:var(--accent-soft);
+  border-radius:999px;padding:.22rem .65rem}
+.lineup-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));
+  margin-top:2rem}
+.lineup-card{background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-card);padding:1.5rem;display:flex;flex-direction:column;gap:.7rem}
+.lineup-card.future{border-style:dashed}
+.lineup-card h3{font-size:1.15rem}
+.lineup-card p{color:var(--muted);font-size:.92rem;margin:0}
+.lineup-card .priv{font-family:var(--font-mono);font-size:.75rem;color:var(--faint);
+  margin-top:auto;padding-top:.6rem;border-top:1px solid var(--line)}
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-card)}
+.doc+.doc,.cred+.doc,.doc+.cred{margin-top:1rem}
+.doc summary{cursor:pointer;padding:1rem 1.3rem;list-style:none;
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.doc summary::-webkit-details-marker{display:none}
+.doc summary .k{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent)}
+.doc summary::after{content:"+";font-family:var(--font-mono);color:var(--faint);
+  font-size:1rem;transition:transform .2s}
+.doc[open] summary::after{content:"–"}
+.doc .doc-body{padding:0 1.3rem 1.1rem;color:var(--muted);font-size:.9rem}
+.doc .doc-body p{margin:.5rem 0 0}
+.doc .doc-body .mono{color:var(--faint);font-size:.74rem}
+
+/* ═══════════════════════════════════════════════════════════════
    ARCADE — Pipeline game
    ═══════════════════════════════════════════════════════════════ */
 .game-shell{display:grid;gap:1.5rem;grid-template-columns:minmax(0,1fr);margin-top:2.5rem}

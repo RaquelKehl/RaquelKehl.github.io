@@ -150,7 +150,17 @@
         (r.stargazers_count || 0) + (updated ? ' · ' + updated : '') +
         (sample ? ' · sample' : '') + '</span>' +
       '<span class="desc"></span>';
-    li.querySelector('.nm').textContent = r.name;
+    var nm = li.querySelector('.nm');
+    if (!sample && /^https:\/\/github\.com\//.test(r.html_url || '')) {
+      var a = document.createElement('a');
+      a.href = r.html_url;
+      a.rel = 'noopener';
+      a.target = '_blank';
+      a.textContent = r.name;
+      nm.appendChild(a);
+    } else {
+      nm.textContent = r.name;
+    }
     li.querySelector('.desc').textContent = r.description || '—';
     return li;
   }

@@ -53,13 +53,37 @@
     <div class="page-hero">
       <div class="wrap">
         <div class="eyebrow">Arcade</div>
-        <h1>Pipeline — route the <span class="serif-accent">data</span>.</h1>
-        <p class="lede">A scrambled network, one core, many endpoints. Rotate the tiles until every endpoint is connected — in as few moves as possible. It’s the day job, with better feedback loops.</p>
+        <h1>Play. Build. <span class="serif-accent">Learn</span>.</h1>
+        <p class="lede">My game-building space — from simple experiments to future Roblox projects. Everything here is made from scratch, documented, and playable where possible.</p>
       </div>
     </div>
 
-    <section aria-label="Pipeline game">
-      <div class="wrap pt0">
+    <!-- ═══ parallax intro ═══ -->
+    <section class="plx" aria-labelledby="plx-title">
+      <div class="plx-layer" data-plx="0.12" aria-hidden="true">
+        <span class="plx-shape s3 c" data-pos="8,12"></span>
+        <span class="plx-shape" data-pos="78,18"></span>
+        <span class="plx-shape s2 teal" data-pos="62,70"></span>
+      </div>
+      <div class="plx-layer" data-plx="0.24" aria-hidden="true">
+        <span class="plx-shape s2" data-pos="20,64"></span>
+        <span class="plx-shape c" data-pos="88,58"></span>
+        <span class="plx-shape s2 c teal" data-pos="42,24"></span>
+      </div>
+      <div class="wrap">
+        <div class="eyebrow reveal">Experiment 001 · playable now</div>
+        <h2 id="plx-title" class="reveal">First up: <span class="serif-accent">Pipeline</span></h2>
+        <p class="lede reveal">A scrambled network, one core, many endpoints. Rotate the tiles until everything connects — in as few moves as possible. It’s the day job, with better feedback loops — and it opens a series: browser experiments first, a Roblox build next.</p>
+        <nav class="quick-nav reveal" aria-label="Arcade quick navigation">
+          <a class="btn-small" href="#play">▶ Play Pipeline</a>
+          <a class="btn-small" href="#docs">📄 Game notes</a>
+          <a class="btn-small" href="#lineup">🧱 The lineup</a>
+        </nav>
+      </div>
+    </section>
+
+    <section aria-label="Pipeline game" id="play">
+      <div class="wrap">
         <div class="game-shell">
 
           <div class="game-stage">
@@ -90,7 +114,7 @@
             </div>
           </div>
 
-          <aside class="game-aside" aria-label="How to play">
+          <aside class="game-aside" id="docs" aria-label="Game documentation">
             <div class="cred">
               <span class="k">How to play</span>
               <ul>
@@ -100,24 +124,49 @@
                 <li><b>Best scores</b> are saved on this device only</li>
               </ul>
             </div>
-            <div class="cred">
-              <span class="k">Why this game</span>
-              <ul>
-                <li>Every transformation is this puzzle: the pieces exist, the connections don’t</li>
-                <li>Fewer moves = fewer manual steps — the 60% on the homepage</li>
-                <li>Built in vanilla Canvas 2D, ~0 dependencies, like the rest of the site</li>
-              </ul>
-            </div>
-            <div class="cred">
-              <span class="k">Roblox — next in the series</span>
-              <ul>
-                <li><b>Pipeline Tycoon</b> — a data-centre management game in Luau</li>
-                <li>Server + client scripts with DataStore persistence, in development</li>
-                <li>Publishing guide &amp; DevEx compliance notes ship with it</li>
-              </ul>
-            </div>
+            <details class="doc">
+              <summary><span class="k">Why this game</span></summary>
+              <div class="doc-body">
+                <p>Every transformation is this puzzle: the pieces exist, the connections don’t. Fewer moves means fewer manual steps — the 60% on the homepage, played out on a grid.</p>
+              </div>
+            </details>
+            <details class="doc">
+              <summary><span class="k">Under the hood</span></summary>
+              <div class="doc-body">
+                <p>Vanilla Canvas 2D, zero dependencies. Each level is a randomised spanning tree, scrambled by rotation — always solvable, with <b>par</b> computed as the true minimum number of rotations. Connectivity floods from the core each move; win detection, packet animation, and a reduced-motion fallback included.</p>
+                <p class="mono">generation: randomised DFS · dedup-safe scoring · localStorage bests</p>
+              </div>
+            </details>
           </aside>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ the lineup ═══ -->
+    <section id="lineup" aria-labelledby="lineup-title">
+      <div class="wrap">
+        <div class="eyebrow reveal">The lineup</div>
+        <h2 id="lineup-title" class="reveal">From browser experiments to <span class="serif-accent">worlds</span></h2>
+        <div class="lineup-grid">
+          <div class="lineup-card reveal">
+            <span class="tags"><span class="tag">Public demo</span><span class="tag">Playable above</span></span>
+            <h3>Pipeline</h3>
+            <p>A data-flow optimisation puzzle: route packets, remove bottlenecks, score on efficiency. Built to prove the arcade’s premise — systems thinking can be genuinely fun.</p>
+            <span class="priv">status: live · open documentation in the game notes</span>
+          </div>
+          <div class="lineup-card reveal">
+            <span class="tags"><span class="tag">Private codebase</span><span class="tag">In development</span></span>
+            <h3>Pipeline Tycoon <span class="mono">(Roblox)</span></h3>
+            <p>A data-centre management game in Luau: build racks, balance throughput, survive incident days. Server and client scripts with DataStore persistence.</p>
+            <span class="priv">Code is not publicly available due to ongoing development and future commercial plans. A technical walkthrough can be shared selectively where appropriate.</span>
+          </div>
+          <div class="lineup-card future reveal">
+            <span class="tags"><span class="tag">In development</span></span>
+            <h3>Experiment 002</h3>
+            <p>The next browser experiment is on the drawing board — same rules as everything here: made from scratch, documented, and honest about its status.</p>
+            <span class="priv">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can, but don’t ask me for coffee just yet.</span>
+          </div>
         </div>
       </div>
     </section>
@@ -148,7 +197,7 @@
           <a href="assets/cv/2026_CV_Website.pdf" download>CV (PDF)</a>
         </nav>
       </div>
-      <div class="fine">© <span id="year">2026</span> Raquel Kehl Furukawa · built with vanilla JS · hosted on GitHub Pages · dark by design</div>
+      <div class="fine">© <span id="year">2026</span> Raquel Kehl Furukawa · all rights reserved · built with vanilla JS · hosted on GitHub Pages · dark by design</div>
     </div>
   </footer>
 </body>

@@ -21,9 +21,10 @@
   }
 
   function renderVideos(items) {
-    var section = document.getElementById('videoSection');
     var list = document.getElementById('videoList');
     if (!items.length) return;
+    var ph = list.querySelector('.media-placeholder');
+    if (ph) ph.remove();
     items.forEach(function (v) {
       var c = card();
       c.innerHTML = '<span class="date"></span><h3></h3><p></p>' +
@@ -40,13 +41,13 @@
       }
       list.appendChild(c);
     });
-    section.hidden = false;
   }
 
   function renderAudio(items) {
-    var section = document.getElementById('audioSection');
     var list = document.getElementById('audioList');
     if (!items.length) return;
+    var ph = list.querySelector('.media-placeholder');
+    if (ph) ph.remove();
     items.forEach(function (a) {
       var c = card();
       c.innerHTML = '<span class="date"></span><h3></h3><p></p>' +
@@ -58,13 +59,15 @@
       c.querySelector('audio').src = a.file;
       list.appendChild(c);
     });
-    section.hidden = false;
   }
 
   function renderGallery(items) {
-    var section = document.getElementById('gallerySection');
     var grid = document.getElementById('photoGrid');
     if (!items.length) return;
+    var ph = grid.querySelector('.media-placeholder');
+    if (ph) ph.remove();
+    grid.classList.remove('media-grid');
+    grid.classList.add('media-photos');
     items.forEach(function (g) {
       var fig = document.createElement('figure');
       var img = document.createElement('img');
@@ -77,7 +80,6 @@
       fig.appendChild(cap);
       grid.appendChild(fig);
     });
-    section.hidden = false;
   }
 
   fetch('data/media.json')
@@ -87,5 +89,5 @@
       renderAudio(data.audio || []);
       renderGallery(data.gallery || []);
     })
-    .catch(function () { /* sections stay hidden; the dev-block explains */ });
+    .catch(function () { /* placeholders remain; the dev-block explains */ });
 })();
