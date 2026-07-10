@@ -463,8 +463,7 @@
       '<h2 id="infoTitle">What’s this site <span class="serif-accent">about</span>?</h2>' +
       '<p>This site is part portfolio, part personal lab, and part public workbench. It’s designed to ' +
       'help you quickly find what you need — whether that’s my background, projects, AI work, ' +
-      'newsletter content, media, or a way to get in touch. Some sections are complete, some are ' +
-      'evolving, and anything unfinished is clearly marked.</p>' +
+      'newsletter content, media, or a way to get in touch.</p>' +
       '<ul class="info-list">' +
       '<li><span class="nm">About</span><span>A brief introduction to me, my background, education, certifications, memberships, and languages</span></li>' +
       '<li><span class="nm">Dashboard</span><span>A visual overview of my skills, experience timeline, GitHub projects, and AI agents, presented with charts and diagrams</span></li>' +
@@ -476,7 +475,8 @@
       '<li><span class="nm">Arcade</span><span>My game-building and learning space, from simple experiments to future Roblox projects</span></li>' +
       '<li><span class="nm">Contact</span><span>How to reach me</span></li>' +
       '</ul>' +
-      '<span class="dev-how">Some sections are still evolving and are clearly marked.</span>' +
+      '<span class="dev-how">Thank you for your patience while these sections continue to evolve alongside my projects and interests.</span>' +
+      '<span class="dev-how">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can, but don’t ask me for coffee just yet.</span>' +
       '</div>';
     document.body.appendChild(overlay);
 
@@ -493,6 +493,9 @@
       btn.focus();
     }
     btn.addEventListener('click', openPanel);
+    document.querySelectorAll('[data-open-info]').forEach(function (el) {
+      el.addEventListener('click', openPanel);
+    });
     closeBtn.addEventListener('click', closePanel);
     overlay.addEventListener('click', function (e) { if (e.target === overlay) closePanel(); });
     document.addEventListener('keydown', function (e) {
@@ -515,7 +518,7 @@
       '<p>Welcome — this site is live while still being finished. A few sections are ' +
       'on their way, and anything not yet active is clearly marked as in development. ' +
       'Thanks for visiting early.</p>' +
-      '<span class="dev-how">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can.</span>' +
+      '<span class="dev-how">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can, but don’t ask me for coffee just yet.</span>' +
       '<div class="dn-actions"><button class="dn-dismiss" type="button">Understood</button></div>';
     document.body.appendChild(el);
 
