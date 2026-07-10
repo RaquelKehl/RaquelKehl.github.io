@@ -702,7 +702,7 @@ section{padding:var(--section-pad) 0}
    CONTACT FORM v2 — inline validation, consent, robot loading state
    ═══════════════════════════════════════════════════════════════ */
 .form-intro{font-family:var(--font-serif);font-style:italic;font-weight:300;
-  color:var(--accent-300);font-size:1.05rem;margin:0 0 1.4rem;max-width:none}
+  color:var(--accent-300);font-size:1.05rem;margin:.7rem 0 0;max-width:52ch}
 :root[data-theme="light"] .form-intro{color:var(--accent-600)}
 .field-help{font-size:.8rem;color:var(--faint);margin:.35rem 0 0}
 .field-error{font-size:.82rem;color:var(--error);font-weight:600;margin:.35rem 0 0}

@@ -461,20 +461,22 @@
       '<div class="info-panel" role="dialog" aria-modal="true" aria-labelledby="infoTitle">' +
       '<button class="dn-close" type="button" aria-label="Close">✕</button>' +
       '<h2 id="infoTitle">What’s this site <span class="serif-accent">about</span>?</h2>' +
-      '<p>A portfolio that is also a working lab. The visible site is finished; some capabilities are ' +
-      'being built in the open, and anything not yet active is clearly marked. Here’s the map:</p>' +
+      '<p>This site is part portfolio, part personal lab, and part public workbench. It’s designed to ' +
+      'help you quickly find what you need — whether that’s my background, projects, AI work, ' +
+      'newsletter content, media, or a way to get in touch. Some sections are complete, some are ' +
+      'evolving, and anything unfinished is clearly marked.</p>' +
       '<ul class="info-list">' +
-      '<li><span class="nm">About</span><span>The three-act story — and the human behind the systems</span></li>' +
-      '<li><span class="nm">Dashboard</span><span>Skills, experience timeline and live repository telemetry</span></li>' +
-      '<li><span class="nm">Portfolio</span><span>Real programmes with measured, audited outcomes</span></li>' +
-      '<li><span class="nm">Agents</span><span>The AI crew and its governance — architecture live, agents in development</span></li>' +
-      '<li><span class="nm">Playbook</span><span>A practical strategy library, currently being shaped</span></li>' +
-      '<li><span class="nm">Insights</span><span>Essays now; curated Signals and The Brief are on their way</span></li>' +
-      '<li><span class="nm">Media</span><span>Talks, study podcasts and photos — filling shelf by shelf</span></li>' +
-      '<li><span class="nm">Arcade</span><span>Pipeline, a data-flow puzzle — because systems can be fun</span></li>' +
-      '<li><span class="nm">Contact</span><span>One form, a real reply — usually within two working days</span></li>' +
+      '<li><span class="nm">About</span><span>A brief introduction to me, my background, education, certifications, memberships, and languages</span></li>' +
+      '<li><span class="nm">Dashboard</span><span>A visual overview of my skills, experience timeline, GitHub projects, and AI agents, presented with charts and diagrams</span></li>' +
+      '<li><span class="nm">Portfolio</span><span>Work and university projects</span></li>' +
+      '<li><span class="nm">Agents</span><span>Details on my AI agents and agentic AI projects, with project context, architecture, frameworks, and tools — a living section that grows with future work</span></li>' +
+      '<li><span class="nm">Playbook</span><span>Practical use cases, examples, and lessons based on real experience or realistic scenarios</span></li>' +
+      '<li><span class="nm">Insights</span><span>Short takes on tech trends, AI tools, legal updates, and the future newsletter</span></li>' +
+      '<li><span class="nm">Media</span><span>Videos, talks, podcasts, and event impressions connected to the site’s themes</span></li>' +
+      '<li><span class="nm">Arcade</span><span>My game-building and learning space, from simple experiments to future Roblox projects</span></li>' +
+      '<li><span class="nm">Contact</span><span>How to reach me</span></li>' +
       '</ul>' +
-      '<span class="dev-how">In-development areas are clearly marked — HTTP 418 applies 🫖</span>' +
+      '<span class="dev-how">Some sections are still evolving and are clearly marked.</span>' +
       '</div>';
     document.body.appendChild(overlay);
 
