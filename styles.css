@@ -341,6 +341,7 @@ section{padding:var(--section-pad) 0}
 
 /* page hero */
 .page-hero{padding:8.5rem 0 0}
+.page-hero.roomy{padding-bottom:clamp(3.5rem,7vw,5.5rem)}
 .page-hero h1 .serif-accent{font-size:1.06em}
 .page-hero .lede{margin-top:1rem}
 
@@ -568,11 +569,11 @@ section{padding:var(--section-pad) 0}
 /* ═══════════════════════════════════════════════════════════════
    ARCADE — parallax intro, lineup, game docs
    ═══════════════════════════════════════════════════════════════ */
-.plx{position:relative;overflow:hidden;border-top:1px solid var(--line);
+.plx{position:relative;overflow:hidden;padding:0;border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);background:var(--surface-2)}
 :root[data-theme="light"] .plx{background:var(--surface)}
-.plx .wrap{position:relative;z-index:2;padding-top:clamp(3.2rem,7vw,5rem);
-  padding-bottom:clamp(3.2rem,7vw,5rem)}
+.plx .wrap{position:relative;z-index:2;padding-top:clamp(4rem,8vw,6rem);
+  padding-bottom:clamp(4rem,8vw,6rem)}
 .plx-layer{position:absolute;inset:-15% 0;pointer-events:none;z-index:0;will-change:transform}
 .plx-shape{position:absolute;border:1px solid var(--accent-600);opacity:.22;
   border-radius:10px;width:5rem;height:5rem}
