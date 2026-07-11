@@ -65,7 +65,7 @@ Browser ── HTTPS ──> GitHub Pages (static site, this repository)
 
 ## Status
 
-Live and actively developed. In progress, in the open: the Playbook's first
+Live and actively developed. In progress, in the open: the first Use Cases
 entries, the Insights Signals + Brief layers, the Media library's first content,
 and the CrewAI agent pipeline. The site labels each of these honestly.
 

@@ -469,9 +469,9 @@
       '<li><span class="nm">Dashboard</span><span>A visual overview of my skills, experience timeline, GitHub projects, and AI agents, presented with charts and diagrams</span></li>' +
       '<li><span class="nm">Portfolio</span><span>Work and university projects</span></li>' +
       '<li><span class="nm">Agents</span><span>Details on my AI agents and agentic AI projects, with project context, architecture, frameworks, and tools — a living section that grows with future work</span></li>' +
-      '<li><span class="nm">Playbook</span><span>Practical use cases, examples, and lessons based on real experience or realistic scenarios</span></li>' +
+      '<li><span class="nm">Use Cases</span><span>Practical examples, lessons, and realistic scenarios based on real experience</span></li>' +
       '<li><span class="nm">Insights</span><span>Short takes on tech trends, AI tools, legal updates, and the future newsletter</span></li>' +
-      '<li><span class="nm">Media</span><span>Videos, talks, podcasts, and event impressions connected to the site’s themes</span></li>' +
+      '<li><span class="nm">Media</span><span>Videos, talks, audio briefs, and event impressions connected to the site’s themes</span></li>' +
       '<li><span class="nm">Arcade</span><span>My game-building and learning space, from simple experiments to future Roblox projects</span></li>' +
       '<li><span class="nm">Contact</span><span>How to reach me</span></li>' +
       '</ul>' +
