@@ -48,16 +48,19 @@
     if (!items.length) return;
     var ph = list.querySelector('.media-placeholder');
     if (ph) ph.remove();
-    items.forEach(function (a) {
-      var c = card();
-      c.innerHTML = '<span class="date"></span><h3></h3><p></p>' +
-        '<audio controls preload="none"></audio>';
-      c.querySelector('.date').textContent =
+    items.forEach(function (a, i) {
+      var row = document.createElement('li');
+      row.className = 'edition-row reveal in';
+      row.innerHTML = '<span class="no" aria-hidden="true"></span>' +
+        '<div class="ebody"><span class="meta"></span><h3></h3><p></p>' +
+        '<audio controls preload="none"></audio></div>';
+      row.querySelector('.no').textContent = ('00' + (i + 1)).slice(-3);
+      row.querySelector('.meta').textContent =
         fmtDate(a.date) + (a.duration ? ' · ' + a.duration : '');
-      c.querySelector('h3').textContent = a.title;
-      c.querySelector('p').textContent = a.description || '';
-      c.querySelector('audio').src = a.file;
-      list.appendChild(c);
+      row.querySelector('h3').textContent = a.title;
+      row.querySelector('p').textContent = a.description || '';
+      row.querySelector('audio').src = a.file;
+      list.appendChild(row);
     });
   }
 
@@ -90,4 +93,23 @@
       renderGallery(data.gallery || []);
     })
     .catch(function () { /* placeholders remain; the dev-block explains */ });
+
+  /* type selector — highlight the section currently in view */
+  (function () {
+    var links = document.querySelectorAll('.media-select a');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function (l) { map[l.getAttribute('href').slice(1)] = l; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (l) { l.classList.remove('active'); });
+        map[e.target.id].classList.add('active');
+      });
+    }, { rootMargin: '-15% 0px -70% 0px' });
+    Object.keys(map).forEach(function (id) {
+      var s = document.getElementById(id);
+      if (s) io.observe(s);
+    });
+  })();
 })();

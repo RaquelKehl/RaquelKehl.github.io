@@ -820,6 +820,40 @@ a.game-card:hover{border-color:var(--accent-strong);transform:translateY(-3px)}
 /* ═══════════════════════════════════════════════════════════════
    MEDIA LIBRARY
    ═══════════════════════════════════════════════════════════════ */
+/* type selector — one gesture, three rooms */
+.media-select{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.media-select .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.media-select a{display:flex;flex-direction:column;gap:.2rem;padding:1.3rem 1.2rem;
+  text-decoration:none;color:var(--text);border-left:1px solid var(--line);
+  transition:background .2s ease}
+.media-select a:first-child{border-left:0}
+.media-select a:hover{background:var(--accent-soft)}
+.media-select b{font-family:var(--font-display);font-weight:600;font-size:1.1rem}
+.media-select a span{color:var(--muted);font-size:.8rem}
+.media-select i{font-style:normal;font-family:var(--font-mono);font-size:.64rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:.4rem}
+.media-select a.active{box-shadow:inset 0 2px 0 var(--accent)}
+.media-select a.active b{color:var(--accent)}
+@media (max-width:40rem){
+  .media-select .wrap{grid-template-columns:1fr}
+  .media-select a{border-left:0;border-top:1px solid var(--line);padding:1rem 1.2rem}
+  .media-select a:first-child{border-top:0}
+}
+
+/* audio — numbered editorial editions, not cards */
+.edition-list{list-style:none;margin:1.6rem 0 0;padding:0}
+.edition-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.4rem;
+  align-items:start;padding:1.7rem 0;border-bottom:1px solid var(--line)}
+.edition-row:last-child{border-bottom:0}
+.edition-row .no{font-family:var(--font-serif);font-style:italic;font-weight:300;
+  font-size:clamp(1.6rem,3vw,2.2rem);line-height:1;color:var(--accent-300);min-width:3.4rem}
+:root[data-theme="light"] .edition-row .no{color:var(--accent-600)}
+.edition-row .meta{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--faint);display:block;margin-bottom:.35rem}
+.edition-row h3{font-size:1.12rem}
+.edition-row p{color:var(--muted);font-size:.9rem;margin-top:.3rem}
+.edition-row audio{width:100%;max-width:26rem;margin-top:.8rem;display:block}
+
 .media-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));
   margin-top:1.6rem}
 .media-card{background:var(--surface);border:1px solid var(--line);
