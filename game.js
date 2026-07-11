@@ -345,35 +345,6 @@
   }
   window.addEventListener('resize', resize);
 
-  /* ---------- parallax intro (CSSOM only — strict CSP) ---------- */
-  (function () {
-    var plx = document.querySelector('.plx');
-    if (!plx) return;
-    /* place the decorative shapes from data-pos="x,y" (percentages) */
-    plx.querySelectorAll('.plx-shape').forEach(function (s) {
-      var p = (s.getAttribute('data-pos') || '0,0').split(',');
-      s.style.left = p[0] + '%';
-      s.style.top = p[1] + '%';
-    });
-    if (reduced) return;
-    var layers = plx.querySelectorAll('.plx-layer');
-    var ticking = false;
-    function update() {
-      ticking = false;
-      var r = plx.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) return;
-      var progress = r.top - window.innerHeight / 2;
-      layers.forEach(function (l) {
-        var speed = parseFloat(l.getAttribute('data-plx')) || 0;
-        l.style.transform = 'translate3d(0,' + (-progress * speed).toFixed(1) + 'px,0)';
-      });
-    }
-    window.addEventListener('scroll', function () {
-      if (!ticking) { ticking = true; requestAnimationFrame(update); }
-    }, { passive: true });
-    update();
-  })();
-
   /* ---------- boot ---------- */
   readColors();
   generate();

@@ -498,18 +498,36 @@ section{padding:var(--section-pad) 0}
 /* ═══════════════════════════════════════════════════════════════
    BLOG
    ═══════════════════════════════════════════════════════════════ */
-.post-list{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));
-  margin-top:2.5rem}
-.post-card{background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--radius-card);padding:1.5rem;display:flex;flex-direction:column;
-  gap:.6rem;text-decoration:none;color:var(--text);
-  transition:border-color .2s ease,transform .2s ease}
-.post-card:hover{border-color:var(--accent-strong);transform:translateY(-3px)}
+.post-list{display:block;margin-top:1.2rem}
+.post-card{display:flex;flex-direction:column;gap:.55rem;
+  border-bottom:1px solid var(--line);padding:2.1rem 0;
+  text-decoration:none;color:var(--text)}
+.post-card:last-child{border-bottom:0}
 .post-card .date{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--faint)}
-.post-card h2{font-size:1.2rem}
-.post-card p{color:var(--muted);font-size:.92rem;margin:0}
-.post-card .read{font-family:var(--font-mono);font-size:.75rem;color:var(--accent);margin-top:auto;padding-top:.5rem}
+.post-card h2{font-family:var(--font-serif);font-weight:380;letter-spacing:0;
+  font-size:clamp(1.45rem,2.6vw,2rem);line-height:1.18;max-width:26ch;
+  transition:color .2s ease}
+.post-card:hover h2{color:var(--accent-300)}
+:root[data-theme="light"] .post-card:hover h2{color:var(--accent-600)}
+.post-card p{color:var(--muted);font-size:.95rem;margin:0;max-width:var(--measure)}
+.post-card .read{font-family:var(--font-mono);font-size:.75rem;color:var(--accent);padding-top:.3rem}
+
+/* the brief — editorial masthead band */
+.brief-hero h2{font-size:clamp(2.2rem,4.5vw,3.6rem);letter-spacing:-.015em;
+  margin-top:.4rem;max-width:18ch}
+.brief-hero h2 .serif-accent{font-size:1.06em}
+.brief-hero .lede{margin-top:1.1rem}
+.brief-format{display:inline-block;font-family:var(--font-mono);font-size:.82rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  margin-top:1.8rem;padding-top:1rem;border-top:1px solid var(--accent-600)}
+.brief-notes{color:var(--muted);font-size:.9rem;margin-top:.9rem}
+
+/* cross-link strip — the three layers, in one line */
+.voice-strip{border-top:1px solid var(--line);padding:clamp(2.5rem,6vw,4rem) 0;
+  text-align:center}
+.voice-strip p{max-width:none;margin:0;color:var(--muted);font-size:1.02rem}
+.voice-strip .serif-accent{font-size:1.08em}
 
 /* rendered article */
 .article{max-width:44rem;margin:0 auto;padding-top:8.5rem;padding-bottom:var(--section-pad)}
@@ -687,6 +705,13 @@ a.btn-small{text-decoration:none;display:inline-flex;align-items:center;gap:.45r
   text-transform:uppercase;color:var(--faint);display:block;margin-bottom:.5rem}
 .teaser h3{font-size:1.05rem}
 .teaser p{color:var(--muted);font-size:.88rem;margin-top:.4rem}
+.teaser .d{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;
+  color:var(--faint);display:block;margin-top:.7rem}
+/* compact variant — signals wall: denser cells, quicker scan */
+.teaser-grid.compact{grid-template-columns:repeat(auto-fit,minmax(13.5rem,1fr));gap:.8rem}
+.teaser-grid.compact .teaser{padding:1.05rem 1.15rem}
+.teaser-grid.compact .teaser h3{font-size:.98rem}
+.teaser-grid.compact .teaser p{font-size:.84rem}
 
 /* ═══════════════════════════════════════════════════════════════
    BACKSTAGE PASS — the human in the system

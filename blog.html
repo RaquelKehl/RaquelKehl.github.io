@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="assets/js/theme-init.js"></script>
   <script src="main.js" defer></script>
+  <script src="assets/js/plx.js" defer></script>
   <script src="assets/js/blog.js" defer></script>
 </head>
 <body>
@@ -51,13 +52,29 @@
   <main id="main">
 
     <div id="listSection">
-      <div class="page-hero">
+      <div class="page-hero roomy">
         <div class="wrap">
           <div class="eyebrow">Insights</div>
           <h1>Notes from the <span class="serif-accent">intersection</span>.</h1>
-          <p class="lede">Three layers, one editorial voice: essays written from inside regulated organisations, a curated signals feed, and a recurring brief — the last two currently taking shape.</p>
+          <p class="lede">Three layers, one editorial voice: a recurring brief, essays written from inside regulated organisations, and a curated signals feed — the brief and signals currently taking shape.</p>
         </div>
       </div>
+
+      <!-- ═══ the brief: editorial masthead ═══ -->
+      <section class="plx brief-hero" aria-labelledby="brief-title">
+        <div class="plx-layer" data-plx="0.08" aria-hidden="true">
+          <span class="plx-shape s3 c" data-pos="82,16"></span>
+          <span class="plx-shape s2 c teal" data-pos="8,68"></span>
+        </div>
+        <div class="wrap">
+          <div class="eyebrow reveal">The Brief · Issue 001 in preparation</div>
+          <h2 id="brief-title" class="reveal">Direction, on a <span class="serif-accent">cadence</span>.</h2>
+          <p class="lede reveal">A recurring editorial format translating developments in agentic AI, the EU AI Act, and digital change into clear direction. Less news, more navigation.</p>
+          <p class="brief-format reveal">3 developments · 1 deeper read · 1 practical move</p>
+          <p class="brief-notes reveal">The house format of every issue — commentary with consequences, each item ending in “what to do about it”. Issues arrive on a considered cadence in the spirit of formats like The Batch, every one human-reviewed before it ships; sign-up opens once the format has earned it.</p>
+        </div>
+      </section>
+
       <section aria-labelledby="essays-title">
         <div class="wrap pt0">
           <div class="eyebrow reveal">Essays · live</div>
@@ -68,24 +85,27 @@
 
       <section aria-labelledby="signals-title">
         <div class="wrap">
-          <div class="eyebrow reveal">Signals · in development</div>
+          <div class="eyebrow reveal">Signals · short, dated, annotated</div>
           <h2 id="signals-title" class="reveal">Short takes &amp; <span class="serif-accent">TLDRs</span></h2>
           <p class="lede reveal">Short takeaways on tech trends, the latest AI tools, and legal updates — curated from my own sources, annotated, never raw.</p>
-          <div class="teaser-grid" id="signalsList">
+          <div class="teaser-grid compact" id="signalsList">
             <div class="teaser reveal">
               <span class="k">TLDR · AI tools</span>
               <h3>First signal in preparation</h3>
               <p>A short, annotated take on a tool worth knowing — with a one-line “why this matters”.</p>
+              <span class="d">—</span>
             </div>
             <div class="teaser reveal">
               <span class="k">Regulatory watch · EU AI Act</span>
               <h3>Annotation pending</h3>
               <p>Legal updates translated from regulation-speak into what actually changes for organisations.</p>
+              <span class="d">—</span>
             </div>
             <div class="teaser reveal">
               <span class="k">Tech trends</span>
               <h3>Selection in progress</h3>
               <p>The developments worth acting on rather than merely reading — fewer links, sharper selection.</p>
+              <span class="d">—</span>
             </div>
           </div>
           <div class="dev-block reveal mt-lg">
@@ -102,28 +122,9 @@
         </div>
       </section>
 
-      <section class="cta-band" aria-labelledby="brief-title">
+      <section class="voice-strip" aria-label="How the three layers connect">
         <div class="wrap">
-          <div class="eyebrow reveal">The Brief · in build phase</div>
-          <h2 id="brief-title" class="reveal">Direction, on a <span class="serif-accent">cadence</span></h2>
-          <p class="lede reveal">A recurring editorial format translating developments in agentic AI, the EU AI Act, and digital change into clear direction. Less news, more navigation.</p>
-          <div class="teaser-grid">
-            <div class="teaser reveal">
-              <span class="k">Issue 001 · in preparation</span>
-              <h3>3 developments · 1 deeper read · 1 practical move</h3>
-              <p>The house format of every issue — commentary with consequences, each item ending in “what to do about it”.</p>
-            </div>
-            <div class="dev-block reveal">
-              <span class="dev-badge"><span class="pulse-dot"></span>Editorial system · in build phase</span>
-              <h3>How The Brief will <span class="serif-accent">work</span></h3>
-              <ul class="dev-list">
-                <li><b>Recurring issues</b> — a considered cadence in the spirit of formats like The Batch</li>
-                <li><b>Human-approved</b> — every issue is reviewed and edited before it ships</li>
-                <li><b>Subscription follows substance</b> — sign-up opens once the format has earned it</li>
-              </ul>
-              <span class="dev-how">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can, but don’t ask me for coffee just yet.</span>
-            </div>
-          </div>
+          <p class="reveal">Signals feed <span class="serif-accent">the Brief</span>. The Brief draws on the essays. One editorial voice, three speeds.</p>
         </div>
       </section>
     </div>
