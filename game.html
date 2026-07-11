@@ -6,12 +6,12 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://portfolio-api.raquelkehl.workers.dev; base-uri 'self'; form-action 'self'; object-src 'none'">
 
   <title>Arcade — Raquel Kehl</title>
-  <meta name="description" content="Pipeline — a data-flow optimisation puzzle by Raquel Kehl Furukawa. Rotate the network until every endpoint is connected to the core. Fewest moves wins.">
+  <meta name="description" content="The Arcade by Raquel Kehl Furukawa — a growing collection of games built from scratch: browser experiments live now, a Roblox build in development, all documented.">
   <meta name="author" content="Raquel Kehl Furukawa">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Arcade — Pipeline, by Raquel Kehl Furukawa">
-  <meta property="og:description" content="Route the data. Remove the bottlenecks. A browser puzzle about the day job.">
+  <meta property="og:title" content="Arcade — Raquel Kehl Furukawa">
+  <meta property="og:description" content="Pick a machine — browser experiments, Roblox builds: systems thinking, made playable.">
   <meta property="og:site_name" content="Raquel Kehl Furukawa">
   <meta property="og:url" content="https://raquelkehl.ch/game.html">
   <meta name="twitter:card" content="summary">
@@ -24,7 +24,6 @@
   <script src="assets/js/theme-init.js"></script>
   <script src="main.js" defer></script>
   <script src="assets/js/plx.js" defer></script>
-  <script src="game.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -59,8 +58,8 @@
       </div>
     </div>
 
-    <!-- ═══ experiment 001: intro + game, one band ═══ -->
-    <section class="plx" id="play" aria-labelledby="plx-title">
+    <!-- ═══ the cabinet: game selection ═══ -->
+    <section class="plx" id="cabinet" aria-labelledby="cabinet-title">
       <div class="plx-layer" data-plx="0.12" aria-hidden="true">
         <span class="plx-shape s3 c" data-pos="8,12"></span>
         <span class="plx-shape" data-pos="78,18"></span>
@@ -72,94 +71,41 @@
         <span class="plx-shape s2 c teal" data-pos="42,24"></span>
       </div>
       <div class="wrap">
-        <div class="eyebrow reveal">Experiment 001 · playable now</div>
-        <h2 id="plx-title" class="reveal">First up: <span class="serif-accent">Pipeline</span></h2>
-        <p class="lede reveal">A scrambled network, one core, many endpoints. Rotate the tiles until everything connects — in as few moves as possible. It’s the day job, with better feedback loops — and it opens a series: browser experiments first, a Roblox build next.</p>
-
-        <div class="game-shell">
-
-          <div class="game-stage">
-            <div class="hud">
-              <span class="hstat">level <b id="hudLevel">1</b>/5</span>
-              <span class="hstat">moves <b id="hudMoves">0</b></span>
-              <span class="hstat">par <b id="hudPar">0</b></span>
-              <span class="hstat">best <b id="hudBest">—</b></span>
-              <span class="hbtns">
-                <button class="btn-small" id="btnRestart" type="button">Restart</button>
-                <button class="btn-small" id="btnNew" type="button">New layout</button>
-              </span>
-            </div>
-            <canvas id="gameCanvas" tabindex="0"
-              aria-label="Pipeline puzzle board. Use arrow keys to choose a tile and Enter or Space to rotate it clockwise. Connect every endpoint to the copper core."></canvas>
-            <p class="game-msg">click / tap a tile to rotate · arrow keys + enter for keyboard play · copper = connected to the core</p>
-
-            <div class="game-overlay" id="gameOverlay" role="dialog" aria-modal="true" aria-labelledby="ovTitle">
-              <div class="overlay-card">
-                <span class="k">network online</span>
-                <h3 id="ovTitle">All endpoints connected</h3>
-                <p id="ovStats">—</p>
-                <div class="actions">
-                  <button class="btn btn-primary" id="btnNext" type="button">Next level</button>
-                  <button class="btn btn-ghost" id="btnReplay" type="button">Replay</button>
-                </div>
-              </div>
-            </div>
+        <div class="eyebrow reveal">The cabinet · 1 playable · 2 in build</div>
+        <h2 id="cabinet-title" class="reveal">Pick a <span class="serif-accent">machine</span>.</h2>
+        <p class="lede reveal">Every game here opens its own page — playable where possible, documented always.</p>
+        <div class="lineup-grid">
+          <a class="lineup-card game-card reveal" href="pipeline.html">
+            <span class="cover" aria-hidden="true">P</span>
+            <span class="tags"><span class="tag">Live · playable</span><span class="tag">Browser</span></span>
+            <h3>Pipeline</h3>
+            <p>Rotate a scrambled network until everything connects. Fewest moves wins — par is honest.</p>
+            <span class="priv">Experiment 001 · play + open documentation →</span>
+          </a>
+          <div class="lineup-card game-card reveal">
+            <span class="cover teal" aria-hidden="true">T</span>
+            <span class="tags"><span class="tag">In development</span><span class="tag">Roblox · private codebase</span></span>
+            <h3>Pipeline Tycoon</h3>
+            <p>A data-centre tycoon in Luau: build racks, balance throughput, survive incident day.</p>
+            <span class="priv">Code private due to ongoing development and future commercial plans — a technical walkthrough can be shared selectively.</span>
           </div>
-
-          <aside class="game-aside" id="docs" aria-label="Game documentation">
-            <div class="cred">
-              <span class="k">How to play</span>
-              <ul>
-                <li><b>Goal:</b> connect every tile to the copper core</li>
-                <li><b>Rotate:</b> click / tap a tile, or arrows + enter</li>
-                <li><b>Score:</b> fewest moves — par is the scramble’s minimum</li>
-                <li><b>Best scores</b> are saved on this device only</li>
-              </ul>
-            </div>
-            <details class="doc">
-              <summary><span class="k">Why this game</span></summary>
-              <div class="doc-body">
-                <p>Every transformation is this puzzle: the pieces exist, the connections don’t. Fewer moves means fewer manual steps — the 60% on the homepage, played out on a grid.</p>
-              </div>
-            </details>
-            <details class="doc">
-              <summary><span class="k">Under the hood</span></summary>
-              <div class="doc-body">
-                <p>Vanilla Canvas 2D, zero dependencies. Each level is a randomised spanning tree, scrambled by rotation — always solvable, with <b>par</b> computed as the true minimum number of rotations. Connectivity floods from the core each move; win detection, packet animation, and a reduced-motion fallback included.</p>
-                <p class="mono">generation: randomised DFS · dedup-safe scoring · localStorage bests</p>
-              </div>
-            </details>
-          </aside>
-
+          <div class="lineup-card game-card future reveal">
+            <span class="cover dim" aria-hidden="true">?</span>
+            <span class="tags"><span class="tag">In development</span></span>
+            <h3>Experiment 002</h3>
+            <p>The next browser experiment is on the drawing board — made from scratch, documented, and honest about its status.</p>
+            <span class="priv">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can, but don’t ask me for coffee just yet.</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ the lineup ═══ -->
-    <section id="lineup" aria-labelledby="lineup-title">
+    <!-- ═══ behind the games ═══ -->
+    <section aria-labelledby="behind-title">
       <div class="wrap">
-        <div class="eyebrow reveal">The lineup</div>
-        <h2 id="lineup-title" class="reveal">From browser experiments to <span class="serif-accent">worlds</span></h2>
-        <div class="lineup-grid">
-          <div class="lineup-card reveal">
-            <span class="tags"><span class="tag">Public demo</span><span class="tag">Playable above</span></span>
-            <h3>Pipeline</h3>
-            <p>A data-flow optimisation puzzle: route packets, remove bottlenecks, score on efficiency. Built to prove the arcade’s premise — systems thinking can be genuinely fun.</p>
-            <span class="priv">status: live · open documentation in the game notes</span>
-          </div>
-          <div class="lineup-card reveal">
-            <span class="tags"><span class="tag">Private codebase</span><span class="tag">In development</span></span>
-            <h3>Pipeline Tycoon <span class="mono">(Roblox)</span></h3>
-            <p>A data-centre management game in Luau: build racks, balance throughput, survive incident days. Server and client scripts with DataStore persistence.</p>
-            <span class="priv">Code is not publicly available due to ongoing development and future commercial plans. A technical walkthrough can be shared selectively where appropriate.</span>
-          </div>
-          <div class="lineup-card future reveal">
-            <span class="tags"><span class="tag">In development</span></span>
-            <h3>Experiment 002</h3>
-            <p>The next browser experiment is on the drawing board — same rules as everything here: made from scratch, documented, and honest about its status.</p>
-            <span class="priv">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can, but don’t ask me for coffee just yet.</span>
-          </div>
-        </div>
+        <div class="eyebrow reveal">Behind the games</div>
+        <h2 id="behind-title" class="reveal">From browser experiments to <span class="serif-accent">worlds</span></h2>
+        <p class="lede reveal">The arcade is a practice, not a pastime: each machine is built by hand, documented, and honest about its status. The series runs from small browser experiments towards full Roblox worlds — and when a build goes commercial, its code goes private and it stays on this shelf as a case study.</p>
       </div>
     </section>
 
