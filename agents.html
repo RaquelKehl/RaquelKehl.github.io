@@ -6,12 +6,12 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://portfolio-api.raquelkehl.workers.dev; base-uri 'self'; form-action 'self'; object-src 'none'">
 
   <title>Agents — Raquel Kehl</title>
-  <meta name="description" content="The CrewAI agent crew behind this site: portfolio analyst, lead qualifier, blog researcher, and code reviewer — governed multi-agent workflows with live status.">
+  <meta name="description" content="Agentic systems by Raquel Kehl Furukawa — a technical registry of governed, human-gated agent projects: architectures, controls, and live status.">
   <meta name="author" content="Raquel Kehl Furukawa">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="AI Agents — Raquel Kehl Furukawa">
-  <meta property="og:description" content="Governed multi-agent workflows, running on a schedule, feeding the dashboard — agentic AI as evidence, not a claim.">
+  <meta property="og:description" content="A registry of governed agentic systems — human-gated, least-privilege, every action attributable.">
   <meta property="og:site_name" content="Raquel Kehl Furukawa">
   <meta property="og:url" content="https://raquelkehl.ch/agents.html">
   <meta name="twitter:card" content="summary">
@@ -50,36 +50,79 @@
 
   <main id="main">
 
-    <div class="page-hero">
+    <div class="page-hero roomy">
       <div class="wrap">
         <div class="eyebrow">Agents</div>
-        <h1>The crew, at <span class="serif-accent">work</span>.</h1>
-        <p class="lede">Four CrewAI agents maintain parts of this site on a schedule — reviewed, logged, and governed like any other system I ship. This page is the argument from the About narrative made concrete: agentic AI with the controls designed in.</p>
+        <h1>Agentic systems, on <span class="serif-accent">record</span>.</h1>
+        <p class="lede">This is where I build and document agentic AI — governed, human-gated, and in the open. A growing technical archive: the principles that outlive any project, the registry of what runs, and the architecture behind each entry.</p>
       </div>
     </div>
 
-    <section aria-label="Development status">
+    <!-- ═══ principles — the rules that outlive the projects ═══ -->
+    <section aria-labelledby="tenets-title">
       <div class="wrap pt0">
-        <div class="dev-block reveal">
-          <span class="dev-badge"><span class="pulse-dot"></span>Live architecture in progress</span>
-          <h3>Agentic systems, with the controls <span class="serif-accent">designed in</span></h3>
-          <p>This capability is currently in development. The finished system will show agentic AI doing governed work — structured analysis, orchestration, and decision-ready outputs in complex environments — with every run logged and every permission earned. What you see below is the architecture it will run on, published before the system itself: the design is part of the demonstration.</p>
-          <ul class="dev-list">
-            <li><b>Four bounded agents</b> — analyst, qualifier, researcher, reviewer — each with a role, a goal, and nothing more</li>
-            <li><b>Scheduled, not always-on</b> — runs triggered by GitHub Actions, results served from the edge</li>
-            <li><b>Status becomes live here</b> — the cards below will switch from sample to telemetry at first deployment</li>
-          </ul>
-          <span class="dev-how">build order: visible site → serverless edge → agent crew → live status</span>
-          <span class="dev-how">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can, but don’t ask me for coffee just yet.</span>
+        <div class="eyebrow reveal">Principles</div>
+        <h2 id="tenets-title" class="reveal">Rules before <span class="serif-accent">robots</span>.</h2>
+        <div class="tenet-row">
+          <div class="tenet reveal">
+            <span class="k">01 · authority</span>
+            <b>Human-gated by default</b>
+            <p>Agents propose; a person approves anything visitor-facing. No exceptions earn themselves quietly.</p>
+          </div>
+          <div class="tenet reveal">
+            <span class="k">02 · access</span>
+            <b>Least-privilege tools</b>
+            <p>Every tool is granted per task, never globally — an agent gets a role, a goal, and nothing more.</p>
+          </div>
+          <div class="tenet reveal">
+            <span class="k">03 · audit</span>
+            <b>Every action attributable</b>
+            <p>Runs are logged with timestamp, inputs, outputs, and model. Failures surface too — errors are data.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ pipeline ═══ -->
+    <!-- ═══ the registry ═══ -->
+    <section aria-labelledby="registry-title">
+      <div class="wrap">
+        <div class="eyebrow reveal">Registry · 2 in progress · slots open</div>
+        <h2 id="registry-title" class="reveal">The projects</h2>
+        <div class="registry">
+          <div class="reg-row reveal">
+            <span class="reg-ref">AG-001</span>
+            <div class="reg-body">
+              <h3>The Site Crew <span class="mono">(CrewAI)</span></h3>
+              <p>Four bounded maintenance agents — analyst, qualifier, researcher, reviewer — keeping this site honest on a schedule. Expanded in full below.</p>
+            </div>
+            <span class="reg-status">in build</span>
+          </div>
+          <div class="reg-row reveal">
+            <span class="reg-ref">AG-002</span>
+            <div class="reg-body">
+              <h3>The Editorial Pipeline <span class="mono">(CrewAI)</span></h3>
+              <p>Curated sources in, published Signals and a recurring Brief out — nothing ships without a reviewed pull request. Architecture complete; build follows AG-001.</p>
+            </div>
+            <span class="reg-status">designed</span>
+          </div>
+          <div class="reg-row future reveal">
+            <span class="reg-ref">AG-003</span>
+            <div class="reg-body">
+              <h3>Undisclosed</h3>
+              <p>Scoped once AG-001 ships. No vapourware here.</p>
+            </div>
+            <span class="reg-status">slot open</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ AG-001, expanded ═══ -->
     <section aria-labelledby="pipe-title" class="pt0">
       <div class="wrap pt0">
-        <div class="eyebrow reveal">The pipeline</div>
+        <div class="eyebrow reveal">AG-001 · expanded entry</div>
         <h2 id="pipe-title" class="reveal">From schedule to dashboard — no server, no secrets in the browser</h2>
+        <p class="lede reveal">The architecture is published before the system itself: the design is part of the demonstration. Status below switches from bundled sample to live telemetry at first deployment.</p>
         <div class="flow reveal">
           <div class="flow-lane">
             <span class="k">01 · Trigger</span>
@@ -111,7 +154,7 @@
     <!-- ═══ the agents ═══ -->
     <section aria-labelledby="crew-title" class="cta-band">
       <div class="wrap">
-        <div class="eyebrow reveal">The crew</div>
+        <div class="eyebrow reveal">AG-001 · the crew</div>
         <h2 id="crew-title" class="reveal">Four roles, bounded tasks</h2>
         <div class="agent-grid">
 

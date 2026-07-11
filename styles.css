@@ -741,6 +741,32 @@ a.game-card:hover{border-color:var(--accent-strong);transform:translateY(-3px)}
   border:1px solid var(--accent-600);border-radius:999px;padding:.08rem .6rem;
   font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
 .teaser-grid+.dev-how{margin-top:1.6rem}
+
+/* agents — registry discipline: tenets + project rows that report, not glow */
+.tenet-row{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+  margin-top:1.8rem}
+.tenet{background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-card);padding:1.2rem 1.4rem}
+.tenet .k{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.5rem}
+.tenet b{display:block;font-size:.98rem}
+.tenet p{color:var(--muted);font-size:.86rem;margin-top:.3rem}
+.registry{margin-top:1.6rem;border-top:1px solid var(--line)}
+.reg-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1rem 1.6rem;
+  align-items:baseline;padding:1.5rem 0;border-bottom:1px solid var(--line)}
+.reg-ref{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.1em;color:var(--accent)}
+.reg-row h3{font-size:1.1rem}
+.reg-row h3 .mono{color:var(--faint);font-size:.75em}
+.reg-row p{color:var(--muted);font-size:.9rem;margin-top:.3rem}
+.reg-status{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.reg-row.future .reg-ref{color:var(--faint)}
+.reg-row.future h3{color:var(--muted)}
+.reg-row.future .reg-status{color:var(--faint)}
+@media (max-width:40rem){
+  .reg-row{grid-template-columns:auto minmax(0,1fr)}
+  .reg-row .reg-status{grid-column:2;justify-self:start}
+}
 /* compact variant — signals wall: denser cells, quicker scan */
 .teaser-grid.compact{grid-template-columns:repeat(auto-fit,minmax(13.5rem,1fr));gap:.8rem}
 .teaser-grid.compact .teaser{padding:1.05rem 1.15rem}
