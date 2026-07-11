@@ -723,6 +723,24 @@ a.game-card:hover{border-color:var(--accent-strong);transform:translateY(-3px)}
 .teaser p{color:var(--muted);font-size:.88rem;margin-top:.4rem}
 .teaser .d{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;
   color:var(--faint);display:block;margin-top:.7rem}
+
+/* use cases — case-file discipline */
+.format-strip{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1.4rem;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-card);padding:1.1rem 1.4rem}
+.format-strip .k{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent)}
+.format-strip .flow{font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.case-file .cf-meta{display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:.3rem 1rem;margin:0 0 .9rem;padding-bottom:.9rem;
+  border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:.7rem}
+.case-file .cf-meta div{display:contents}
+.case-file .cf-meta dt{color:var(--faint);letter-spacing:.12em;text-transform:uppercase}
+.case-file .cf-meta dd{margin:0;color:var(--muted);letter-spacing:.04em}
+.case-file .cf-meta dd.stamp{justify-self:start;color:var(--accent);
+  border:1px solid var(--accent-600);border-radius:999px;padding:.08rem .6rem;
+  font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
+.teaser-grid+.dev-how{margin-top:1.6rem}
 /* compact variant — signals wall: denser cells, quicker scan */
 .teaser-grid.compact{grid-template-columns:repeat(auto-fit,minmax(13.5rem,1fr));gap:.8rem}
 .teaser-grid.compact .teaser{padding:1.05rem 1.15rem}
