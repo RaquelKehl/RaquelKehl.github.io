@@ -71,7 +71,14 @@
     if (ph) ph.remove();
     grid.classList.remove('media-grid');
     grid.classList.add('media-photos');
-    items.forEach(function (g) {
+    var cols = [0.05, 0.12].map(function (speed) {
+      var c = document.createElement('div');
+      c.className = 'photo-col';
+      c.setAttribute('data-drift', String(speed));
+      grid.appendChild(c);
+      return c;
+    });
+    items.forEach(function (g, i) {
       var fig = document.createElement('figure');
       var img = document.createElement('img');
       img.loading = 'lazy';
@@ -81,8 +88,32 @@
       cap.textContent = g.caption || g.title || '';
       fig.appendChild(img);
       fig.appendChild(cap);
-      grid.appendChild(fig);
+      cols[i % 2].appendChild(fig);
     });
+    enableDrift(cols);
+  }
+
+  /* gallery drift — columns slide at slightly different rates on scroll.
+     CSSOM only (strict CSP); disabled under prefers-reduced-motion. */
+  function enableDrift(cols) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var section = document.getElementById('gallerySection');
+    if (!section) return;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var r = section.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
+      var progress = r.top - window.innerHeight / 2;
+      cols.forEach(function (c) {
+        var speed = parseFloat(c.getAttribute('data-drift')) || 0;
+        c.style.transform = 'translate3d(0,' + (-progress * speed).toFixed(1) + 'px,0)';
+      });
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
   }
 
   fetch('data/media.json')

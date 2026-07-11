@@ -910,8 +910,10 @@ a.game-card:hover{border-color:var(--accent-strong);transform:translateY(-3px)}
 .media-card .ext{font-family:var(--font-mono);font-size:.76rem;color:var(--accent);
   text-decoration:none;margin-top:auto;padding-top:.55rem}
 .media-card .ext:hover{text-decoration:underline}
-.media-photos{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fill,minmax(12rem,1fr));
-  margin-top:1.6rem}
+.media-photos{display:grid;gap:.9rem;grid-template-columns:repeat(2,minmax(0,1fr));
+  margin-top:1.6rem;align-items:start}
+.photo-col{display:flex;flex-direction:column;gap:.9rem;will-change:transform}
+.photo-col:last-child{margin-top:2.4rem}
 .media-photos figure{margin:0;background:var(--surface);border:1px solid var(--line);
   border-radius:var(--radius-card);overflow:hidden}
 .media-photos img{width:100%;height:10.5rem;object-fit:cover;display:block}
