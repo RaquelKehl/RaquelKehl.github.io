@@ -14,33 +14,66 @@
       { day: 'numeric', month: 'long', year: 'numeric' });
   }
 
-  function card() {
-    var el = document.createElement('article');
-    el.className = 'media-card reveal in';
-    return el;
-  }
+  function safeUrl(u) { return /^https:\/\//.test(u || '') ? u : null; }
 
   function renderVideos(items) {
     var list = document.getElementById('videoList');
-    if (!items.length) return;
-    var ph = list.querySelector('.media-placeholder');
-    if (ph) ph.remove();
-    items.forEach(function (v) {
-      var c = card();
-      c.innerHTML = '<span class="date"></span><h3></h3><p></p>' +
-        '<a class="ext" rel="noopener" target="_blank">Watch ↗</a>';
-      c.querySelector('.date').textContent = fmtDate(v.date);
-      c.querySelector('h3').textContent = v.title;
-      c.querySelector('p').textContent = v.description || '';
-      var a = c.querySelector('a');
-      if (/^https:\/\//.test(v.url || '')) {
+    var featured = items.filter(function (v) { return !v.archived && safeUrl(v.url); });
+    var archived = items.filter(function (v) { return v.archived && safeUrl(v.url); });
+
+    if (featured.length) {
+      var ph = list.querySelector('.media-placeholder');
+      if (ph) ph.remove();
+      featured.forEach(function (v) {
+        var c = document.createElement('article');
+        c.className = 'video-card reveal in';
+        c.innerHTML = '<span class="vc-label"></span>' +
+          '<a class="vc-cover" rel="noopener" target="_blank"></a>' +
+          '<h3></h3><p></p>' +
+          '<div class="vc-meta"><span class="vc-kind"></span><span class="vc-platform"></span></div>' +
+          '<a class="vc-btn" rel="noopener" target="_blank"></a>';
+        c.querySelector('.vc-label').textContent = '(' + (v.label || v.platform || 'video') + ')';
+        var cover = c.querySelector('.vc-cover');
+        cover.href = v.url;
+        cover.setAttribute('aria-label', 'Watch: ' + v.title + ' (' + (v.platform || 'external link') + ')');
+        if (v.thumb) {
+          var img = document.createElement('img');
+          img.loading = 'lazy';
+          img.src = v.thumb;
+          img.alt = '';
+          cover.appendChild(img);
+        } else {
+          cover.classList.add('text');
+          cover.textContent = v.kind || 'Video';
+        }
+        c.querySelector('h3').textContent = v.title;
+        c.querySelector('p').textContent = v.description || '';
+        c.querySelector('.vc-kind').textContent = v.kind || 'Video';
+        c.querySelector('.vc-platform').textContent = v.platform || 'external';
+        var btn = c.querySelector('.vc-btn');
+        btn.href = v.url;
+        btn.textContent = 'Watch on ' + (v.platform || 'the source') + ' ↗';
+        list.appendChild(c);
+      });
+    }
+
+    if (archived.length) {
+      var empty = document.getElementById('vaEmpty');
+      var ul = document.getElementById('vaList');
+      if (empty) empty.remove();
+      ul.hidden = false;
+      archived.forEach(function (v) {
+        var li = document.createElement('li');
+        li.innerHTML = '<span class="va-title"></span><span class="va-kind"></span>' +
+          '<a rel="noopener" target="_blank"></a>';
+        li.querySelector('.va-title').textContent = v.title;
+        li.querySelector('.va-kind').textContent = v.kind || '';
+        var a = li.querySelector('a');
         a.href = v.url;
-        a.textContent = 'Watch on ' + (v.platform || 'YouTube') + ' ↗';
-      } else {
-        a.remove();
-      }
-      list.appendChild(c);
-    });
+        a.textContent = 'watch ↗';
+        ul.appendChild(li);
+      });
+    }
   }
 
   function renderAudio(items) {

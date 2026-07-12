@@ -900,16 +900,49 @@ a.game-card:hover{border-color:var(--accent-strong);transform:translateY(-3px)}
 
 .media-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));
   margin-top:1.6rem}
-.media-card{background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--radius-card);padding:1.4rem;display:flex;flex-direction:column;gap:.55rem}
-.media-card h3{font-size:1.08rem}
-.media-card .date{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;
+/* video cards — framed display panels: label, cover, meta row, one action */
+.video-card{background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-card);padding:1.1rem 1.1rem 1.2rem;
+  display:flex;flex-direction:column;gap:.6rem}
+.vc-label{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);text-align:center}
+.vc-cover{display:block;aspect-ratio:16/9;border-radius:var(--radius-ctl);
+  overflow:hidden;border:1px solid var(--line)}
+.vc-cover img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .35s ease}
+.vc-cover:hover img{transform:scale(1.03)}
+.vc-cover.text{display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,var(--accent-soft),transparent 70%),var(--surface-2);
+  font-family:var(--font-serif);font-style:italic;font-weight:300;
+  font-size:1.6rem;color:var(--accent-300);text-decoration:none}
+.video-card h3{font-size:1.05rem;margin-top:.2rem}
+.video-card p{color:var(--muted);font-size:.88rem;margin:0}
+.vc-meta{display:flex;justify-content:space-between;gap:1rem;margin-top:auto;
+  padding-top:.7rem;border-top:1px solid var(--line);
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint)}
-.media-card p{color:var(--muted);font-size:.9rem;margin:0}
-.media-card audio{width:100%;margin-top:.4rem}
-.media-card .ext{font-family:var(--font-mono);font-size:.76rem;color:var(--accent);
-  text-decoration:none;margin-top:auto;padding-top:.55rem}
-.media-card .ext:hover{text-decoration:underline}
+.vc-btn{display:block;text-align:center;font:600 .82rem var(--font-body);
+  background:var(--accent-500);color:var(--ink-950);border-radius:var(--radius-ctl);
+  padding:.62rem 1rem;text-decoration:none;transition:background .2s ease}
+.vc-btn:hover{background:var(--accent-400)}
+
+/* video archive — where rotated-out picks are filed */
+.video-archive{margin-top:2rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-card);padding:1.2rem 1.4rem}
+.video-archive .k{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.6rem}
+.video-archive .va-empty{color:var(--faint);font-size:.85rem;margin:0;
+  font-family:var(--font-mono)}
+.va-list{list-style:none;margin:0;padding:0}
+.va-list li{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;
+  padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.88rem}
+.va-list li:last-child{border-bottom:0}
+.va-list .va-title{color:var(--text);flex:1 1 14rem}
+.va-list .va-kind{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--faint)}
+.va-list a{font-family:var(--font-mono);font-size:.76rem;color:var(--accent);
+  text-decoration:none}
+.va-list a:hover{text-decoration:underline}
 .media-photos{display:grid;gap:.9rem;grid-template-columns:repeat(2,minmax(0,1fr));
   margin-top:1.6rem;align-items:start}
 .photo-col{display:flex;flex-direction:column;gap:.9rem;will-change:transform}

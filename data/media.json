@@ -1,6 +1,34 @@
 {
-  "_note": "Media library content. Add entries below and commit — media.html renders them automatically. Videos are link-outs (no tracking embeds); audio files live in assets/media/audio/, photos in assets/media/img/.",
-  "videos": [],
+  "_note": "Media library content. Add entries below and commit — media.html renders them automatically. Videos are link-outs (no tracking embeds): swap the url to change a video, optionally swap the self-hosted thumb (CSP forbids hotlinking), set archived:true to move it to the archive panel. Audio files live in assets/media/audio/, photos in assets/media/img/.",
+  "videos": [
+    {
+      "label": "gartner · it symposium/xpo",
+      "title": "Gartner’s Top Tech Trends for 2026",
+      "description": "The official keynote, live from IT Symposium/Xpo — Gartner’s top technology trends for 2026, straight from the source.",
+      "kind": "Keynote",
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/watch?v=5dgpcQXq1eo",
+      "thumb": "assets/media/img/video/gartner-trends-2026.jpg"
+    },
+    {
+      "label": "openai · codex",
+      "title": "Introducing the Codex app",
+      "description": "A command centre for building with agents: parallel multitasking with worktree isolation, reusable skills, and scheduled automations running in the background.",
+      "kind": "Product intro",
+      "platform": "YouTube",
+      "url": "https://youtu.be/HFM3se4lNiw",
+      "thumb": "assets/media/img/video/codex-app-intro.jpg"
+    },
+    {
+      "label": "security · agentic ai",
+      "title": "Agentic AI in the Wild: Rethinking Trust When Your AI Has the Keys",
+      "description": "Confidential computing and modern infrastructure for securing agentic AI — when agents hold credentials and operate in production.",
+      "kind": "Talk",
+      "platform": "YouTube",
+      "url": "https://youtu.be/idqVgKK1oDc",
+      "thumb": "assets/media/img/video/agentic-ai-trust.jpg"
+    }
+  ],
   "audio": [],
   "gallery": []
 }

@@ -61,7 +61,7 @@
     <!-- ═══ type selector — one gesture, three rooms ═══ -->
     <nav class="media-select" aria-label="Media types">
       <div class="wrap">
-        <a href="#videoSection"><b>Video</b><span>talks &amp; appearances</span><i>—</i></a>
+        <a href="#videoSection"><b>Video</b><span>talks &amp; appearances</span><i>3 on display</i></a>
         <a href="#audioSection"><b>Audio</b><span>editions for the commute</span><i>001 · in the edit</i></a>
         <a href="#gallerySection"><b>Gallery</b><span>out in the field</span><i>—</i></a>
       </div>
@@ -71,12 +71,18 @@
       <div class="wrap">
         <div class="eyebrow">Video</div>
         <h2 id="video-title">Talks &amp; appearances</h2>
-        <div class="media-grid" id="videoList">
+        <p class="lede">Three on display at a time, rotated as better material arrives — always a link out, never a tracking embed.</p>
+        <div class="media-grid video-grid" id="videoList">
           <div class="teaser media-placeholder">
             <span class="k">In preparation</span>
-            <h3>First talk</h3>
-            <p>A recorded session on governed agentic AI is planned — it will appear here as a link-out, never a tracking embed.</p>
+            <h3>First videos</h3>
+            <p>The first three picks are being framed — they will appear here as link-outs, never tracking embeds.</p>
           </div>
+        </div>
+        <div class="video-archive" id="videoArchive">
+          <span class="k">The archive</span>
+          <p class="va-empty" id="vaEmpty">Videos rotated off the display are filed here — nothing has left the wall yet.</p>
+          <ul class="va-list" id="vaList" hidden></ul>
         </div>
       </div>
     </section>
