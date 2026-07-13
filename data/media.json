@@ -29,6 +29,16 @@
       "thumb": "assets/media/img/video/agentic-ai-trust.jpg"
     }
   ],
-  "audio": [],
+  "audio": [
+    {
+      "title": "The OWASP Crosswalk for Agentic Applications",
+      "description": "Where the AIUC-1 standard meets the OWASP agentic top ten — which controls map, which gaps remain, and what to do about agent identity, containment, and supply-chain attestation.",
+      "made": "NotebookLM",
+      "date": "2026-07-13",
+      "duration": "22 min",
+      "file": "assets/media/audio/owasp-crosswalk-agentic-apps.m4a",
+      "cover": "assets/media/img/audio/owasp-crosswalk-cover.jpg"
+    }
+  ],
   "gallery": []
 }

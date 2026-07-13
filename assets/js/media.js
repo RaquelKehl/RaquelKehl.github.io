@@ -78,23 +78,50 @@
 
   function renderAudio(items) {
     var list = document.getElementById('audioList');
-    if (!items.length) return;
-    var ph = list.querySelector('.media-placeholder');
-    if (ph) ph.remove();
-    items.forEach(function (a, i) {
-      var row = document.createElement('li');
-      row.className = 'edition-row reveal in';
-      row.innerHTML = '<span class="no" aria-hidden="true"></span>' +
-        '<div class="ebody"><span class="meta"></span><h3></h3><p></p>' +
-        '<audio controls preload="none"></audio></div>';
-      row.querySelector('.no').textContent = ('00' + (i + 1)).slice(-3);
-      row.querySelector('.meta').textContent =
-        fmtDate(a.date) + (a.duration ? ' · ' + a.duration : '');
-      row.querySelector('h3').textContent = a.title;
-      row.querySelector('p').textContent = a.description || '';
-      row.querySelector('audio').src = a.file;
-      list.appendChild(row);
-    });
+    var featured = items.filter(function (a) { return !a.archived; });
+    var archived = items.filter(function (a) { return a.archived; });
+
+    if (featured.length) {
+      var ph = list.querySelector('.media-placeholder');
+      if (ph) ph.remove();
+      featured.forEach(function (a) {
+        var c = document.createElement('article');
+        c.className = 'ao-card reveal in';
+        c.innerHTML = '<div class="ao-frame">' +
+          '<img class="ao-cover" loading="lazy" alt="">' +
+          '<p class="ao-desc"></p>' +
+          '<audio controls preload="none"></audio></div>' +
+          '<div class="ao-bar"><h3></h3><span class="ao-meta"></span></div>';
+        var img = c.querySelector('img');
+        if (a.cover) { img.src = a.cover; } else { img.remove(); }
+        c.querySelector('.ao-desc').textContent = a.description || '';
+        c.querySelector('audio').src = a.file;
+        c.querySelector('h3').textContent = a.title;
+        c.querySelector('.ao-meta').textContent =
+          ['AI-made' + (a.made ? ' · ' + a.made : ''), a.duration, fmtDate(a.date)]
+            .filter(Boolean).join(' · ');
+        list.appendChild(c);
+      });
+    }
+
+    if (archived.length) {
+      var empty = document.getElementById('aaEmpty');
+      var ul = document.getElementById('aaList');
+      if (empty) empty.remove();
+      ul.hidden = false;
+      archived.forEach(function (a) {
+        var li = document.createElement('li');
+        li.innerHTML = '<span class="va-title"></span><span class="va-kind"></span>' +
+          '<a rel="noopener" target="_blank"></a>';
+        li.querySelector('.va-title').textContent = a.title;
+        li.querySelector('.va-kind').textContent =
+          [a.duration, fmtDate(a.date)].filter(Boolean).join(' · ');
+        var link = li.querySelector('a');
+        link.href = a.file;
+        link.textContent = 'listen ↗';
+        ul.appendChild(li);
+      });
+    }
   }
 
   function renderGallery(items) {
