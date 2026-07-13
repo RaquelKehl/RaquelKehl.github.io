@@ -23,7 +23,7 @@
     s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, text, href) {
       if (!/^(https?:\/\/|\/|[\w.-]+\.html)/.test(href)) return text;
       var ext = /^https?:\/\//.test(href);
-      return '<a href="' + href + '"' + (ext ? ' rel="noopener" target="_blank"' : '') + '>' + text + '</a>';
+      return '<a href="' + href + '"' + (ext ? ' rel="noopener noreferrer" target="_blank"' : '') + '>' + text + '</a>';
     });
     return s;
   }

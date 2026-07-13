@@ -411,7 +411,7 @@
         showStatus('ok',
           '<strong>The secure form route is being provisioned.</strong> Until it goes live, write to ' +
           '<a href="mailto:hello@raquelkehl.ch">hello@raquelkehl.ch</a> or reach me on ' +
-          '<a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="noopener" target="_blank">LinkedIn</a> — ' +
+          '<a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="noopener noreferrer" target="_blank">LinkedIn</a> — ' +
           'same inbox, same person.');
         return;
       }

@@ -28,10 +28,10 @@
         var c = document.createElement('article');
         c.className = 'video-card reveal in';
         c.innerHTML = '<span class="vc-label"></span>' +
-          '<a class="vc-cover" rel="noopener" target="_blank"></a>' +
+          '<a class="vc-cover" rel="noopener noreferrer" target="_blank"></a>' +
           '<h3></h3><p></p>' +
           '<div class="vc-meta"><span class="vc-kind"></span><span class="vc-platform"></span></div>' +
-          '<a class="vc-btn" rel="noopener" target="_blank"></a>';
+          '<a class="vc-btn" rel="noopener noreferrer" target="_blank"></a>';
         c.querySelector('.vc-label').textContent = '(' + (v.label || v.platform || 'video') + ')';
         var cover = c.querySelector('.vc-cover');
         cover.href = v.url;
@@ -65,7 +65,7 @@
       archived.forEach(function (v) {
         var li = document.createElement('li');
         li.innerHTML = '<span class="va-title"></span><span class="va-kind"></span>' +
-          '<a rel="noopener" target="_blank"></a>';
+          '<a rel="noopener noreferrer" target="_blank"></a>';
         li.querySelector('.va-title').textContent = v.title;
         li.querySelector('.va-kind').textContent = v.kind || '';
         var a = li.querySelector('a');
@@ -112,7 +112,7 @@
       archived.forEach(function (a) {
         var li = document.createElement('li');
         li.innerHTML = '<span class="va-title"></span><span class="va-kind"></span>' +
-          '<a rel="noopener" target="_blank"></a>';
+          '<a rel="noopener noreferrer" target="_blank"></a>';
         li.querySelector('.va-title').textContent = a.title;
         li.querySelector('.va-kind').textContent =
           [a.duration, fmtDate(a.date)].filter(Boolean).join(' · ');

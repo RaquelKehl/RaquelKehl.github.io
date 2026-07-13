@@ -154,7 +154,7 @@
     if (!sample && /^https:\/\/github\.com\//.test(r.html_url || '')) {
       var a = document.createElement('a');
       a.href = r.html_url;
-      a.rel = 'noopener';
+      a.rel = 'noopener noreferrer';
       a.target = '_blank';
       a.textContent = r.name;
       nm.appendChild(a);

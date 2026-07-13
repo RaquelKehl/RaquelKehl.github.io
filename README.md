@@ -45,6 +45,7 @@ Browser ── HTTPS ──> GitHub Pages (static site, this repository)
 | No JS frameworks | Lighthouse budget, tiny attack surface, no dependency churn |
 | Strict CSP, no inline styles/scripts | XSS resistance by construction, not by audit |
 | Self-hosted fonts & Chart.js | No third-party CDNs — CSP stays `'self'`-only |
+| No analytics, no cookies, `no-referrer` everywhere | Visits collect nothing; outbound clicks never tell third parties where you came from |
 | Serverless edge for all integrations | Zero secrets in the browser, swappable backends |
 | UK English, `lang="en-GB"` | The author insists, correctly |
 | Honest in-development states | Unfinished features are designed content, not broken links (HTTP 418 applies 🫖) |
