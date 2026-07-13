@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://portfolio-api.raquelkehl.workers.dev; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://portfolio-api.raquelkehl.workers.dev; font-src 'self'; connect-src 'self' https://api.github.com https://portfolio-api.raquelkehl.workers.dev; base-uri 'self'; form-action 'self'; object-src 'none'">
 
   <title>Media — Raquel Kehl</title>
   <meta name="description" content="Media by Raquel Kehl Furukawa — talks and videos, AI-generated audio overviews on tech, AI and policy topics, a curated podcast list, and impressions from tech events.">
@@ -64,7 +64,7 @@
       <div class="wrap">
         <a href="#videoSection"><b>Video</b><span>talks &amp; appearances</span><i>3 on display</i></a>
         <a href="#audioSection"><b>Audio</b><span>AI overviews &amp; podcast picks</span><i>001 · on the desk</i></a>
-        <a href="#gallerySection"><b>Gallery</b><span>out in the field</span><i>—</i></a>
+        <a href="#gallerySection"><b>Gallery</b><span>out in the field</span><i>11 on the reel</i></a>
       </div>
     </nav>
 
@@ -156,12 +156,34 @@
       <div class="wrap pt0">
         <div class="eyebrow">Gallery</div>
         <h2 id="gallery-title">Out in the field</h2>
-        <div class="media-grid" id="photoGrid">
-          <div class="teaser media-placeholder">
-            <span class="k">After the next event</span>
-            <h3>Event impressions</h3>
-            <p>Photos from hackathons, community work, and conferences land here — the camera roll is ready.</p>
+        <p class="lede">Impressions from the hackathons, workshops, and community events I’m part of — and the occasional view from off duty. Drag or scroll the reel.</p>
+      </div>
+      <div class="reel" id="photoReel" hidden>
+        <div class="wrap reel-head">
+          <h3 class="reel-title" id="reelTitle">—</h3>
+          <p class="reel-sub"><span class="reel-tag" id="reelTag"></span><a class="reel-link" id="reelLink" rel="noopener noreferrer" target="_blank" hidden>View more →</a></p>
+        </div>
+        <div class="reel-strip" id="reelStrip" tabindex="0" aria-label="Photo reel — scroll horizontally, or use the arrow buttons"></div>
+        <div class="wrap reel-nav">
+          <div class="reel-dots" id="reelDots" aria-hidden="true"></div>
+          <div class="reel-btns">
+            <button class="btn-small" id="reelPrev" type="button" aria-label="Previous photo">←</button>
+            <button class="btn-small" id="reelNext" type="button" aria-label="Next photo">→</button>
           </div>
+        </div>
+      </div>
+      <div class="wrap" id="photoGrid">
+        <div class="teaser media-placeholder">
+          <span class="k">After the next event</span>
+          <h3>Event impressions</h3>
+          <p>Photos from hackathons, community work, and conferences land here — the camera roll is ready.</p>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="media-archive" id="galleryArchive">
+          <span class="k">The photo archive</span>
+          <p class="va-empty" id="gaEmpty">Photos rotated off the reel are filed here — the reel is freshly wound.</p>
+          <ul class="va-list" id="gaList" hidden></ul>
         </div>
       </div>
     </section>

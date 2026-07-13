@@ -9,6 +9,12 @@ workers/.dev.vars
 # ---------- private working documents ----------
 meta_prompt_v2_liquid_copper.md
 
+# ---------- personal photos & private media (NEVER commit) ----------
+# Originals live in img/; web versions deploy as Cloudflare Worker assets
+# from workers/media-assets/ via wrangler — neither belongs in the public repo.
+/img/
+workers/media-assets/
+
 # ---------- local tooling ----------
 .claude/
 .vscode/

@@ -7,6 +7,12 @@ name = "portfolio-api"
 main = "index.js"
 compatibility_date = "2026-06-01"
 
+# ---------- private media, served from the edge ----------
+# Personal photos deploy from local disk via wrangler (directory is
+# gitignored) — they are served by the Worker, never committed to git.
+[assets]
+directory = "./media-assets"
+
 # ---------- KV ----------
 # Create once:  npx wrangler kv namespace create PORTFOLIO_KV
 # then paste the returned id below.

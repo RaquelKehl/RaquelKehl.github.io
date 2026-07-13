@@ -965,10 +965,40 @@ a.game-card:hover{border-color:var(--accent-strong);transform:translateY(-3px)}
 .va-list a{font-family:var(--font-mono);font-size:.76rem;color:var(--accent);
   text-decoration:none}
 .va-list a:hover{text-decoration:underline}
-.media-photos{display:grid;gap:.9rem;grid-template-columns:repeat(2,minmax(0,1fr));
-  margin-top:1.6rem;align-items:start}
-.photo-col{display:flex;flex-direction:column;gap:.9rem;will-change:transform}
-.photo-col:last-child{margin-top:2.4rem}
+/* gallery — the reel: film-strip carousel with sprocket bands */
+.reel{margin-top:1rem}
+.reel-head{min-height:5.2rem;display:flex;flex-direction:column;justify-content:flex-end;
+  padding-bottom:1rem}
+.reel-title{font-family:var(--font-serif);font-weight:380;letter-spacing:0;
+  font-size:clamp(1.35rem,2.6vw,2rem);line-height:1.15}
+.reel-sub{display:flex;align-items:baseline;gap:1.2rem;margin-top:.3rem}
+.reel-tag{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--faint)}
+.reel-link{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);
+  text-decoration:none}
+.reel-link:hover{text-decoration:underline}
+.reel-strip{display:flex;gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:1.7rem max(calc((100vw - var(--wrap-max))/2 + clamp(1.25rem,4vw,2.5rem)), 1.25rem);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  scrollbar-width:none;
+  /* sprocket holes, top and bottom — the film-strip signature */
+  background:
+    repeating-linear-gradient(90deg,transparent 0 14px,var(--line) 14px 22px,transparent 22px 36px) top/100% 8px no-repeat,
+    repeating-linear-gradient(90deg,transparent 0 14px,var(--line) 14px 22px,transparent 22px 36px) bottom/100% 8px no-repeat,
+    var(--surface-2)}
+.reel-strip::-webkit-scrollbar{display:none}
+.frame{flex:0 0 auto;width:min(34rem,78vw);margin:0;scroll-snap-align:center;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-ctl);
+  padding:.55rem;transition:border-color .2s ease;will-change:transform}
+.frame img{width:100%;height:clamp(14rem,38vw,22rem);object-fit:cover;display:block;
+  border-radius:calc(var(--radius-ctl) - 3px)}
+.reel-nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding-top:1rem}
+.reel-dots{display:flex;gap:.45rem;flex-wrap:wrap}
+.reel-dot{width:.55rem;height:.55rem;border-radius:50%;border:1px solid var(--faint);
+  background:transparent;cursor:pointer;padding:0;transition:background .2s,border-color .2s}
+.reel-dot.on{background:var(--accent);border-color:var(--accent)}
+.reel-btns{display:flex;gap:.5rem}
 .media-photos figure{margin:0;background:var(--surface);border:1px solid var(--line);
   border-radius:var(--radius-card);overflow:hidden}
 .media-photos img{width:100%;height:10.5rem;object-fit:cover;display:block}
