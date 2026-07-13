@@ -40,5 +40,17 @@
       "cover": "assets/media/img/audio/owasp-crosswalk-cover.jpg"
     }
   ],
-  "gallery": []
+  "gallery": [
+    {"file": "https://portfolio-api.raquelkehl.workers.dev/img/gallery/microsoft-copilot-week.jpg", "title": "Microsoft Copilot Week", "year": "2024", "tag": "industry event"},
+    {"file": "https://portfolio-api.raquelkehl.workers.dev/img/gallery/bsc-graduation.jpg", "title": "BSc graduation — Wirtschaftsinformatik, OST", "year": "2024", "tag": "milestone", "url": "https://www.ost.ch/de/studium/wirtschaft/bachelor-wirtschaftsinformatik"},
+    {"file": "https://portfolio-api.raquelkehl.workers.dev/img/gallery/open-data-hack-sg.jpg", "title": "Open Data Hack St.Gallen", "year": "2023", "tag": "hackathon", "url": "https://www.ost.ch/de/event/open-data-hack-stgallen-2023"},
+    {"file": "https://portfolio-api.raquelkehl.workers.dev/img/gallery/hackzurich.jpg", "title": "HackZurich", "year": "2023", "tag": "hackathon", "url": "https://hackzurich.com/"},
+    {"file": "https://portfolio-api.raquelkehl.workers.dev/img/gallery/lernlabor-lego-play.jpg", "title": "Lernlabor — Digitalisieren hands-on, with Lego Serious Play", "year": "2023", "tag": "workshop"},
+    {"file": "https://portfolio-api.raquelkehl.workers.dev/img/gallery/startup-nights.jpg", "title": "Startup Nights, Winterthur", "year": "2022", "tag": "community", "url": "https://www.startup-nights.ch/"},
+    {"file": "https://portfolio-api.raquelkehl.workers.dev/img/gallery/digital-festival-zurich.jpg", "title": "Digital Festival Zürich", "year": "2022", "tag": "industry event", "url": "https://digitalfestival.ch/"},
+    {"file": "https://portfolio-api.raquelkehl.workers.dev/img/gallery/fit4jobs-jci.jpg", "title": "Fit4Jobs — with JCI", "year": "2022", "tag": "community", "url": "https://www.jcibz.ch/"},
+    {"file": "https://portfolio-api.raquelkehl.workers.dev/img/gallery/conako-jci.jpg", "title": "CONAKO — JCI national convention", "year": "2021", "tag": "community", "url": "https://www.jcibz.ch/"},
+    {"file": "https://portfolio-api.raquelkehl.workers.dev/img/gallery/hiking-oeschinensee.jpg", "title": "Hiking above Oeschinensee", "year": "2020", "tag": "off duty"},
+    {"file": "https://portfolio-api.raquelkehl.workers.dev/img/gallery/skydiving.jpg", "title": "Skydiving", "tag": "off duty"}
+  ]
 }

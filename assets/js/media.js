@@ -124,56 +124,112 @@
     }
   }
 
+  /* gallery — film-strip reel: snap-scrolling frames, active title, dots.
+     CSSOM only (strict CSP); depth effect off under prefers-reduced-motion. */
   function renderGallery(items) {
-    var grid = document.getElementById('photoGrid');
-    if (!items.length) return;
-    var ph = grid.querySelector('.media-placeholder');
-    if (ph) ph.remove();
-    grid.classList.remove('media-grid');
-    grid.classList.add('media-photos');
-    var cols = [0.05, 0.12].map(function (speed) {
-      var c = document.createElement('div');
-      c.className = 'photo-col';
-      c.setAttribute('data-drift', String(speed));
-      grid.appendChild(c);
-      return c;
-    });
-    items.forEach(function (g, i) {
-      var fig = document.createElement('figure');
-      var img = document.createElement('img');
-      img.loading = 'lazy';
-      img.src = g.file;
-      img.alt = g.caption || g.title || 'Photo';
-      var cap = document.createElement('figcaption');
-      cap.textContent = g.caption || g.title || '';
-      fig.appendChild(img);
-      fig.appendChild(cap);
-      cols[i % 2].appendChild(fig);
-    });
-    enableDrift(cols);
-  }
+    var featured = items.filter(function (g) { return !g.archived; });
+    var archived = items.filter(function (g) { return g.archived; });
 
-  /* gallery drift — columns slide at slightly different rates on scroll.
-     CSSOM only (strict CSP); disabled under prefers-reduced-motion. */
-  function enableDrift(cols) {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var section = document.getElementById('gallerySection');
-    if (!section) return;
-    var ticking = false;
-    function update() {
-      ticking = false;
-      var r = section.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) return;
-      var progress = r.top - window.innerHeight / 2;
-      cols.forEach(function (c) {
-        var speed = parseFloat(c.getAttribute('data-drift')) || 0;
-        c.style.transform = 'translate3d(0,' + (-progress * speed).toFixed(1) + 'px,0)';
+    if (featured.length) {
+      var ph = document.querySelector('#photoGrid .media-placeholder');
+      if (ph) ph.remove();
+      var reel = document.getElementById('photoReel');
+      reel.hidden = false;
+      var strip = document.getElementById('reelStrip');
+      var dots = document.getElementById('reelDots');
+      var titleEl = document.getElementById('reelTitle');
+      var tagEl = document.getElementById('reelTag');
+      var linkEl = document.getElementById('reelLink');
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var frames = [], active = -1;
+
+      featured.forEach(function (g, i) {
+        var fig = document.createElement('figure');
+        fig.className = 'frame';
+        var img = document.createElement('img');
+        img.loading = i < 2 ? 'eager' : 'lazy';
+        img.src = g.file;
+        img.alt = g.title || 'Photo';
+        fig.appendChild(img);
+        strip.appendChild(fig);
+        frames.push(fig);
+        var d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'reel-dot';
+        d.setAttribute('tabindex', '-1');
+        d.addEventListener('click', function () { goTo(i); });
+        dots.appendChild(d);
+      });
+
+      function setActive(i) {
+        if (i === active) return;
+        active = i;
+        var g = featured[i];
+        titleEl.textContent = g.title || '';
+        tagEl.textContent = [g.year, g.tag].filter(Boolean).join(' · ');
+        if (g.url) { linkEl.href = g.url; linkEl.hidden = false; }
+        else { linkEl.hidden = true; }
+        var ds = dots.children;
+        for (var k = 0; k < ds.length; k++) ds[k].classList.toggle('on', k === i);
+      }
+
+      function update() {
+        ticking = false;
+        var mid = strip.getBoundingClientRect().left + strip.clientWidth / 2;
+        var best = 0, bestD = Infinity;
+        frames.forEach(function (f, i) {
+          var r = f.getBoundingClientRect();
+          var d = Math.abs(r.left + r.width / 2 - mid);
+          if (d < bestD) { bestD = d; best = i; }
+          if (!reduced) {
+            var t = Math.min(1, d / strip.clientWidth);
+            f.style.transform = 'scale(' + (1 - t * 0.08).toFixed(3) + ')';
+            f.style.opacity = String(1 - t * 0.35);
+          }
+        });
+        setActive(best);
+      }
+      var ticking = false;
+      strip.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      window.addEventListener('resize', update);
+
+      function goTo(i) {
+        i = Math.max(0, Math.min(frames.length - 1, i));
+        var f = frames[i];
+        strip.scrollTo({
+          left: f.offsetLeft - (strip.clientWidth - f.offsetWidth) / 2,
+          behavior: reduced ? 'auto' : 'smooth'
+        });
+        setActive(i); /* update the head immediately — don't trail the scroll */
+      }
+      document.getElementById('reelPrev').addEventListener('click', function () { goTo(active - 1); });
+      document.getElementById('reelNext').addEventListener('click', function () { goTo(active + 1); });
+      strip.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { goTo(active - 1); e.preventDefault(); }
+        if (e.key === 'ArrowRight') { goTo(active + 1); e.preventDefault(); }
+      });
+      update();
+    }
+
+    if (archived.length) {
+      var empty = document.getElementById('gaEmpty');
+      var ul = document.getElementById('gaList');
+      if (empty) empty.remove();
+      ul.hidden = false;
+      archived.forEach(function (g) {
+        var li = document.createElement('li');
+        li.innerHTML = '<span class="va-title"></span><span class="va-kind"></span>' +
+          '<a rel="noopener noreferrer" target="_blank"></a>';
+        li.querySelector('.va-title').textContent = g.title;
+        li.querySelector('.va-kind').textContent = [g.year, g.tag].filter(Boolean).join(' · ');
+        var a = li.querySelector('a');
+        a.href = g.url || g.file;
+        a.textContent = 'view ↗';
+        ul.appendChild(li);
       });
     }
-    window.addEventListener('scroll', function () {
-      if (!ticking) { ticking = true; requestAnimationFrame(update); }
-    }, { passive: true });
-    update();
   }
 
   fetch('data/media.json')
