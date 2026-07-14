@@ -348,8 +348,7 @@
       name: document.getElementById('cf-name'),
       email: document.getElementById('cf-email'),
       topic: document.getElementById('cf-topic'),
-      message: document.getElementById('cf-message'),
-      consent: document.getElementById('cf-consent')
+      message: document.getElementById('cf-message')
     };
     function setError(field, msg) {
       var err = document.getElementById('err-' + field);
@@ -380,7 +379,6 @@
       var msg = F.message.value.trim();
       if (!msg) bad('message', 'Please enter a message.');
       else if (msg.length < 20) bad('message', 'Please add a little more context so I can respond properly.');
-      if (!F.consent.checked) bad('consent', 'Please confirm that I may use your details to reply.');
 
       if (firstBad) { firstBad.focus(); return false; }
       return true;

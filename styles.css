@@ -847,9 +847,6 @@ a.game-card:hover{border-color:var(--accent-strong);transform:translateY(-3px)}
 .field-error{font-size:.82rem;color:var(--error);font-weight:600;margin:.35rem 0 0}
 .field input[aria-invalid="true"],.field textarea[aria-invalid="true"],
 .field select[aria-invalid="true"]{border-color:var(--error)}
-.field-consent label{display:flex;gap:.65rem;align-items:flex-start;
-  font:400 .88rem var(--font-body);color:var(--muted);cursor:pointer}
-.field-consent input{width:auto;margin-top:.2rem;accent-color:var(--accent-500);flex-shrink:0}
 .btn[aria-busy="true"]{display:inline-flex;align-items:center;gap:.55rem;opacity:.85;cursor:progress}
 .robot{width:1.15em;height:1.15em;display:inline-block;flex:0 0 auto;vertical-align:-.2em}
 .robot svg{width:100%;height:100%;display:block}
