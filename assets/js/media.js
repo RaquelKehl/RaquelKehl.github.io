@@ -124,93 +124,45 @@
     }
   }
 
-  /* gallery — film-strip reel: snap-scrolling frames, active title, dots.
-     CSSOM only (strict CSP); depth effect off under prefers-reduced-motion. */
+  /* gallery — instagram-style grid: uniform square tiles, quiet captions,
+     the whole tile links out when the entry has a url. */
   function renderGallery(items) {
     var featured = items.filter(function (g) { return !g.archived; });
     var archived = items.filter(function (g) { return g.archived; });
 
     if (featured.length) {
-      var ph = document.querySelector('#photoGrid .media-placeholder');
+      var wrap = document.getElementById('photoGrid');
+      var ph = wrap.querySelector('.media-placeholder');
       if (ph) ph.remove();
-      var reel = document.getElementById('photoReel');
-      reel.hidden = false;
-      var strip = document.getElementById('reelStrip');
-      var dots = document.getElementById('reelDots');
-      var titleEl = document.getElementById('reelTitle');
-      var tagEl = document.getElementById('reelTag');
-      var linkEl = document.getElementById('reelLink');
-      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var frames = [], active = -1;
-
+      var grid = document.createElement('div');
+      grid.className = 'ig-grid';
       featured.forEach(function (g, i) {
-        var fig = document.createElement('figure');
-        fig.className = 'frame';
+        var linked = safeUrl(g.url);
+        var tile = document.createElement(linked ? 'a' : 'figure');
+        tile.className = 'ig-tile';
+        if (linked) {
+          tile.href = linked;
+          tile.rel = 'noopener noreferrer';
+          tile.target = '_blank';
+          tile.setAttribute('aria-label', (g.title || 'Photo') + ' — view more');
+        }
         var img = document.createElement('img');
-        img.loading = i < 2 ? 'eager' : 'lazy';
+        img.loading = i < 3 ? 'eager' : 'lazy';
         img.src = g.file;
         img.alt = g.title || 'Photo';
-        fig.appendChild(img);
-        strip.appendChild(fig);
-        frames.push(fig);
-        var d = document.createElement('button');
-        d.type = 'button';
-        d.className = 'reel-dot';
-        d.setAttribute('tabindex', '-1');
-        d.addEventListener('click', function () { goTo(i); });
-        dots.appendChild(d);
+        tile.appendChild(img);
+        var cap = document.createElement('span');
+        cap.className = 'ig-cap';
+        var b = document.createElement('b');
+        b.textContent = (g.title || '') + (linked ? ' ↗' : '');
+        var it = document.createElement('i');
+        it.textContent = [g.year, g.tag].filter(Boolean).join(' · ');
+        cap.appendChild(b);
+        cap.appendChild(it);
+        tile.appendChild(cap);
+        grid.appendChild(tile);
       });
-
-      function setActive(i) {
-        if (i === active) return;
-        active = i;
-        var g = featured[i];
-        titleEl.textContent = g.title || '';
-        tagEl.textContent = [g.year, g.tag].filter(Boolean).join(' · ');
-        if (g.url) { linkEl.href = g.url; linkEl.hidden = false; }
-        else { linkEl.hidden = true; }
-        var ds = dots.children;
-        for (var k = 0; k < ds.length; k++) ds[k].classList.toggle('on', k === i);
-      }
-
-      function update() {
-        ticking = false;
-        var mid = strip.getBoundingClientRect().left + strip.clientWidth / 2;
-        var best = 0, bestD = Infinity;
-        frames.forEach(function (f, i) {
-          var r = f.getBoundingClientRect();
-          var d = Math.abs(r.left + r.width / 2 - mid);
-          if (d < bestD) { bestD = d; best = i; }
-          if (!reduced) {
-            var t = Math.min(1, d / strip.clientWidth);
-            f.style.transform = 'scale(' + (1 - t * 0.08).toFixed(3) + ')';
-            f.style.opacity = String(1 - t * 0.35);
-          }
-        });
-        setActive(best);
-      }
-      var ticking = false;
-      strip.addEventListener('scroll', function () {
-        if (!ticking) { ticking = true; requestAnimationFrame(update); }
-      }, { passive: true });
-      window.addEventListener('resize', update);
-
-      function goTo(i) {
-        i = Math.max(0, Math.min(frames.length - 1, i));
-        var f = frames[i];
-        strip.scrollTo({
-          left: f.offsetLeft - (strip.clientWidth - f.offsetWidth) / 2,
-          behavior: reduced ? 'auto' : 'smooth'
-        });
-        setActive(i); /* update the head immediately — don't trail the scroll */
-      }
-      document.getElementById('reelPrev').addEventListener('click', function () { goTo(active - 1); });
-      document.getElementById('reelNext').addEventListener('click', function () { goTo(active + 1); });
-      strip.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowLeft') { goTo(active - 1); e.preventDefault(); }
-        if (e.key === 'ArrowRight') { goTo(active + 1); e.preventDefault(); }
-      });
-      update();
+      wrap.appendChild(grid);
     }
 
     if (archived.length) {
