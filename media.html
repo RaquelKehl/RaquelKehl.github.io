@@ -59,12 +59,29 @@
       </div>
     </div>
 
+    <section aria-label="Development status">
+      <div class="wrap pt0">
+        <div class="dev-block reveal">
+          <span class="dev-badge"><span class="pulse-dot"></span>Media library · being assembled</span>
+          <h3>A library, filling shelf by <span class="serif-accent">shelf</span></h3>
+          <p>This section is being stocked. The shelving is built — video, audio, and a gallery render themselves the moment content lands — and the first material is in preparation.</p>
+          <ul class="dev-list">
+            <li><b>Talks &amp; videos</b> — linked out to YouTube, never embedded: no tracking scripts enter this site</li>
+            <li><b>AI audio overviews</b> — podcast-style deep dives on tech, IT, AI, and policy topics, AI-generated from curated sources — self-hosted and playable right here, next to a curated list of external podcasts</li>
+            <li><b>Event impressions</b> — photos from hackathons, community work, and conferences</li>
+          </ul>
+          <span class="dev-how">contract: drop a file in assets/media/ + one entry in data/media.json → it’s on the shelf</span>
+          <span class="dev-how">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can, but don’t ask me for coffee just yet.</span>
+        </div>
+      </div>
+    </section>
+
     <!-- ═══ type selector — one gesture, three rooms ═══ -->
     <nav class="media-select" aria-label="Media types">
       <div class="wrap">
         <a href="#videoSection"><b>Video</b><span>talks &amp; appearances</span><i>3 on display</i></a>
         <a href="#audioSection"><b>Audio</b><span>AI overviews &amp; podcast picks</span><i>001 · on the desk</i></a>
-        <a href="#gallerySection"><b>Gallery</b><span>out in the field</span><i>11 on the reel</i></a>
+        <a href="#gallerySection"><b>Gallery</b><span>out in the field</span><i>11 on the wall</i></a>
       </div>
     </nav>
 
@@ -156,21 +173,7 @@
       <div class="wrap pt0">
         <div class="eyebrow">Gallery</div>
         <h2 id="gallery-title">Out in the field</h2>
-        <p class="lede">Impressions from the hackathons, workshops, and community events I’m part of — and the occasional view from off duty. Drag or scroll the reel.</p>
-      </div>
-      <div class="reel" id="photoReel" hidden>
-        <div class="wrap reel-head">
-          <h3 class="reel-title" id="reelTitle">—</h3>
-          <p class="reel-sub"><span class="reel-tag" id="reelTag"></span><a class="reel-link" id="reelLink" rel="noopener noreferrer" target="_blank" hidden>View more →</a></p>
-        </div>
-        <div class="reel-strip" id="reelStrip" tabindex="0" aria-label="Photo reel — scroll horizontally, or use the arrow buttons"></div>
-        <div class="wrap reel-nav">
-          <div class="reel-dots" id="reelDots" aria-hidden="true"></div>
-          <div class="reel-btns">
-            <button class="btn-small" id="reelPrev" type="button" aria-label="Previous photo">←</button>
-            <button class="btn-small" id="reelNext" type="button" aria-label="Next photo">→</button>
-          </div>
-        </div>
+        <p class="lede">Impressions from the hackathons, workshops, and community events I’m part of — and the occasional view from off duty. A tile with an arrow links to the event.</p>
       </div>
       <div class="wrap" id="photoGrid">
         <div class="teaser media-placeholder">
@@ -182,25 +185,8 @@
       <div class="wrap">
         <div class="media-archive" id="galleryArchive">
           <span class="k">The photo archive</span>
-          <p class="va-empty" id="gaEmpty">Photos rotated off the reel are filed here — the reel is freshly wound.</p>
+          <p class="va-empty" id="gaEmpty">Photos rotated off the wall are filed here — nothing has come down yet.</p>
           <ul class="va-list" id="gaList" hidden></ul>
-        </div>
-      </div>
-    </section>
-
-    <section aria-label="Development status">
-      <div class="wrap pt0">
-        <div class="dev-block reveal">
-          <span class="dev-badge"><span class="pulse-dot"></span>Media library · being assembled</span>
-          <h3>A library, filling shelf by <span class="serif-accent">shelf</span></h3>
-          <p>This section is being stocked. The shelving is built — video, audio, and a gallery render themselves the moment content lands — and the first material is in preparation.</p>
-          <ul class="dev-list">
-            <li><b>Talks &amp; videos</b> — linked out to YouTube, never embedded: no tracking scripts enter this site</li>
-            <li><b>AI audio overviews</b> — podcast-style deep dives on tech, IT, AI, and policy topics, AI-generated from curated sources — self-hosted and playable right here, next to a curated list of external podcasts</li>
-            <li><b>Event impressions</b> — photos from hackathons, community work, and conferences</li>
-          </ul>
-          <span class="dev-how">contract: drop a file in assets/media/ + one entry in data/media.json → it’s on the shelf</span>
-          <span class="dev-how">HTTP 418 · I’m a teapot 🫖 — brewing as fast as I can, but don’t ask me for coffee just yet.</span>
         </div>
       </div>
     </section>
