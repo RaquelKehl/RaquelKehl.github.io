@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://raquelkehl.ch/sitemap.xml
+Sitemap: https://raquelkehl.ch/sitemap-index.xml
