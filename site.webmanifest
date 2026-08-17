@@ -1,0 +1,29 @@
+{
+  "name": "Raquel Kehl — Digital Business Card",
+  "short_name": "Raquel Kehl",
+  "description": "AI Strategy, Governance & IT Consultant. Complex environments. Clear direction.",
+  "start_url": "/card",
+  "display": "standalone",
+  "background_color": "#0e1626",
+  "theme_color": "#0e1626",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
