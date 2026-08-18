@@ -1,11 +1,21 @@
 /* ═══════════════════════════════════════════════════════════════
    PORTFOLIO API — Cloudflare Worker (workers/index.js)
-   One Worker, four routes, zero secrets in the browser:
+   One Worker, six routes, zero secrets in the browser:
 
      GET  /api/github   — GitHub repo stats, KV-cached (10 min)
      POST /api/contact  — validated relay to Formspree
      GET  /api/agents   — CrewAI pipeline status from KV
      POST /api/webhook  — HMAC-verified pipeline result ingest
+     POST /api/hit      — aggregate page-view counter (see below)
+     GET  /api/stats    — aggregated view stats, KV-cached (5 min)
+
+   Page-view counting is deliberately identity-free:
+     · stored data is integer counters only — pv:{date}:{path} and
+       cty:{date}:{country} — nothing per-visitor, ever
+     · no cookies, no IP addresses (raw or hashed), no user agents
+       persisted; the UA is inspected for bot filtering and discarded
+     · requests carrying Sec-GPC or DNT are not counted at all
+     · counters expire after ~400 days
 
    Bindings (wrangler.toml): PORTFOLIO_KV (KV), RATE_LIMITER
    Secrets (wrangler secret put): FORMSPREE_ENDPOINT, WEBHOOK_SECRET,
@@ -17,6 +27,18 @@ const GITHUB_CACHE_KEY = 'github-repos';
 const GITHUB_CACHE_TTL = 600;            // seconds
 const AGENTS_KEY = 'agents-status';
 const MAX_BODY_BYTES = 32 * 1024;
+
+const STATS_CACHE_KEY = 'stats-cache';
+const STATS_CACHE_TTL = 300;             // seconds
+const STATS_DAYS = 30;                   // window served by /api/stats
+const HIT_TTL = 400 * 86400;             // counters expire after ~400 days
+// only pages that actually ship the beacon — anything else is dropped,
+// so stray or crafted paths can never mint KV keys
+const TRACKED_PATHS = [
+  '/', '/about.html', '/agents.html', '/blog.html', '/contact.html',
+  '/dashboard.html', '/game.html', '/media.html', '/pipeline.html',
+  '/portfolio.html', '/usecases.html'
+];
 
 export default {
   async fetch(request, env, ctx) {
@@ -52,6 +74,12 @@ export default {
       }
       if (url.pathname === '/api/webhook' && request.method === 'POST') {
         return await handleWebhook(request, env, cors);
+      }
+      if (url.pathname === '/api/hit' && request.method === 'POST') {
+        return await handleHit(request, env, cors, ctx);
+      }
+      if (url.pathname === '/api/stats' && request.method === 'GET') {
+        return await handleStats(env, cors, ctx);
       }
       return json({ error: 'not_found' }, 404, cors);
     } catch (err) {
@@ -219,6 +247,120 @@ async function handleWebhook(request, env, cors) {
 
   await env.PORTFOLIO_KV.put(AGENTS_KEY, JSON.stringify(payload));
   return json({ ok: true, stored: payload.agents.length }, 200, cors);
+}
+
+/* ---------- POST /api/hit ----------
+   Increments an aggregate page-view counter. Counts pages, never
+   people: the only thing written to KV is an integer per path per
+   day (plus one per country per day). GPC/DNT means no count. */
+async function handleHit(request, env, cors, ctx) {
+  // an explicit privacy signal ends the story here — nothing is counted
+  if (request.headers.get('Sec-GPC') === '1' || request.headers.get('DNT') === '1') {
+    return json({ ok: true, counted: false }, 200, cors);
+  }
+
+  // beacons are browser-only; require an allow-listed Origin
+  const origin = request.headers.get('Origin') || '';
+  const allowed = (env.ALLOWED_ORIGINS || '')
+    .split(',').map(s => s.trim()).filter(Boolean);
+  if (!allowed.includes(origin)) return json({ error: 'forbidden' }, 403, cors);
+
+  // inspect the user agent to skip obvious bots, then discard it
+  const ua = request.headers.get('User-Agent') || '';
+  if (!ua || /bot|crawl|spider|slurp|headless|lighthouse|preview|fetch|monitor|curl|wget|python|node/i.test(ua)) {
+    return json({ ok: true, counted: false }, 200, cors);
+  }
+
+  let path = '';
+  try {
+    const body = JSON.parse(await request.text());
+    path = String(body.path || '');
+  } catch {
+    return json({ error: 'invalid_json' }, 400, cors);
+  }
+  path = path.toLowerCase().split(/[?#]/)[0];
+  if (path === '/index.html' || path === '') path = '/';
+  if (!TRACKED_PATHS.includes(path)) {
+    return json({ ok: true, counted: false }, 200, cors);
+  }
+
+  const day = new Date().toISOString().slice(0, 10);   // UTC day
+  const country = String(request.cf && request.cf.country || '');
+
+  // read-modify-write per-day counters; KV is last-write-wins, which
+  // at this traffic level is an acceptable trade for zero identifiers
+  ctx.waitUntil((async () => {
+    await bumpCounter(env, 'pv:' + day + ':' + path);
+    if (/^[A-Z]{2}$/.test(country)) {
+      await bumpCounter(env, 'cty:' + day + ':' + country);
+    }
+  })());
+  return json({ ok: true, counted: true }, 200, cors);
+}
+
+async function bumpCounter(env, key) {
+  const current = parseInt(await env.PORTFOLIO_KV.get(key) || '0', 10);
+  await env.PORTFOLIO_KV.put(key, String(current + 1), { expirationTtl: HIT_TTL });
+}
+
+/* ---------- GET /api/stats ---------- */
+async function handleStats(env, cors, ctx) {
+  const cached = await env.PORTFOLIO_KV.get(STATS_CACHE_KEY, 'json');
+  if (cached) return json(cached, 200, cors);
+
+  const days = [];
+  const now = Date.now();
+  for (let i = STATS_DAYS - 1; i >= 0; i--) {
+    days.push(new Date(now - i * 86400000).toISOString().slice(0, 10));
+  }
+
+  // per-day prefix lists keep reads proportional to keys that exist
+  const daily = [];
+  const pageTotals = {};
+  const countryTotals = {};
+  for (const day of days) {
+    const [pv, cty] = await Promise.all([
+      readCounters(env, 'pv:' + day + ':'),
+      readCounters(env, 'cty:' + day + ':')
+    ]);
+    let dayViews = 0;
+    for (const [path, n] of pv) {
+      dayViews += n;
+      pageTotals[path] = (pageTotals[path] || 0) + n;
+    }
+    for (const [cc, n] of cty) {
+      countryTotals[cc] = (countryTotals[cc] || 0) + n;
+    }
+    daily.push({ date: day, views: dayViews });
+  }
+
+  const topOf = (totals, label) => Object.entries(totals)
+    .sort((a, b) => b[1] - a[1]).slice(0, 8)
+    .map(([k, v]) => ({ [label]: k, views: v }));
+
+  const payload = {
+    source: 'edge-counters',
+    generated: new Date().toISOString(),
+    range: { from: days[0], to: days[days.length - 1], days: STATS_DAYS },
+    totals: { views: daily.reduce((s, d) => s + d.views, 0) },
+    daily,
+    pages: topOf(pageTotals, 'path'),
+    countries: topOf(countryTotals, 'country')
+  };
+
+  ctx.waitUntil(env.PORTFOLIO_KV.put(
+    STATS_CACHE_KEY, JSON.stringify(payload), { expirationTtl: STATS_CACHE_TTL }
+  ));
+  return json(payload, 200, cors);
+}
+
+// list a prefix, fetch each counter, return [suffix, count] pairs
+async function readCounters(env, prefix) {
+  const listed = await env.PORTFOLIO_KV.list({ prefix });
+  return Promise.all(listed.keys.map(async k => [
+    k.name.slice(prefix.length),
+    parseInt(await env.PORTFOLIO_KV.get(k.name) || '0', 10)
+  ]));
 }
 
 async function verifyHmac(bodyBuffer, signatureHex, secret) {

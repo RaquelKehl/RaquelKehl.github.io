@@ -57,11 +57,13 @@
   ];
 
   var charts = [];
+  var statsData = null;   /* set once /api/stats answers; used on theme rebuilds */
 
   function buildCharts() {
     if (typeof Chart === 'undefined') return;
     charts.forEach(function (c) { c.destroy(); });
     charts = [];
+    buildViewsChart();
 
     var p = palette();
     Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
@@ -131,6 +133,77 @@
         }
       }));
     }
+  }
+
+  /* ---------- site signals: aggregate page views ---------- */
+  function buildViewsChart() {
+    if (typeof Chart === 'undefined' || !statsData) return;
+    var el = document.getElementById('viewsChart');
+    if (!el) return;
+    var p = palette();
+    charts.push(new Chart(el, {
+      type: 'line',
+      data: {
+        labels: statsData.daily.map(function (d) { return d.date.slice(5); }),
+        datasets: [{
+          label: 'Page views',
+          data: statsData.daily.map(function (d) { return d.views; }),
+          borderColor: p.c1,
+          backgroundColor: withAlpha(p.c1, .12),
+          borderWidth: 2,
+          fill: true,
+          tension: .3,
+          pointRadius: 0,
+          pointHitRadius: 8
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: p.tick, maxTicksLimit: 8, font: { size: 10 } } },
+          y: { beginAtZero: true, grid: { color: p.grid }, ticks: { color: p.tick, precision: 0, maxTicksLimit: 5 } }
+        }
+      }
+    }));
+  }
+
+  function loadStats() {
+    var box = document.getElementById('signalStats');
+    var src = document.getElementById('statsSource');
+    if (!box) return;
+    var cfg = window.SITE_CONFIG || {};
+    if (!cfg.workerBaseUrl) { src.textContent = 'source: not configured'; return; }
+
+    function tile(label, value) {
+      var d = document.createElement('div');
+      d.className = 'sig';
+      d.innerHTML = '<span class="sig-num"></span><span class="sig-label"></span>';
+      d.querySelector('.sig-num').textContent = value;
+      d.querySelector('.sig-label').textContent = label;
+      return d;
+    }
+
+    fetch(cfg.workerBaseUrl.replace(/\/+$/, '') + '/api/stats')
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (data) {
+        statsData = data;
+        src.textContent = 'source: edge counters · aggregate · cached 5 min';
+        box.appendChild(tile('views · 30 days', String(data.totals.views)));
+        if (data.pages.length) {
+          box.appendChild(tile('busiest page', data.pages[0].path));
+        }
+        if (data.countries.length) {
+          box.appendChild(tile('top country', data.countries[0].country));
+        }
+        box.appendChild(tile('identifiers stored', '0'));
+        buildViewsChart();
+      })
+      .catch(function () {
+        src.textContent = 'source: unavailable — counters warming up';
+        box.innerHTML = '<div class="empty">Aggregate counts are not available right now. Nothing else is collected, so there is nothing else to show.</div>';
+      });
   }
 
   /* rebuild charts when the theme flips, after the token transition */
@@ -293,6 +366,7 @@
     buildCharts();
     loadGitHub();
     loadAgents();
+    loadStats();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);

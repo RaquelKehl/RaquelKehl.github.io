@@ -488,6 +488,15 @@ section{padding:var(--section-pad) 0}
   background:var(--chart-1);margin-right:.4rem}
 .tl-legend i.edu{background:var(--chart-2)}
 
+/* site signals — aggregate page-view panel */
+.chart-box.short{height:11rem}
+.signal-stats{display:flex;flex-wrap:wrap;gap:.6rem 2.2rem;margin-bottom:1.1rem}
+.signal-stats .sig{display:flex;flex-direction:column;gap:.15rem}
+.signal-stats .sig-num{font:600 1.5rem var(--font-body);color:var(--text)}
+.signal-stats .sig-label{font-family:var(--font-mono);font-size:.66rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.signal-note{margin-top:1rem;font-size:.8rem;color:var(--muted);max-width:64ch}
+
 /* agent + repo cards inside panels */
 .mini-list{display:flex;flex-direction:column;gap:.6rem}
 .mini{border:1px solid var(--line);border-radius:var(--radius-ctl);

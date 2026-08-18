@@ -534,4 +534,20 @@
     /* drift in quietly once the page has settled */
     setTimeout(function () { el.classList.add('show'); }, reduced ? 300 : 1500);
   })();
+
+  /* ═══════════ page-view beacon — counts pages, never people ═══════════
+     Fire-and-forget POST of the path alone; the Worker keeps aggregate
+     per-day counters and nothing else. Respects GPC/DNT before sending
+     (the Worker checks the headers again server-side). */
+  (function () {
+    if (navigator.globalPrivacyControl || navigator.doNotTrack === '1') return;
+    if (!SITE_CONFIG.workerBaseUrl) return;
+    try {
+      fetch(SITE_CONFIG.workerBaseUrl.replace(/\/+$/, '') + '/api/hit', {
+        method: 'POST',
+        body: JSON.stringify({ path: location.pathname }),
+        keepalive: true
+      }).catch(function () { /* silent by design */ });
+    } catch (e) { /* silent by design */ }
+  })();
 })();
