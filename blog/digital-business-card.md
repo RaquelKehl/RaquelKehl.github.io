@@ -8,7 +8,7 @@
 
 Professional networking still begins with a physical moment: a conversation, a handshake, a card changing hands. But the paper card is a dead end — static data, no depth, no way to update it once it leaves your hand. The common fix, third-party "smart card" platforms, solves the wrong problem: it hands your professional identity, and your contacts' data, to someone else's analytics pipeline.
 
-This project set out to build the bridge properly. A physical NFC card that, when tapped or scanned, opens a digital identity layer I own end to end: **raquelkehl.ch/card**. One URL on the chip, nothing else. The website remains the single source of truth — contact details can evolve forever without reprinting a single card — and the entire experience runs with zero cookies, zero trackers, zero third-party requests.
+This project set out to build the bridge properly. A physical NFC card that, when tapped or scanned, opens a digital identity layer I own end to end — one URL on the chip, nothing else. The website remains the single source of truth — contact details can evolve forever without reprinting a single card — and the entire experience runs with zero cookies, zero trackers, zero third-party requests.
 
 The goal was never "a contact page". It was an identity layer that embodies my positioning — *Complex environments. Clear direction.* — in its very architecture: complexity rendered legible, privacy engineered in rather than promised, and a design language that treats restraint as a feature.
 
@@ -42,7 +42,7 @@ Privacy is architectural, not cosmetic: the phone number, for instance, exists o
 
 - **Tap-to-share**: NFC tap or QR scan opens the card directly; the physical layer never needs reprogramming
 - **One-tap vCard**: a spec-clean vCard download, staged through the tap-moment confirmation flow — the OS save dialog appears as the *consequence* of choosing "Save contact", mirroring the physical exchange
-- **Structured routing**: `/card` as the identity layer, `/privacy` for the data-minimisation notice, a reserved `/book` surface for the next phase — each independently maintainable
+- **Structured routing**: the identity layer, a data-minimisation notice and a reserved booking surface as independent routes — each maintainable on its own
 - **Dual-theme system** with persistent, cookie-free preference and full keyboard/screen-reader support
 - **Verified quality bar**: WCAG AA throughout; Lighthouse 100/100/100/100 on every page
 
