@@ -1,6 +1,13 @@
 {
   "posts": [
     {
+      "slug": "digital-business-card",
+      "title": "Case study: a privacy-first digital business card",
+      "date": "2026-08-18",
+      "read": 5,
+      "summary": "A physical NFC card, one locked URL, and an identity layer owned end to end — zero cookies, zero trackers. How the bridge between a handshake and a digital identity earned enterprise-grade architecture."
+    },
+    {
       "slug": "governed-agents",
       "title": "Agentic AI in regulated organisations: govern the loop, not just the model",
       "date": "2026-06-15",
