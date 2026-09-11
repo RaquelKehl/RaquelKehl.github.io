@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de-CH" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://portfolio-api.raquelkehl.workers.dev; font-src 'self'; connect-src 'self' https://api.github.com https://portfolio-api.raquelkehl.workers.dev; base-uri 'self'; form-action 'self'; object-src 'none'">
+
+  <title>CV as Code — Raquel Kehl</title>
+  <meta name="description" content="Eine private YAML-Quelle rendert jedes CV-Artefakt — Bewerbungs-PDFs, den Website-CV und diese Seite. Ein kuratierter, schreibgeschützter Auszug aus dem Datenmodell hinter der Pipeline.">
+  <meta name="author" content="Raquel Kehl Furukawa">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CV as Code — Raquel Kehl">
+  <meta property="og:description" content="Eine kanonische YAML-Quelle, viele CV-Artefakte. Ein schreibgeschützter Blick auf das Datenmodell hinter der Pipeline.">
+  <meta property="og:site_name" content="Raquel Kehl Furukawa">
+  <meta property="og:url" content="https://raquelkehl.ch/cv-code/de/">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="canonical" href="https://raquelkehl.ch/cv-code/de/">
+  <link rel="alternate" hreflang="en" href="https://raquelkehl.ch/cv-code/">
+  <link rel="alternate" hreflang="de" href="https://raquelkehl.ch/cv-code/de/">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="preload" href="/assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/assets/js/theme-init.js"></script>
+  <script src="/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header class="site-header" id="siteHeader" data-solid>
+    <div class="bar">
+      <a class="brand" href="/index.html" aria-label="Raquel Kehl — home"><b>K</b>ehl</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="/index.html">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/dashboard.html">Dashboard</a>
+        <a href="/portfolio.html">Portfolio</a>
+        <a href="/agents.html">Agents</a>
+        <a href="/usecases.html">Use Cases</a>
+        <a href="/blog.html">Insights</a>
+        <a href="/media.html">Media</a>
+        <a href="/game.html">Arcade</a>
+        <a href="/contact.html">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-hero">
+      <div class="wrap">
+        <a class="back" href="/portfolio.html">← zurück zum Portfolio</a>
+        <div class="eyebrow">Portfolio · CV as Code</div>
+        <h1>Der CV ist ein <span class="serif-accent">Build-Artefakt</span>.</h1>
+        <p class="lede">Eine kanonische YAML-Quelle in einem privaten Repository rendert jeden CV auf dieser Website — die Bewerbungs-PDFs, den Website-CV und diese Seite. Unten ein kuratierter, schreibgeschützter Auszug aus diesem Datenmodell. Gleiche Fakten, verschiedene Kompilierungsziele.</p>
+        <nav class="cvcode-lang" aria-label="Sprache / Language">
+          <a href="/cv-code/" lang="en" hreflang="en">EN</a>
+          <a href="/cv-code/de/" aria-current="true">DE</a>
+        </nav>
+      </div>
+    </div>
+
+    <section aria-label="Kuratierter CV-Datenauszug">
+      <div class="wrap pt0">
+        <div class="cvcode-shell">
+
+          <div class="cvcode-block" aria-label="YAML-Auszug aus dem CV-Datenmodell">
+<!-- cv-code:start -->
+<pre><code><span class="cy-cmt"># cv-as-code — kuratierter öffentlicher Auszug (DE)</span>
+<span class="cy-cmt"># Eine private YAML-Quelle (cv-master.yaml) rendert jedes CV-Artefakt:</span>
+<span class="cy-cmt"># Bewerbungs-PDFs, den Website-CV und diese Seite. Dies ist die gekürzte,</span>
+<span class="cy-cmt"># öffentliche Sicht — der kanonische Datensatz bleibt in einem privaten</span>
+<span class="cy-cmt"># Repository.</span>
+<span class="cy-cmt"></span>
+<span class="cy-key">basics</span><span class="cy-pn">:</span>
+  <span class="cy-key">name</span><span class="cy-pn">:</span> <span class="cy-val">Raquel Kehl</span>
+  <span class="cy-key">label</span><span class="cy-pn">:</span> <span class="cy-val">"IT &amp; AI Leadership | Governance &amp; Advisory | Digital Transformation"</span>
+  <span class="cy-key">location</span><span class="cy-pn">:</span> <span class="cy-val">"Zürich, Schweiz"</span>
+  <span class="cy-key">website</span><span class="cy-pn">:</span> <span class="cy-val">https://raquelkehl.ch</span>
+  <span class="cy-key">linkedin</span><span class="cy-pn">:</span> <span class="cy-val">linkedin.com/in/raquel-kehl-furukawa</span>
+<span class="cy-cmt"></span>
+<span class="cy-key">experience</span><span class="cy-pn">:</span>
+  <span class="cy-dash">- </span><span class="cy-key">company</span><span class="cy-pn">:</span> <span class="cy-val">Sigma Bank AG</span>
+    <span class="cy-key">position</span><span class="cy-pn">:</span> <span class="cy-val">"Innovation &amp; Project Manager"</span>
+    <span class="cy-key">period</span><span class="cy-pn">:</span> <span class="cy-val">"02/2024 – 05/2026"</span>
+    <span class="cy-key">highlights</span><span class="cy-pn">:</span>
+      <span class="cy-dash">- </span><span class="cy-val">"Entwicklung der gruppenweiten AI-Weisung aus einem CISO-Kurzentwurf (EU AI Act, NIST AI RMF, ISO/IEC 42001)"</span>
+      <span class="cy-dash">- </span><span class="cy-val">"AI-Readiness-Assessment für die Geschäftsleitung — Reifegrad, DORA, EU AI Act, DSGVO"</span>
+      <span class="cy-dash">- </span><span class="cy-val">"Mandantenfähige ITSM-Architektur (Microsoft 365 + Jira) mit lückenloser Änderungsprotokollierung"</span>
+      <span class="cy-dash">- </span><span class="cy-val">"Low-Code-Automatisierung mit Power Apps &amp; Power Automate — 60% weniger manuelle Schritte (konzipiert &amp; validiert)"</span>
+  <span class="cy-dash">- </span><span class="cy-key">company</span><span class="cy-pn">:</span> <span class="cy-val">Safran Vectronix AG</span>
+    <span class="cy-key">position</span><span class="cy-pn">:</span> <span class="cy-val">"Aussenhandelsfachfrau (eidg. FA)"</span>
+    <span class="cy-key">period</span><span class="cy-pn">:</span> <span class="cy-val">"12/2019 – 06/2021"</span>
+  <span class="cy-dash">- </span><span class="cy-key">company</span><span class="cy-pn">:</span> <span class="cy-val">Ivoclar Vivadent AG</span>
+    <span class="cy-key">position</span><span class="cy-pn">:</span> <span class="cy-val">Customer Service Representative</span>
+    <span class="cy-key">period</span><span class="cy-pn">:</span> <span class="cy-val">"10/2014 – 11/2019"</span>
+<span class="cy-cmt">  # vollständige Historie — acht Stationen seit 2010 — im gerenderten CV</span>
+<span class="cy-cmt"></span>
+<span class="cy-key">education</span><span class="cy-pn">:</span>
+  <span class="cy-dash">- </span><span class="cy-key">degree</span><span class="cy-pn">:</span> <span class="cy-val">MSc Wirtschaftsinformatik</span>
+    <span class="cy-key">school</span><span class="cy-pn">:</span> <span class="cy-val">"OST – Ostschweizer Fachhochschule"</span>
+    <span class="cy-key">period</span><span class="cy-pn">:</span> <span class="cy-val">"2024–2027 · Digital Finance · laufend"</span>
+  <span class="cy-dash">- </span><span class="cy-key">degree</span><span class="cy-pn">:</span> <span class="cy-val">BSc Wirtschaftsinformatik</span>
+    <span class="cy-key">school</span><span class="cy-pn">:</span> <span class="cy-val">"OST – Ostschweizer Fachhochschule"</span>
+    <span class="cy-key">period</span><span class="cy-pn">:</span> <span class="cy-val">"2020–2024 · Business Software Development"</span>
+<span class="cy-cmt"></span>
+<span class="cy-key">focus</span><span class="cy-pn">:</span>
+  <span class="cy-dash">- </span><span class="cy-val">"AI- &amp; IT-Governance — EU AI Act · NIST AI RMF · ISO/IEC 42001 · DORA"</span>
+  <span class="cy-dash">- </span><span class="cy-val">"ITSM, GRC &amp; Change-Governance — ITIL · COBIT · CAB-Mitkonzeption"</span>
+  <span class="cy-dash">- </span><span class="cy-val">"Digitale Transformation &amp; Systemintegration — SaaS-Kernbankenmigration"</span>
+  <span class="cy-dash">- </span><span class="cy-val">"Agentic AI &amp; Orchestrierung — Multi-Agent-Systeme · GRC-integrierte Kontrollen"</span>
+<span class="cy-cmt"></span>
+<span class="cy-key">languages</span><span class="cy-pn">:</span> <span class="cy-val">"ES Muttersprache · DE C2 · EN C1 · FR C1 · IT B1 · PT A2"</span>
+<span class="cy-cmt"></span>
+<span class="cy-key">pipeline</span><span class="cy-pn">:</span>
+  <span class="cy-key">source</span><span class="cy-pn">:</span> <span class="cy-val">cv-master.yaml</span><span class="cy-cmt">          # privater Single Source of Truth</span>
+  <span class="cy-key">outputs</span><span class="cy-pn">:</span>
+    <span class="cy-dash">- </span><span class="cy-val">"Bewerbungs-CVs (EN/DE, je Positionierungs-Track)"</span>
+    <span class="cy-dash">- </span><span class="cy-val">"Website-CV (4-seitiges PDF, EN + DE)"</span>
+    <span class="cy-dash">- </span><span class="cy-val">"diese Seite"</span>
+  <span class="cy-key">render</span><span class="cy-pn">:</span> <span class="cy-val">"Daten + HTML-Templates → Headless Chromium → A4-PDF, ATS-sicherer Textlayer"</span>
+  <span class="cy-key">qa</span><span class="cy-pn">:</span> <span class="cy-val">"pdfinfo · pdftotext-Wortprüfungen · 150-dpi-Sichtprüfung · Fidelity-Diff auf Wortebene"</span></code></pre>
+<!-- cv-code:end -->
+          </div>
+
+          <aside class="cvcode-aside" aria-label="Über diese Seite">
+            <div class="cred">
+              <span class="k">Kompilierte Ausgabe</span>
+              <a class="cvcode-thumbs" href="/assets/cv/2026_CV_Website.pdf" aria-label="Gerenderten CV als PDF öffnen">
+                <img src="/assets/cv/thumbs/cv-de-1.jpg" alt="Gerenderter CV, Seite 1" width="425" height="600" loading="lazy">
+                <img src="/assets/cv/thumbs/cv-de-2.jpg" alt="Gerenderter CV, Seite 2" width="425" height="600" loading="lazy">
+              </a>
+              <p class="cvcode-flow"><span class="mono">cv-master.yaml → Build → A4-PDF</span></p>
+            </div>
+            <div class="cred">
+              <span class="k">So funktioniert es</span>
+              <ul>
+                <li><b>Quelle:</b> ein privates <span class="mono">cv-master.yaml</span></li>
+                <li><b>Templates:</b> HTML, nur Struktur — kein Text</li>
+                <li><b>Render:</b> Headless Chromium → A4-PDF</li>
+                <li><b>QA-Gate:</b> Seitengeometrie, ATS-Textlayer, Sichtprüfung, Fidelity-Diff auf Wortebene</li>
+              </ul>
+            </div>
+            <details class="doc">
+              <summary><span class="k">Warum ein kuratierter Auszug</span></summary>
+              <div class="doc-body">
+                <p>Dieser Block wird beim Build als reines HTML gerendert — dahinter liegt keine öffentliche YAML-Datei, und hier steht nichts, was nicht ohnehin auf dieser Website öffentlich ist. Der vollständige Datensatz mit der ganzen beruflichen Historie bleibt im privaten Repository und kompiliert in die massgeschneiderten CVs, die pro Bewerbung geteilt werden.</p>
+              </div>
+            </details>
+            <details class="doc">
+              <summary><span class="k">Warum CV as Code</span></summary>
+              <div class="doc-body">
+                <p>Ein CV ist Daten mit Meinungen zur Darstellung. Liegt der Inhalt in einer einzigen, geprüften Quelle, trägt jedes Artefakt — DE oder EN, Governance- oder Delivery-Fokus — dieselben verifizierten Fakten, und eine diffbare Pipeline fängt Abweichungen so, wie Code-Review Bugs fängt.</p>
+              </div>
+            </details>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" aria-labelledby="cvcode-cta">
+      <div class="wrap">
+        <div class="next reveal">kompilierte Ausgabe</div>
+        <h2 id="cvcode-cta" class="reveal">Lieber die <span class="serif-accent">gerenderte</span> Version?</h2>
+        <div class="actions reveal">
+          <a class="btn btn-primary" data-magnetic href="/assets/cv/2026_CV_Website.pdf">CV als PDF</a>
+          <a class="btn btn-ghost" href="/contact.html">Kontakt aufnehmen</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="cols">
+        <div class="who">Raquel Kehl Furukawa
+          <span>Zürich, Switzerland · transformation · technology · direction</span>
+        </div>
+        <nav aria-label="Footer">
+          <a href="https://www.linkedin.com/in/raquel-kehl-furukawa" rel="me noopener noreferrer" target="_blank">LinkedIn</a>
+          <a href="https://github.com/" id="githubLink" rel="me noopener noreferrer" target="_blank" hidden>GitHub</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/assets/cv/2026_CV_Website.pdf" download>CV (PDF)</a>
+        </nav>
+      </div>
+      <div class="fine">© <span id="year">2026</span> Raquel Kehl Furukawa · all rights reserved · built with vanilla JS · hosted on GitHub Pages · dark by design</div>
+    </div>
+  </footer>
+</body>
+</html>
