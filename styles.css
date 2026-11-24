@@ -844,6 +844,8 @@ a.game-card:hover{border-color:var(--accent-strong);transform:translateY(-3px)}
   color:var(--accent-300);font-size:1.05rem;margin:.7rem 0 0;max-width:none}
 :root[data-theme="light"] .form-intro{color:var(--accent-600)}
 .field-help{font-size:.8rem;color:var(--faint);margin:.35rem 0 0}
+.form-privacy{margin-top:1rem;max-width:38rem;color:var(--muted)}
+.form-privacy a{color:var(--accent)}
 .field-error{font-size:.82rem;color:var(--error);font-weight:600;margin:.35rem 0 0}
 .field input[aria-invalid="true"],.field textarea[aria-invalid="true"],
 .field select[aria-invalid="true"]{border-color:var(--error)}
